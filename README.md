@@ -1,3 +1,6 @@
+https://www.figma.com/file/yPLCYgh1u1y5WJ9GfbZnqN/MNTN---Landing-Page-(Community)?type=design&node-id=0-1&mode=design&t=YQXWIOlTX2ypu5kO-0
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
