@@ -1,0 +1,1 @@
+export { TicketPercentIcon } from './TicketPercentIcon'
