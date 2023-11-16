@@ -5,5 +5,17 @@ export const theme = createTheme({
     primary: {
       main: '#000',
     },
+    secondary: {
+      main: '#377DFF',
+    },
+    error: {
+      main: '#FF5630',
+    },
+    warning: {
+      main: '#FFAB00',
+    },
+    success: {
+      main: '#38CB89',
+    },
   },
 })
