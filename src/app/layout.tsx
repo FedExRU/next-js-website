@@ -9,10 +9,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
   <html lang="en">
     <body>
-      <ThemeRegistry options={{ key: 'mui' }}>
-        <aside>aside</aside>
-        <main>{children}</main>
-      </ThemeRegistry>
+      <ThemeRegistry options={{ key: 'mui' }}>{children}</ThemeRegistry>
     </body>
   </html>
 )
