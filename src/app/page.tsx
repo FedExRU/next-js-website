@@ -1,8 +1,4 @@
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material'
+import { Typography, Container, Card, Box } from '@mui/material'
 
 export default function Home() {
   return (
@@ -10,8 +6,7 @@ export default function Home() {
       <Container>
         <Box>
           <Card>
-            <Typography variant="h2">Hello World ~</Typography>
-            <Button color="primary" variant="contained">Click me pls</Button>
+            <Typography variant="h2">Lest&apos;s get started</Typography>
           </Card>
         </Box>
       </Container>
