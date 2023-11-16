@@ -10,6 +10,6 @@ A small project for my personal portfolio: online furniture store.
 
 ## Resources
 
-- [Figma template](https://www.figma.com/file/yPLCYgh1u1y5WJ9GfbZnqN/MNTN---Landing-Page-(Community)?type=design&node-id=0-1&mode=design&t=YQXWIOlTX2ypu5kO-0);
+- [Figma template](https://www.figma.com/file/bUqUIhGbbMqSrraNOWAPVc/3legant-E-Commerce-UI-Design-Template-(Community)?type=design&node-id=3-675&mode=design&t=fbndd0ONQWE50TBZ-0);
 - [Next JS](https://nextjs.org/);
 - [Material UI](https://mui.com/).
