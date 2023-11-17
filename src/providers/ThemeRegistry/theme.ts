@@ -209,25 +209,29 @@ export const theme = createTheme({
     },
     MuiButton: {
       styleOverrides: {
-        root: ({ ownerState }) => ({
+        sizeSmall: {
+          padding: '5px 40px',
+          height: 28,
+        },
+        sizeMedium: {
+          padding: '10px 40px',
+          height: 40,
+        },
+        root: {
           textTransform: 'none',
           borderRadius: 8,
-          padding: `${ownerState.size === 'small' ? 5 : 10}px 40px`,
           fontSize: '16px',
           fontStyle: 'normal',
           fontWeight: 500,
           lineHeight: '28px',
           letterSpacing: '-0.4px',
           fontFamily: interFontMedium.style.fontFamily,
-          height: ownerState.size === 'small' ? 28 : 40,
-        }),
+        },
         textPrimary: ({ theme }) => ({
           color: theme.palette.grey['700'],
           borderBottomColor: `1px solid ${theme.palette.grey['700']}`,
         }),
         text: {
-          paddingLeft: 0,
-          paddingRight: 0,
           borderBottomWidth: '1px',
           borderBottomStyle: 'solid',
           borderBottomLeftRadius: 0,
@@ -235,6 +239,10 @@ export const theme = createTheme({
           '&:hover': {
             background: 'transparent',
           },
+        },
+        textSizeSmall: {
+          paddingLeft: 0,
+          paddingRight: 0,
         },
         outlinedSecondary: ({ theme }) => ({
           border: 'none',

@@ -81,6 +81,9 @@ export default function Home() {
               <Button variant="text" color="primary" size="small">
                 Button text
               </Button>
+              <Button variant="text" color="secondary" size="small">
+                Button text
+              </Button>
             </Box>
           </Card>
         </Box>
