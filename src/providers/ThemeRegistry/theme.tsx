@@ -1,5 +1,11 @@
 import { createTheme } from '@mui/material'
 import localFont from 'next/font/local'
+import {
+  CheckboxIcon,
+  CheckboxCheckedIcon,
+  RadioIcon,
+  RadioCheckedIcon,
+} from 'components/server'
 
 const poppinsFont = localFont({
   src: './assets/fonts/poppins/Poppins-Medium.ttf',
@@ -23,6 +29,12 @@ const interFontBold = localFont({
 
 export const theme = createTheme({
   palette: {
+    text: {
+      secondary: '#6C7275',
+    },
+    action: {
+      active: '#6C7275',
+    },
     primary: {
       main: '#000',
     },
@@ -49,6 +61,63 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiIconButton: {
+      styleOverrides: {
+        sizeLarge: ({ theme }) => ({
+          padding: theme.spacing(1.75),
+        }),
+        root: ({ theme, ownerState: { color } }) => ({
+          background: theme.palette.common.white,
+          boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
+          transition: theme.transitions.create('color'),
+          '&:hover': {
+            background: 'inherit',
+            color:
+              color === undefined || color === 'default' || color === 'inherit'
+                ? 'currentColor'
+                : theme.palette?.[color].main,
+          },
+        }),
+      },
+    },
+    MuiRadio: {
+      defaultProps: {
+        icon: <RadioIcon />,
+        checkedIcon: <RadioCheckedIcon />,
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: ({ theme, ownerState: { color } }) => ({
+          padding: 0,
+          transition: theme.transitions.create('color'),
+          '&:hover': {
+            color:
+              color === undefined || color === 'default'
+                ? 'currentColor'
+                : theme.palette?.[color].main,
+          },
+        }),
+      },
+    },
+    MuiCheckbox: {
+      defaultProps: {
+        icon: <CheckboxIcon />,
+        checkedIcon: <CheckboxCheckedIcon />,
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: ({ theme, ownerState: { color } }) => ({
+          padding: 0,
+          transition: theme.transitions.create('color'),
+          '&:hover': {
+            color:
+              color === undefined || color === 'default'
+                ? 'currentColor'
+                : theme.palette?.[color].main,
+          },
+        }),
+      },
+    },
     MuiTypography: {
       defaultProps: {
         variantMapping: {
@@ -208,50 +277,91 @@ export const theme = createTheme({
       ],
     },
     MuiButton: {
+      defaultProps: {
+        rounded: 'medium',
+      },
+      variants: [
+        {
+          props: { size: 'xSmall' },
+          style: ({ theme }) => ({
+            height: 28,
+            padding: theme.spacing(0.5, 5),
+            fontSize: '14px',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            lineHeight: '24px',
+          }),
+        },
+        {
+          props: { size: 'xLarge' },
+          style: ({ theme }) => ({
+            height: 56,
+            padding: theme.spacing(2, 5),
+            fontSize: '26px',
+            fontStyle: 'normal',
+            fontWeight: 500,
+            lineHeight: '38px',
+          }),
+        },
+        {
+          props: { rounded: 'small' },
+          style: {
+            borderRadius: 6,
+          },
+        },
+        {
+          props: { rounded: 'medium' },
+          style: {
+            borderRadius: 8,
+          },
+        },
+        {
+          props: { rounded: 'large' },
+          style: {
+            borderRadius: 80,
+          },
+        },
+      ],
       styleOverrides: {
-        sizeSmall: {
-          padding: '5px 40px',
-          height: 28,
+        text: {
+          borderBottomWidth: 1,
+          borderBottomStyle: 'solid',
+          borderRadius: '0px !important',
+          padding: '0px !important',
+          '&:hover': {
+            backgroundColor: 'transparent',
+          },
         },
-        sizeMedium: {
-          padding: '10px 40px',
-          height: 40,
-        },
-        root: {
-          textTransform: 'none',
-          borderRadius: 8,
+        sizeSmall: ({ theme }) => ({
+          padding: theme.spacing(0.75, 5),
+          height: 34,
           fontSize: '16px',
           fontStyle: 'normal',
           fontWeight: 500,
           lineHeight: '28px',
           letterSpacing: '-0.4px',
+        }),
+        sizeMedium: ({ theme }) => ({
+          padding: theme.spacing(1.25, 5),
+          height: 42,
+          fontSize: '18px',
+          fontStyle: 'normal',
+          fontWeight: 500,
+          lineHeight: '32px',
+          letterSpacing: '-0.4px',
+        }),
+        sizeLarge: ({ theme }) => ({
+          padding: theme.spacing(1.5, 5),
+          height: 48,
+          fontSize: '22px',
+          fontStyle: 'normal',
+          fontWeight: 500,
+          lineHeight: '34px',
+        }),
+        root: {
+          textTransform: 'none',
           fontFamily: interFontMedium.style.fontFamily,
         },
-        textPrimary: ({ theme }) => ({
-          color: theme.palette.grey['700'],
-          borderBottomColor: `1px solid ${theme.palette.grey['700']}`,
-        }),
-        text: {
-          borderBottomWidth: '1px',
-          borderBottomStyle: 'solid',
-          borderBottomLeftRadius: 0,
-          borderBottomRightRadius: 0,
-          '&:hover': {
-            background: 'transparent',
-          },
-        },
-        textSizeSmall: {
-          paddingLeft: 0,
-          paddingRight: 0,
-        },
-        outlinedSecondary: ({ theme }) => ({
-          border: 'none',
-          color: theme.palette.grey['400'],
-          '&:hover': {
-            border: 'none',
-            background: theme.palette.grey['200'],
-          },
-        }),
       },
     },
   },
@@ -374,4 +484,9 @@ export const theme = createTheme({
       lineHeight: '20px',
     },
   }),
+  transitions: {
+    duration: {
+      standard: 150,
+    },
+  },
 })

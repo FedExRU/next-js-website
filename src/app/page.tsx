@@ -1,4 +1,35 @@
-import { Typography, Container, Card, Box, Button } from '@mui/material'
+import {
+  Typography,
+  Container,
+  Card,
+  Box,
+  Button,
+  Checkbox,
+  Radio,
+  IconButton,
+} from '@mui/material'
+import {
+  CalendarIcon,
+  CallIcon,
+  CameraIcon,
+  EditIcon,
+  FacebookIcon,
+  HeartIconFilled,
+  HeartIconOutlined,
+  InstagramIcon,
+  LockIcon,
+  MailIcon,
+  PaymentIcon,
+  SearchIcon,
+  ShippingIcon,
+  ShoppingBagIcon,
+  StarIconFilled,
+  StarIconOutlined,
+  StoreIcon,
+  TicketPercentIcon,
+  UserIcon,
+  YoutubeIcon,
+} from 'components/server'
 
 export default function Home() {
   return (
@@ -73,17 +104,76 @@ export default function Home() {
             </Box>
           </Card>
           <Card>
-            <Box mt={5} mb={5}>
-              <Button variant="contained">Button contained</Button>
-              <Button variant="outlined" color="secondary">
-                Button outlined
+            <Box mt={5} mb={2}>
+              <Button variant="contained" rounded="small">
+                Rounded small
               </Button>
-              <Button variant="text" color="primary" size="small">
-                Button text
+              <Box marginLeft={1} marginRight={1} display="inline-block">
+                <Button variant="contained" rounded="medium">
+                  Rounded medium
+                </Button>
+              </Box>
+              <Button variant="contained" rounded="large">
+                Rounded large
               </Button>
-              <Button variant="text" color="secondary" size="small">
-                Button text
+            </Box>
+            <Box mb={2}>
+              <Box marginRight={1} display="inline-block">
+                <Button variant="contained" size="xLarge">
+                  Button contained xLarge
+                </Button>
+              </Box>
+              <Button variant="contained" size="large">
+                Button contained large
               </Button>
+            </Box>
+            <Box mb={2}>
+              <Box marginRight={1} display="inline-block">
+                <Button variant="text" size="xSmall">
+                  Button text xSmall
+                </Button>
+              </Box>
+              <Button variant="text">Button text medium</Button>
+            </Box>
+            <Box mb={2}>
+              <Button variant="contained" size="medium">
+                Button contained medium
+              </Button>
+              <Box marginLeft={1} marginRight={1} display="inline-block">
+                <Button variant="contained" size="small">
+                  Button contained small
+                </Button>
+              </Box>
+              <Button variant="contained" size="xSmall">
+                Button contained xSmall
+              </Button>
+            </Box>
+            <Box mb={5}>
+              <SearchIcon />
+              <UserIcon />
+              <ShoppingBagIcon />
+              <HeartIconOutlined />
+              <HeartIconFilled />
+              <TicketPercentIcon />
+              <ShippingIcon />
+              <PaymentIcon />
+              <CallIcon />
+              <LockIcon />
+              <StoreIcon />
+              <MailIcon />
+              <InstagramIcon />
+              <FacebookIcon />
+              <YoutubeIcon />
+              <CalendarIcon />
+              <IconButton size="large">
+                {' '}
+                <CameraIcon />
+              </IconButton>
+              <EditIcon />
+              <StarIconOutlined />
+              <StarIconFilled />
+              <Checkbox />
+              <Radio />
             </Box>
           </Card>
         </Box>
