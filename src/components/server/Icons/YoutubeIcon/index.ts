@@ -1,1 +1,0 @@
-export { YoutubeIcon } from './YoutubeIcon'

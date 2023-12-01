@@ -1,1 +1,0 @@
-export { StoreIcon } from './StoreIcon'

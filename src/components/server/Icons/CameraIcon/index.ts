@@ -1,1 +1,0 @@
-export { CameraIcon } from './CameraIcon'

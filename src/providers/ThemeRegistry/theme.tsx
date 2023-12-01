@@ -1,11 +1,17 @@
 import { createTheme } from '@mui/material'
+// eslint-disable-next-line no-restricted-imports
+import _shadows from '@mui/material/styles/shadows'
 import localFont from 'next/font/local'
 import {
   CheckboxIcon,
   CheckboxCheckedIcon,
   RadioIcon,
   RadioCheckedIcon,
-} from 'components/server'
+  ChevronRightIcon,
+  StarIconOutlined,
+  StarIconFilled,
+  ArrowDownSimpleIcon,
+} from 'components/client/Icons'
 
 const poppinsFont = localFont({
   src: './assets/fonts/poppins/Poppins-Medium.ttf',
@@ -27,9 +33,20 @@ const interFontBold = localFont({
   src: './assets/fonts/inter/static/Inter-Bold.ttf',
 })
 
+const shadows = (() => {
+  const s = _shadows
+
+  s[8] = '0px 64px 64px -48px rgba(15, 15, 15, 0.10);'
+
+  return s
+})()
+
+console.log('foo', shadows)
+
 export const theme = createTheme({
   palette: {
     text: {
+      primary: '#000',
       secondary: '#6C7275',
     },
     action: {
@@ -37,6 +54,7 @@ export const theme = createTheme({
     },
     primary: {
       main: '#000',
+      light: '#605F5F',
     },
     secondary: {
       main: '#377DFF',
@@ -61,10 +79,184 @@ export const theme = createTheme({
     },
   },
   components: {
+    MuiFormControl: {
+      defaultProps: {
+        fullWidth: true,
+      },
+    },
+    MuiInputBase: {
+      defaultProps: {
+        size: 'small',
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+        },
+        input: ({ theme }) => ({
+          ...theme.typography.body2,
+          paddingLeft: theme.spacing(1),
+          paddingRight: theme.spacing(1),
+          paddingTop: theme.spacing(1),
+          paddingBottom: theme.spacing(1),
+          height: 36,
+        }),
+        sizeSmall: {
+          height: 48,
+        },
+        inputSizeSmall: {
+          height: 48,
+        },
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        size: 'small',
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: ({ theme }) => ({
+          border: `2px solid ${theme.palette.text.secondary}`,
+          borderRadius: 8,
+          '& legend span:not(.notranslate)': {
+            display: 'none',
+          },
+        }),
+        input: ({ theme }) => ({
+          ...theme.typography.body2,
+          paddingLeft: theme.spacing(2),
+          paddingRight: theme.spacing(1),
+          paddingTop: theme.spacing(1),
+          paddingBottom: theme.spacing(1),
+        }),
+        inputSizeSmall: {
+          height: 32,
+        },
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        notched: true,
+        size: 'small',
+        IconComponent: ArrowDownSimpleIcon,
+        MenuProps: {
+          sx: theme => ({
+            '& .MuiPopover-paper': {
+              borderRadius: 3,
+            },
+            '& .MuiMenu-list': {
+              paddingLeft: theme.spacing(1),
+              paddingRight: theme.spacing(1),
+              paddingTop: theme.spacing(1),
+              paddingBottom: theme.spacing(1),
+            },
+            '& .MuiMenuItem-root': {
+              ...theme.typography.body2,
+              borderRadius: 2,
+              paddingLeft: theme.spacing(1),
+              paddingRight: theme.spacing(1),
+              paddingTop: theme.spacing(1),
+              paddingBottom: theme.spacing(1),
+              color: theme.palette.text.secondary,
+              transition: theme.transitions.create(
+                ['background-color, color'],
+                { duration: 300 },
+              ),
+              '&.Mui-selected': {
+                backgroundColor: theme.palette.grey['200'],
+                color: theme.palette.text.primary,
+              },
+              '&:hover': {
+                backgroundColor: theme.palette.grey['200'],
+                color: theme.palette.text.primary,
+              },
+            },
+          }),
+        },
+      },
+      styleOverrides: {
+        outlined: {
+          minHeight: 32,
+        },
+        select: ({ theme, ownerState: { size = 'small' } }) => ({
+          ...theme.typography.body2,
+          fontWeight: 600,
+          fontFamily: interFontSemi.style.fontFamily,
+          ...(size === 'small' && {
+            display: 'flex',
+            alignItems: 'center',
+          }),
+        }),
+        iconOutlined: ({ theme, ownerState: { size = 'small' } }) => ({
+          ...(size === 'small' && {
+            marginRight: theme.spacing(0.5),
+          }),
+        }),
+      },
+    },
+    MuiInputLabel: {
+      defaultProps: {
+        shrink: true,
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          position: 'static',
+          transform: 'none',
+          textTransform: 'uppercase',
+          ...theme.typography.body2,
+          fontWeight: 600,
+          fontFamily: interFontSemi.style.fontFamily,
+          color: theme.palette.text.secondary,
+          marginBottom: theme.spacing(1),
+        }),
+      },
+    },
+    MuiRating: {
+      defaultProps: {
+        emptyIcon: <StarIconOutlined />,
+        icon: <StarIconFilled />,
+      },
+      styleOverrides: {
+        iconFilled: ({ theme }) => ({
+          color: theme.palette.primary.main,
+        }),
+        iconEmpty: ({ theme }) => ({
+          color: theme.palette.grey['400'],
+        }),
+      },
+    },
+    MuiBreadcrumbs: {
+      defaultProps: {
+        separator: (
+          <ChevronRightIcon
+            fontSize="small"
+            sx={{ height: 12, width: 12, paddingTop: '1px' }}
+          />
+        ),
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          ...theme.typography.button,
+          textTransform: 'capitalize',
+        }),
+        separator: ({ theme }) => ({
+          color: theme.palette.primary.light,
+          marginLeft: theme.spacing(0.5),
+          marginRight: theme.spacing(2),
+        }),
+      },
+    },
     MuiIconButton: {
       styleOverrides: {
+        sizeMedium: ({ theme }) => ({
+          height: 40,
+          width: 40,
+          padding: theme.spacing(1),
+        }),
         sizeLarge: ({ theme }) => ({
-          padding: theme.spacing(1.75),
+          height: 52,
+          width: 52,
+          padding: theme.spacing(1.25),
         }),
         root: ({ theme, ownerState: { color } }) => ({
           background: theme.palette.common.white,
@@ -223,14 +415,6 @@ export const theme = createTheme({
           }),
         },
         {
-          props: { variant: 'body2Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.body2,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
           props: { variant: 'caption1Semi' },
           style: ({ theme }) => ({
             ...theme.typography.caption1,
@@ -286,10 +470,7 @@ export const theme = createTheme({
           style: ({ theme }) => ({
             height: 28,
             padding: theme.spacing(0.5, 5),
-            fontSize: '14px',
-            fontStyle: 'normal',
-            fontWeight: 500,
-            lineHeight: '24px',
+            ...theme.typography.button,
           }),
         },
         {
@@ -331,6 +512,7 @@ export const theme = createTheme({
           '&:hover': {
             backgroundColor: 'transparent',
           },
+          '& .MuiTouchRipple-child': { borderRadius: '0px !important' },
         },
         sizeSmall: ({ theme }) => ({
           padding: theme.spacing(0.75, 5),
@@ -364,7 +546,18 @@ export const theme = createTheme({
         },
       },
     },
+    MuiSvgIcon: {
+      styleOverrides: {
+        fontSizeMedium: {
+          fontSize: '1.5rem',
+        },
+        fontSizeLarge: {
+          fontSize: '2rem',
+        },
+      },
+    },
   },
+  shadows,
   typography: palette => ({
     /**
      * Default
@@ -465,6 +658,33 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: '26px',
     },
+    body2Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '16px',
+      fontStyle: 'normal',
+      fontWeight: 500,
+      lineHeight: '26px',
+    },
+    body2Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '16px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: '26px',
+    },
+    hairline2: {
+      fontSize: '16px',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      lineHeight: '16px',
+    },
+    hairline2Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '16px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: '16px',
+    },
     caption: {
       fontSize: '14px',
       fontStyle: 'normal',
@@ -482,6 +702,13 @@ export const theme = createTheme({
       fontStyle: 'normal',
       fontWeight: 400,
       lineHeight: '20px',
+    },
+    button: {
+      fontSize: '14px',
+      fontStyle: 'normal',
+      fontWeight: 500,
+      lineHeight: '24px',
+      textTransform: 'none',
     },
   }),
   transitions: {

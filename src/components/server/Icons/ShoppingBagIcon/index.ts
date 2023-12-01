@@ -1,1 +1,0 @@
-export { ShoppingBagIcon } from './ShoppingBagIcon'

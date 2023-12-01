@@ -9,6 +9,12 @@ import {
   IconButton,
 } from '@mui/material'
 import {
+  ArrowLeftLargeIcon,
+  ArrowLeftMediumIcon,
+  ArrowLeftSmallIcon,
+  ArrowRightLargeIcon,
+  ArrowRightMediumIcon,
+  ArrowRightSmallIcon,
   CalendarIcon,
   CallIcon,
   CameraIcon,
@@ -29,7 +35,13 @@ import {
   TicketPercentIcon,
   UserIcon,
   YoutubeIcon,
-} from 'components/server'
+  EnvelopeIcon,
+  GridSmallIcon,
+  GridMediumIcon,
+  GridLargeIcon,
+  GridXLargeIcon,
+  CloseIcon,
+} from 'components/client/Icons'
 
 export default function Home() {
   return (
@@ -165,15 +177,36 @@ export default function Home() {
               <FacebookIcon />
               <YoutubeIcon />
               <CalendarIcon />
+              <CameraIcon />
+              <ArrowLeftSmallIcon />
+              <ArrowRightSmallIcon />
+              <ArrowLeftMediumIcon />
+              <ArrowRightMediumIcon />
+              <ArrowLeftLargeIcon />
+              <ArrowRightLargeIcon />
+              <IconButton>
+                <ArrowLeftMediumIcon />
+              </IconButton>
+              <IconButton>
+                <ArrowRightMediumIcon />
+              </IconButton>
               <IconButton size="large">
-                {' '}
-                <CameraIcon />
+                <ArrowLeftLargeIcon fontSize="large" />
+              </IconButton>
+              <IconButton size="large">
+                <ArrowRightLargeIcon fontSize="large" />
               </IconButton>
               <EditIcon />
               <StarIconOutlined />
               <StarIconFilled />
               <Checkbox />
               <Radio />
+              <EnvelopeIcon />
+              <GridSmallIcon />
+              <GridMediumIcon />
+              <GridLargeIcon />
+              <GridXLargeIcon />
+              <CloseIcon />
             </Box>
           </Card>
         </Box>
