@@ -12,7 +12,11 @@ declare module '@mui/material/styles' {
     text3?: CSSProperties
     caption1?: CSSProperties
     caption2?: CSSProperties
+    hairline1?: CSSProperties
     hairline2?: CSSProperties
+    hairline1Semi?: CSSProperties
+    hairline2Semi?: CSSProperties
+    hairline1Bold?: CSSProperties
     hairline2Bold?: CSSProperties
     text1Semi?: CSSProperties
     text2Semi?: CSSProperties
@@ -36,7 +40,11 @@ declare module '@mui/material/styles' {
     text3?: CSSProperties
     caption1?: CSSProperties
     caption2?: CSSProperties
+    hairline1?: CSSProperties
     hairline2?: CSSProperties
+    hairline1Semi?: CSSProperties
+    hairline2Semi?: CSSProperties
+    hairline1Bold?: CSSProperties
     hairline2Bold?: CSSProperties
     text1Semi?: CSSProperties
     text2Semi?: CSSProperties

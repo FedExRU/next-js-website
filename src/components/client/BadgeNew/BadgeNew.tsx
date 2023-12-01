@@ -12,6 +12,7 @@ const BadgeNew: FC<BadgeNewProps> = ({ caption = 'New', size = 'medium' }) => (
     borderRadius={1}
     textTransform="uppercase"
     component="span"
+    display="inline-flex"
   >
     {caption}
   </Box>

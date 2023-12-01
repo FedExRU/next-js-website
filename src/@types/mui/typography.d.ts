@@ -23,7 +23,11 @@ declare module '@mui/material/Typography' {
     body2Bold: true
     caption1Bold: true
     caption2Bold: true
+    hairline1?: true
+    hairline1Semi?: true
+    hairline1Bold?: true
     hairline2?: true
+    hairline2Semi?: true
     hairline2Bold?: true
   }
 }

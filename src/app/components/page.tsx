@@ -3,7 +3,6 @@ import Rating from '@mui/material/Rating'
 import TextField from '@mui/material/TextField'
 import Breadcrumbs from 'components/client/Breadcrumbs'
 import Select from 'components/client/Select'
-// eslint-disable-next-line import/order, import/no-restricted-paths
 import { Foo } from './Foo'
 import BadgeNew from 'components/client/BadgeNew'
 
@@ -38,8 +37,9 @@ export default function Components() {
       <Box mb={2} width={300}>
         <Foo />
       </Box>
-      <Box mb={2}>
+      <Box mb={2} bgcolor="common.black">
         <BadgeNew />
+        <BadgeNew size="large" />
       </Box>
     </Box>
   )

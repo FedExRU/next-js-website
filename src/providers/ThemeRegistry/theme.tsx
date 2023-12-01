@@ -41,8 +41,6 @@ const shadows = (() => {
   return s
 })()
 
-console.log('foo', shadows)
-
 export const theme = createTheme({
   palette: {
     text: {
@@ -93,7 +91,7 @@ export const theme = createTheme({
           borderRadius: 8,
         },
         input: ({ theme }) => ({
-          ...theme.typography.body2,
+          ...theme.typography.body2Semi,
           paddingLeft: theme.spacing(1),
           paddingRight: theme.spacing(1),
           paddingTop: theme.spacing(1),
@@ -123,7 +121,7 @@ export const theme = createTheme({
           },
         }),
         input: ({ theme }) => ({
-          ...theme.typography.body2,
+          ...theme.typography.body2Semi,
           paddingLeft: theme.spacing(2),
           paddingRight: theme.spacing(1),
           paddingTop: theme.spacing(1),
@@ -341,124 +339,6 @@ export const theme = createTheme({
           caption2Bold: 'span',
         },
       },
-      variants: [
-        {
-          props: { variant: 'text1Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.text1,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'text1Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.text1,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'text2Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.text2,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'text2Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.text2,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'text3Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.text3,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'text3Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.text3,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'body1Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.body1,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'body1Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.body1,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'body2Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.body2,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'caption1Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.caption1,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'caption1Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.caption1,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'caption2Semi' },
-          style: ({ theme }) => ({
-            ...theme.typography.caption2,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'caption2Bold' },
-          style: ({ theme }) => ({
-            ...theme.typography.caption2,
-            fontWeight: 700,
-            fontFamily: interFontBold.style.fontFamily,
-          }),
-        },
-        {
-          props: { variant: 'subtitle1' },
-          style: ({ theme }) => ({
-            ...theme.typography.body1,
-          }),
-        },
-        {
-          props: { variant: 'subtitle2' },
-          style: ({ theme }) => ({
-            ...theme.typography.text3,
-          }),
-        },
-      ],
     },
     MuiButton: {
       defaultProps: {
@@ -634,10 +514,38 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: '40px',
     },
+    text1Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '26px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '40px',
+    },
+    text1Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '26px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '40px',
+    },
     text2: {
       fontSize: '22px',
       fontStyle: 'normal',
       fontWeight: 400,
+      lineHeight: '34px',
+    },
+    text2Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '22px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '34px',
+    },
+    text2Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '22px',
+      fontStyle: 'normal',
+      fontWeight: 700,
       lineHeight: '34px',
     },
     body1: {
@@ -646,10 +554,38 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: '32px',
     },
+    body1Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '20px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '32px',
+    },
+    body1Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '20px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: '32px',
+    },
     text3: {
       fontSize: '18px',
       fontStyle: 'normal',
       fontWeight: 400,
+      lineHeight: '30px',
+    },
+    text3Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '18px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '30px',
+    },
+    text3Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '18px',
+      fontStyle: 'normal',
+      fontWeight: 700,
       lineHeight: '30px',
     },
     body2: {
@@ -672,11 +608,38 @@ export const theme = createTheme({
       fontWeight: 700,
       lineHeight: '26px',
     },
+    hairline1: {
+      fontSize: '18px',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      lineHeight: '18px',
+    },
+    hairline1Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '18px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '18px',
+    },
+    hairline1Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '18px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: '18px',
+    },
     hairline2: {
       fontSize: '16px',
       fontStyle: 'normal',
       fontWeight: 400,
       lineHeight: '16px',
+    },
+    hairline2Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '18px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '18px',
     },
     hairline2Bold: {
       fontFamily: interFontBold.style.fontFamily,
@@ -691,16 +654,58 @@ export const theme = createTheme({
       fontWeight: 400,
       lineHeight: '22px',
     },
+    captionSemi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '14px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '22px',
+    },
+    captionBold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '14px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: '22px',
+    },
     caption1: {
       fontSize: '14px',
       fontStyle: 'normal',
       fontWeight: 400,
       lineHeight: '22px',
     },
+    caption1Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '14px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '22px',
+    },
+    caption1Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '14px',
+      fontStyle: 'normal',
+      fontWeight: 700,
+      lineHeight: '22px',
+    },
     caption2: {
       fontSize: '12px',
       fontStyle: 'normal',
       fontWeight: 400,
+      lineHeight: '20px',
+    },
+    caption2Semi: {
+      fontFamily: interFontSemi.style.fontFamily,
+      fontSize: '12px',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      lineHeight: '20px',
+    },
+    caption2Bold: {
+      fontFamily: interFontBold.style.fontFamily,
+      fontSize: '12px',
+      fontStyle: 'normal',
+      fontWeight: 700,
       lineHeight: '20px',
     },
     button: {
