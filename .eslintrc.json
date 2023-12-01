@@ -14,7 +14,7 @@
     "no-restricted-imports": [
       "error",
       {
-        "patterns": ["*/*/*", "!@mui/material/styles", "!next/**"]
+        "patterns": ["*/*/*/*", "!@mui/material/styles", "!next/**"]
       }
     ],
     "import/no-restricted-paths": [
@@ -27,8 +27,9 @@
             "message": "Importing a server components to client components is forbidden"
           },
           {
-            "target": "src/**",
-            "from": "src/app/**"
+            "target": "src/containers/client",
+            "from": "src/containers/server",
+            "message": "Importing a server containers to client containers is forbidden"
           }
         ]
       }
