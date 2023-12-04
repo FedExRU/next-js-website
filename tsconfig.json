@@ -21,7 +21,10 @@
     ],
     "paths": {
       "components/*": ["./src/components/*"],
-      "providers": ["./src/providers"]
+      "server-actions/*": ["./src/server-actions/*"],
+      "providers/*": ["./src/providers/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "types": ["./src/types/"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

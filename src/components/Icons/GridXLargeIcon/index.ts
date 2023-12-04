@@ -1,0 +1,1 @@
+export { GridXLargeIcon } from './GridXLargeIcon'
