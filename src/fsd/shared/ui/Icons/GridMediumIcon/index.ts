@@ -1,0 +1,1 @@
+export { GridMediumIcon } from './GridMediumIcon'

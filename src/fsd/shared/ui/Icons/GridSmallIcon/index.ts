@@ -1,0 +1,1 @@
+export { GridSmallIcon } from './GridSmallIcon'
