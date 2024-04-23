@@ -10,29 +10,6 @@
     "@typescript-eslint/no-unused-vars": "error",
     "prettier/prettier": "warn",
     "no-duplicate-imports": "error",
-    "import/order": ["warn"],
-    "no-restricted-imports": [
-      "error",
-      {
-        "patterns": ["*/*/*/*", "!@mui/material/styles", "!next/**"]
-      }
-    ],
-    "import/no-restricted-paths": [
-      "error",
-      {
-        "zones": [
-          {
-            "target": "src/components/client",
-            "from": "src/components/server",
-            "message": "Importing a server components to client components is forbidden"
-          },
-          {
-            "target": "src/containers/client",
-            "from": "src/containers/server",
-            "message": "Importing a server containers to client containers is forbidden"
-          }
-        ]
-      }
-    ]
+    "import/order": ["warn"]
   }
 }

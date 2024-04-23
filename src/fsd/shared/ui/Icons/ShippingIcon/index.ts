@@ -1,0 +1,1 @@
+export { ShippingIcon } from './ShippingIcon'
