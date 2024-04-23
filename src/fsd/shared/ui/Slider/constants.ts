@@ -1,0 +1,1 @@
+export const LOADING_APPEAR_TIMEOUT = 500

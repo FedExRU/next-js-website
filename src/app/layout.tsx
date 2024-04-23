@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { headers } from 'next/headers'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import parser from 'ua-parser-js'
-import { ThemeProvider } from 'providers/ThemeProvider'
-import { DeviceType } from 'types'
+import { type DeviceType, ThemeProvider, QueryProvider } from '@fsd/shared'
 
 export const metadata: Metadata = {
   title: 'yo!',
@@ -21,7 +20,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider deviceType={deviceType as DeviceType}>
-            {children}
+            <QueryProvider>{children}</QueryProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

@@ -20,6 +20,7 @@
       }
     ],
     "paths": {
+      "@fsd/*": ["./src/fsd/*"],
       "components/*": ["./src/components/*"],
       "server-actions/*": ["./src/server-actions/*"],
       "providers/*": ["./src/providers/*"],
