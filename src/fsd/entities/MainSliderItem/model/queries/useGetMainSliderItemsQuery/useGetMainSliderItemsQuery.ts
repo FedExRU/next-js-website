@@ -6,10 +6,9 @@ import {
   UseQueryResult,
   useQuery,
 } from '@tanstack/react-query'
-import { FirestoreError } from 'firebase/firestore/lite'
 import { MainSliderItemApi, IMainSliderItem } from '../../../api'
 import { MAIN_SLIDER_ITEMS_QUERY_KEY } from './constants'
-import { FirebaseResult } from '@fsd/shared'
+import { RequestError, type RequestResult } from '@fsd/shared'
 
 export const getMainSliderItemsQueryKey = (): QueryKey => [
   MAIN_SLIDER_ITEMS_QUERY_KEY,
@@ -21,11 +20,13 @@ const getMainSliderItemsRequest = async () => {
   return data
 }
 
-export const useGetMainSliderItemsQuery = <T = FirebaseResult<IMainSliderItem>>(
+export const useGetMainSliderItemsQuery = <
+  T = Required<RequestResult<IMainSliderItem>>,
+>(
   config?: Partial<
-    UseQueryOptions<FirebaseResult<IMainSliderItem>, FirestoreError, T>
+    UseQueryOptions<Required<RequestResult<IMainSliderItem>>, RequestError, T>
   >,
-): UseQueryResult<T, FirestoreError> =>
+): UseQueryResult<T, RequestError> =>
   useQuery({
     queryKey: getMainSliderItemsQueryKey(),
     queryFn: () => getMainSliderItemsRequest(),

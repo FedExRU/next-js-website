@@ -1,16 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Turn off strict mode
   reactStrictMode: false,
-  images: {
-    formats: ['image/webp'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-        port: '',
-        pathname: '/v0/b/**',
-      },
-    ],
+  // Automatically bundle external packages in the Pages Router
+  bundlePagesRouterDependencies: true,
+  experimental: {    
+    // Add the react compiler for better performance
+    reactCompiler: true,  
   },
 }
 
