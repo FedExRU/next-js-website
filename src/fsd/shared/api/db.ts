@@ -1,17 +1,51 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore/lite'
+'use server'
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyAeS-qGT_iAOxBZG1QZM3sNDaHQmMQQKuo',
-  authDomain: 'legant-97566.firebaseapp.com',
-  databaseURL: 'https://legant-97566-default-rtdb.firebaseio.com',
-  projectId: 'legant-97566',
-  storageBucket: 'legant-97566.appspot.com',
-  messagingSenderId: '477409727207',
-  appId: '1:477409727207:web:a27284e431a3d6c3d6c842',
-  measurementId: 'G-HK30Z19XR0',
+import categoryKitchen from './assets/category-kitchen.webp'
+import categoryLivingRoomImg from './assets/category-living-room.webp'
+import categoryBedroomImg from './assets/category-bedroom.webp'
+
+const data = {
+  categories: [
+    {
+      id: 1,
+      createdAt: 'May 5, 2024 at 2:58:14 PM UTC+3',
+      updatedAt: 'May 5, 2024 at 2:58:14 PM UTC+3',
+      image: categoryLivingRoomImg.src,
+      isDeleted: false,
+      isDisabled: false,
+      name: 'Living Room',
+      slug: 'living-room',
+      parentId: null,
+    },
+    {
+      id: 2,
+      createdAt: 'May 5, 2024 at 2:58:14 PM UTC+3',
+      updatedAt: 'May 5, 2024 at 2:58:14 PM UTC+3',
+      image: categoryBedroomImg.src,
+      isDeleted: false,
+      isDisabled: false,
+      name: 'Bedroom',
+      slug: 'Bedroom',
+      parentId: null,
+    },
+    {
+      id: 3,
+      createdAt: 'May 5, 2024 at 2:58:14 PM UTC+3',
+      updatedAt: 'May 5, 2024 at 2:58:14 PM UTC+3',
+      image: categoryKitchen.src,
+      isDeleted: false,
+      isDisabled: false,
+      name: 'Kitchen',
+      slug: 'Kitchen',
+      parentId: null,
+    },
+  ]
+} as const
+
+export const query = async <T>(key: string): Promise<T> => {
+  const d = data[key as keyof typeof data]
+
+  console.log('foo', d);
+
+  return new Promise(() => data[key as keyof typeof data] as T)
 }
-
-const app = initializeApp(firebaseConfig)
-
-export const db = getFirestore(app)
