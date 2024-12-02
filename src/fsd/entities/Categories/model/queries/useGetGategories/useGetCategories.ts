@@ -6,28 +6,27 @@ import {
   UseQueryResult,
   useQuery,
 } from '@tanstack/react-query'
-import { FirestoreError } from 'firebase/firestore/lite'
 import { CategoriesApi, ICategory } from '../../../api'
 import { CATEGORIES_QUERY_KEY } from './constants'
 import { UseGetCategoriesOptions } from './types'
-import { FirebaseResult } from '@fsd/shared'
+import { type RequestResult, type RequestError } from '@fsd/shared'
 
 export const getCategoiesQueryKey = (): QueryKey => [CATEGORIES_QUERY_KEY]
 
-const getCategoiesRequest = async (options?: UseGetCategoriesOptions) => {
-  const data = await CategoriesApi.getAll(options)
+const getCategoiesRequest = async () => {
+  const data = await CategoriesApi.getAll()
 
   return data
 }
 
-export const useGetCategoiesQuery = <T = FirebaseResult<ICategory>>(
+export const useGetCategoiesQuery = <T = RequestResult<ICategory[]>>(
   options?: UseGetCategoriesOptions,
   config?: Partial<
-    UseQueryOptions<FirebaseResult<ICategory>, FirestoreError, T>
+    UseQueryOptions<RequestResult<ICategory[]>, RequestError, T>
   >,
-): UseQueryResult<T, FirestoreError> =>
+): UseQueryResult<T, RequestError> =>
   useQuery({
     queryKey: getCategoiesQueryKey(),
-    queryFn: () => getCategoiesRequest(options),
+    queryFn: () => getCategoiesRequest(),
     ...(config || {}),
   })

@@ -103,7 +103,7 @@ export const Category: FC<CategoryProps> = ({
               />
             )}
             <Image
-              alt={name as string}
+              alt={(name as string) || ''}
               src={skeleton ? skeletonImage : (image as string)}
               width={0}
               height={0}

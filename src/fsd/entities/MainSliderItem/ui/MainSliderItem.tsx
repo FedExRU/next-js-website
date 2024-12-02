@@ -32,6 +32,7 @@ export const MainSliderItem: FC<MainSliderItemProps> = ({
         sx={{
           display: 'flex',
           position: 'relative',
+          height: '100%',
           ...sx,
           opacity: isLoadingFailed ? 0.1 : 1,
         }}
