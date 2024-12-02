@@ -85,7 +85,9 @@ export const Slider: FC<SliderProps> = ({
               slidesPerView={1}
             >
               {ReactChildren.map(children, (child, index) => (
-                <SwiperSlide key={index}>{child}</SwiperSlide>
+                <SwiperSlide style={{ height: 'auto' }} key={index}>
+                  {child}
+                </SwiperSlide>
               ))}
             </Swiper>
             <SliderBullets
