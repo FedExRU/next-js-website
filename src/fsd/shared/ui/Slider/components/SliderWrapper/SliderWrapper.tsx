@@ -6,9 +6,11 @@ import { Box } from '@mui/material'
 import { getSliderItemImageProps } from '../../utils'
 import { SliderWrapperProps } from './types'
 import wrapperImage from './assets/wrapper.webp'
+import { getStyles } from './styles'
 
 export const SliderWrapper: FC<SliderWrapperProps> = ({ children }) => {
   const { sx, ...rest } = getSliderItemImageProps()
+  const { styles } = getStyles()
 
   return (
     <Box sx={{ position: 'relative' }}>
@@ -19,18 +21,7 @@ export const SliderWrapper: FC<SliderWrapperProps> = ({ children }) => {
       >
         <Image {...rest} alt="" src={wrapperImage} />
       </Box>
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          height: '100%',
-          width: '100%',
-          backgroundColor: 'grey.200',
-        }}
-      >
-        {children}
-      </Box>
+      <Box sx={styles.sliderWrapper}>{children}</Box>
     </Box>
   )
 }

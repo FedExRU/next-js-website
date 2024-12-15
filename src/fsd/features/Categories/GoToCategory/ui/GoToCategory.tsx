@@ -3,7 +3,7 @@
 import { FC } from 'react'
 import { GoToCategoryProps } from './types'
 import { GO_TO_CATEGORY_TEXT } from './constants'
-import { ArrowRightMediumIcon, Button, Skeleton } from '@fsd/shared'
+import { ActionLink, Skeleton } from '@fsd/shared'
 
 export const GoToCategory: FC<GoToCategoryProps> = ({
   skeleton,
@@ -22,20 +22,7 @@ export const GoToCategory: FC<GoToCategoryProps> = ({
         }}
       />
     ) : (
-      <Button
-        variant="text"
-        size={{
-          sm: 'small',
-          xs: 'xSmall',
-        }}
-        component="a"
-        href="#"
-        sx={{
-          px: '0 !important',
-        }}
-      >
-        {text} <ArrowRightMediumIcon sx={{ '& path': { strokeWidth: 1.25 } }} />
-      </Button>
+      <ActionLink text={text} />
     )}
   </>
 )

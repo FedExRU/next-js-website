@@ -1,7 +1,8 @@
 import { BreakpointsOptions, createTheme as _createTheme } from '@mui/material'
-// eslint-disable-next-line no-restricted-imports
+
 import _shadows from '@mui/material/styles/shadows'
 import localFont from 'next/font/local'
+import mediaQuery from 'css-mediaquery'
 import { DeviceType } from '../../lib'
 import {
   CheckboxIcon,
@@ -50,9 +51,13 @@ const breakpoints: BreakpointsOptions = {
     lg: 1200,
     xl: 1536,
   },
+} as const
+
+const breakpointsAlias: Record<DeviceType, number> = {
+  desktop: (breakpoints as Required<BreakpointsOptions>).values.lg,
+  mobile: (breakpoints as Required<BreakpointsOptions>).values.xs,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const createTheme = (deviceType: DeviceType) =>
   _createTheme({
     breakpoints,
@@ -92,6 +97,19 @@ export const createTheme = (deviceType: DeviceType) =>
       },
     },
     components: {
+      MuiUseMediaQuery: {
+        defaultProps: {
+          ssrMatchMedia: query => {
+            return {
+              matches: mediaQuery.match(query, {
+                width:
+                  localStorage.getItem('deviceWidth') ||
+                  breakpointsAlias[deviceType],
+              }),
+            }
+          },
+        },
+      },
       MuiTooltip: {
         styleOverrides: {
           tooltip: ({ theme }) => ({
@@ -314,6 +332,9 @@ export const createTheme = (deviceType: DeviceType) =>
               : theme.palette.common.white,
             boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
             transition: theme.transitions.create('color'),
+            '& > *': {
+              pointerEvents: 'none',
+            },
             '&:hover': {
               background: theme.palette.common.white,
               color:
