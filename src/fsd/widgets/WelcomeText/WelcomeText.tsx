@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Grid2 as Grid, Box } from '@mui/material'
 import { FC } from 'react'
 import { Typography } from '@fsd/shared'

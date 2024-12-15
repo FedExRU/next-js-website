@@ -1,5 +1,5 @@
 import { BreakpointsOptions, createTheme as _createTheme } from '@mui/material'
-// eslint-disable-next-line no-restricted-imports
+
 import _shadows from '@mui/material/styles/shadows'
 import localFont from 'next/font/local'
 import { DeviceType } from '../../lib'

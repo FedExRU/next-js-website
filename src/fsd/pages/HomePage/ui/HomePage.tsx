@@ -1,5 +1,6 @@
 'use client'
 
+import * as React from 'react'
 import { Container, Grid2 as Grid } from '@mui/material'
 import {
   BannerGrid,
@@ -27,6 +28,7 @@ export const HomePage = () => {
         </Grid>
         <Grid size={12}>
           <FeaturedProductsSlider />
+          <div style={{ height: 500 }} />
         </Grid>
       </Grid>
     </Container>

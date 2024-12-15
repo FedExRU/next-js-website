@@ -17,8 +17,10 @@ export const BadgeDiscount: FC<BadgeDiscountProps> = ({
     component="span"
     display="inline-flex"
     sx={BadgeDiscountSxProps[size]}
+    alignItems="center"
+    justifyContent="center"
     aria-label="Product with discount"
   >
-    {value && `-${50}%`}
+    {value && `-${value}%`}
   </Box>
 )
