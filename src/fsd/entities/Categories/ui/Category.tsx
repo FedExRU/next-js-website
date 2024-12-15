@@ -10,10 +10,10 @@ export const Category: FC<CategoryProps> = ({
   image,
   skeleton,
   name,
-  variant = 'primary',
+  layout = 'primary',
   renderActionButton,
 }) => {
-  const isPrimary = variant === 'primary'
+  const isPrimary = layout === 'primary'
   return (
     <Box
       sx={{

@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
-import { ICategory } from '../api'
+import { IProduct } from '../api'
 import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 
-export type CategoryProps = Partial<ICategory> &
+export type ProductProps = Partial<IProduct> &
   EntityWithSkeleton &
   EntityWithLayout & {
     renderActionButton?: () => ReactElement

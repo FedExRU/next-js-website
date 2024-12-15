@@ -36,7 +36,7 @@ export const BannerGrid: FC = () => {
             <Category
               {...secondCategory}
               skeleton={isLoading}
-              variant="secondary"
+              layout="secondary"
               renderActionButton={handleRenderActionButton}
             />
           </Grid>
@@ -44,7 +44,7 @@ export const BannerGrid: FC = () => {
             <Category
               {...thirdCategory}
               skeleton={isLoading}
-              variant="secondary"
+              layout="secondary"
               renderActionButton={handleRenderActionButton}
             />
           </Grid>

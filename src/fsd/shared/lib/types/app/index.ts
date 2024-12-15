@@ -4,6 +4,10 @@ export type EntityWithSkeleton = {
   skeleton?: boolean
 }
 
+export type EntityWithLayout = {
+  layout?: Layout
+}
+
 export type DirectionOrder = 'asc' | 'desc'
 
 export type RequestResult<T> = {
@@ -13,4 +17,12 @@ export type RequestResult<T> = {
 
 export type RequestError = typeof Error
 
-export type LayoutVariant = 'primary' | 'secondary'
+export type Layout = 'primary' | 'secondary'
+
+export type GetAllArgs<T> = {
+  limit?: number
+  orderBy?: {
+    field: keyof T
+    direction: DirectionOrder
+  }
+}
