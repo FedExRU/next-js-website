@@ -5,6 +5,7 @@ import { Box } from '@mui/material'
 import Image from 'next/image'
 import { MainSliderItemProps } from './types'
 import fallbackImage from './assets/fallback.webp'
+import { getStyles } from './styles'
 import { getSliderItemImageProps } from '@fsd/shared'
 
 export const MainSliderItem: FC<MainSliderItemProps> = ({
@@ -15,26 +16,16 @@ export const MainSliderItem: FC<MainSliderItemProps> = ({
 }) => {
   const { sx, ...rest } = getSliderItemImageProps()
   const [isLoadingFailed, setIsLoadingFailed] = useState(false)
+  const { styles } = getStyles(isLoadingFailed)
 
   return (
-    <Box
-      data-slider-id={id}
-      sx={{
-        height: '100%',
-        width: '100%',
-        position: 'relative',
-        maxHeight: 536,
-      }}
-    >
+    <Box data-slider-id={id} sx={styles.mainSliderItem}>
       <Box
         component="a"
         href={url}
         sx={{
-          display: 'flex',
-          position: 'relative',
-          height: '100%',
           ...sx,
-          opacity: isLoadingFailed ? 0.1 : 1,
+          ...styles.mainSliderItemWrapper,
         }}
       >
         <Image

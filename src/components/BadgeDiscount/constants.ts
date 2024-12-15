@@ -3,7 +3,7 @@ import { BadgeDiscountSize } from './types'
 
 export const BadgeDiscountSxProps: Record<BadgeDiscountSize, BoxProps['sx']> = {
   medium: theme => ({
-    minWidth: 71,
+    minWidth: 43,
     height: 24,
     padding: theme.spacing(0.5, 1.75, 0.5, 1.75),
     ...theme.typography.hairline2Bold,

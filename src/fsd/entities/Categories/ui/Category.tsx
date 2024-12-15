@@ -4,104 +4,41 @@ import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
 import { FC } from 'react'
 import Image from 'next/image'
 import { CategoryProps } from './types'
-import skeletonImage from './assets/skeletonImage.webp'
+import { getStyles } from './styles'
+import { skeletonImage } from '@fsd/shared'
 
 export const Category: FC<CategoryProps> = ({
   image,
   skeleton,
   name,
-  variant = 'primary',
-  renderActionButton,
+  layout = 'primary',
+  renderAction,
 }) => {
-  const isPrimary = variant === 'primary'
+  const isPrimary = layout === 'primary'
+
+  const { styles } = getStyles(isPrimary, skeleton)
+
   return (
-    <Box
-      sx={{
-        p: {
-          xs: 4,
-          md: isPrimary ? 6 : 4,
-        },
-        pr: {
-          xs: isPrimary ? 4 : 3,
-        },
-        backgroundColor: 'grey.200',
-        height: '100%',
-        display: 'flex',
-      }}
-    >
+    <Box sx={styles.category}>
       <Grid
         container
         spacing={{ xs: 2, sm: 3 }}
+        sx={{ width: '100%' }}
         alignItems={isPrimary ? 'flex-start' : 'end'}
       >
         <Grid size={isPrimary ? 12 : 6}>
           <Box>
-            <Typography
-              component="p"
-              noWrap
-              sx={theme => ({
-                minHeight: 41,
-                [theme.breakpoints.up('sm')]: {
-                  ...theme.typography.h5,
-                },
-                [theme.breakpoints.down('sm')]: {
-                  ...theme.typography.h6,
-                },
-              })}
-            >
-              {skeleton ? (
-                <Skeleton
-                  sx={{
-                    width: '100%',
-                    maxWidth: 201,
-                    height: { xs: 34, sm: 38 },
-                    transform: 'none',
-                  }}
-                />
-              ) : (
-                name
-              )}
+            <Typography component="p" noWrap sx={styles.categoryName}>
+              {skeleton ? <Skeleton sx={styles.categoryNameSkeleton} /> : name}
             </Typography>
-            {renderActionButton && (
-              <Box sx={{ mt: 1, sm: isPrimary ? 0 : 2 }}>
-                {renderActionButton()}
-              </Box>
+            {renderAction && (
+              <Box sx={styles.categoryAction}>{renderAction()}</Box>
             )}
           </Box>
         </Grid>
         <Grid size={isPrimary ? 12 : 6}>
-          <Box
-            sx={{
-              position: 'relative',
-              '& img': {
-                position: 'relative !important',
-                objectFit: 'contain',
-                objectPosition: 'bottom',
-                opacity: skeleton ? 0 : 1,
-                maxHeight: {
-                  xs: 'none',
-                  sm: isPrimary ? 'none' : 286,
-                },
-                minHeight: {
-                  xs: 'auto',
-                  sm: isPrimary ? 'auto' : 286,
-                },
-              },
-            }}
-          >
-            {skeleton && (
-              <Skeleton
-                sx={{
-                  transform: 'none',
-                  top: 0,
-                  left: 0,
-                  position: 'absolute',
-                  zIndex: 1,
-                  height: '100%',
-                  width: '100%',
-                }}
-              />
-            )}
+          <Box sx={styles.categoryImageWrapper}>
+            {skeleton && <Skeleton sx={styles.categoryImageSkeleton} />}
             <Image
               alt={(name as string) || ''}
               src={skeleton ? skeletonImage : (image as string)}
@@ -110,7 +47,7 @@ export const Category: FC<CategoryProps> = ({
               sizes="100vw"
               style={{
                 width: '100%',
-                height: 'auto',
+                height: '100%',
               }}
             />
           </Box>
