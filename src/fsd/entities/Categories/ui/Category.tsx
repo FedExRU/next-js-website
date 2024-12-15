@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Grid, Skeleton, Typography } from '@mui/material'
+import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
 import { FC } from 'react'
 import Image from 'next/image'
 import { CategoryProps } from './types'
@@ -34,7 +34,7 @@ export const Category: FC<CategoryProps> = ({
         spacing={{ xs: 2, sm: 3 }}
         alignItems={isPrimary ? 'flex-start' : 'end'}
       >
-        <Grid item xs={isPrimary ? 12 : 6}>
+        <Grid size={isPrimary ? 12 : 6}>
           <Box>
             <Typography
               component="p"
@@ -69,7 +69,7 @@ export const Category: FC<CategoryProps> = ({
             )}
           </Box>
         </Grid>
-        <Grid item xs={isPrimary ? 12 : 6}>
+        <Grid size={isPrimary ? 12 : 6}>
           <Box
             sx={{
               position: 'relative',

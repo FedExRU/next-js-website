@@ -1,25 +1,25 @@
 'use client'
 
-import { Box, Grid } from '@mui/material'
+import { Box, Grid2 as Grid } from '@mui/material'
 import { MainSliderItem, useGetMainSliderItemsQuery } from '@fsd/entities'
 import { Slider, Typography } from '@fsd/shared'
 
-export const MainSliderSection = () => {
+export const MainSlider = () => {
   const { data, isLoading } = useGetMainSliderItemsQuery()
 
   return (
     <Box>
       <Grid container spacing={4}>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Slider isLoading={isLoading}>
             {data?.items?.map(({ id, ...rest }) => (
               <MainSliderItem key={id} id={id} {...rest} />
             ))}
           </Slider>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={12}>
           <Grid container spacing={{ xs: 2, md: 3 }}>
-            <Grid item xs={12} md={7}>
+            <Grid size={{ xs: 12, md: 7 }}>
               <Typography
                 component="h1"
                 variant={{
@@ -49,7 +49,7 @@ export const MainSliderSection = () => {
                 </Box>
               </Typography>
             </Grid>
-            <Grid item xs={12} md={5}>
+            <Grid size={{ xs: 12, md: 5 }}>
               <Box
                 sx={{
                   display: {

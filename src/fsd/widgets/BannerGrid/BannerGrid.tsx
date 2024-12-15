@@ -1,6 +1,6 @@
 'use client'
 
-import { Grid } from '@mui/material'
+import { Grid2 as Grid } from '@mui/material'
 import { FC } from 'react'
 import { Category, useGetCategoiesQuery } from '@fsd/entities/Categories'
 import { GoToCategory } from '@fsd/features'
@@ -23,16 +23,16 @@ export const BannerGrid: FC = () => {
 
   return (
     <Grid container spacing={{ xs: 2, sm: 3 }}>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Category
           {...firstCategory}
           skeleton={isLoading}
           renderActionButton={handleRenderActionButton}
         />
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid size={{ xs: 12, md: 6 }}>
         <Grid container spacing={{ xs: 2, sm: 3 }}>
-          <Grid item xs={12} md={12}>
+          <Grid size={12}>
             <Category
               {...secondCategory}
               skeleton={isLoading}
@@ -40,7 +40,7 @@ export const BannerGrid: FC = () => {
               renderActionButton={handleRenderActionButton}
             />
           </Grid>
-          <Grid item xs={12} md={12}>
+          <Grid size={12}>
             <Category
               {...thirdCategory}
               skeleton={isLoading}
