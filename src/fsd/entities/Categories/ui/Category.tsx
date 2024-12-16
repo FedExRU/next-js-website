@@ -4,7 +4,7 @@ import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
 import { FC } from 'react'
 import Image from 'next/image'
 import { CategoryProps } from './types'
-import skeletonImage from './assets/skeletonImage.webp'
+import { skeletonImage } from '@fsd/shared'
 
 export const Category: FC<CategoryProps> = ({
   image,
@@ -32,6 +32,7 @@ export const Category: FC<CategoryProps> = ({
       <Grid
         container
         spacing={{ xs: 2, sm: 3 }}
+        sx={{ width: '100%' }}
         alignItems={isPrimary ? 'flex-start' : 'end'}
       >
         <Grid size={isPrimary ? 12 : 6}>
