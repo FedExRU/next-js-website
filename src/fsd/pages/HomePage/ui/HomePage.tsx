@@ -6,7 +6,7 @@ import {
   BannerGrid,
   MainSlider,
   WelcomeText,
-  FeaturedProductsSlider,
+  NewArrivalsSlider,
 } from '@fsd/widgets'
 
 export const HomePage = () => {
@@ -27,7 +27,7 @@ export const HomePage = () => {
           <BannerGrid />
         </Grid>
         <Grid size={12}>
-          <FeaturedProductsSlider />
+          <NewArrivalsSlider />
           <div style={{ height: 500 }} />
         </Grid>
       </Grid>

@@ -27,7 +27,7 @@ export const Product: FC<ProductProps> = ({
                 sx={{
                   width: '100%',
                   maxWidth: 262,
-                  height: 357.5,
+                  height: 348.99,
                   transform: 'none',
                 }}
               />
@@ -62,18 +62,29 @@ export const Product: FC<ProductProps> = ({
         <Grid size={12}>
           <Grid container spacing={0.5}>
             <Grid size={12}>
-              <Rating defaultValue={rating} precision={0.01} readOnly />
+              <Box sx={{ height: 32 }}>
+                {skeleton ? (
+                  <Skeleton width={85} height={16} />
+                ) : (
+                  <Rating defaultValue={rating} precision={0.01} readOnly />
+                )}
+              </Box>
             </Grid>
             <Grid size={12}>
-              {/** TODO: add skeletomn title */}
-              <Typography variant="body2Semi">{name}</Typography>
+              {skeleton ? (
+                <Skeleton width={126} height={20} />
+              ) : (
+                <Typography variant="body2Semi">{name}</Typography>
+              )}
             </Grid>
             <Grid size={12}>
-              <Price
-                value={price}
-                valueDiscount={priceDiscount}
-                skeleton={skeleton}
-              />
+              <Box sx={{ height: 32, display: 'flex', alignItems: 'end' }}>
+                <Price
+                  value={price}
+                  valueDiscount={priceDiscount}
+                  skeleton={skeleton}
+                />
+              </Box>
             </Grid>
           </Grid>
         </Grid>

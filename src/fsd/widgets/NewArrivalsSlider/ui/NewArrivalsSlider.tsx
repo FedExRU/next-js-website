@@ -8,15 +8,13 @@ import {
   SLIDES_PER_VIEW,
   MOCK_DATA,
 } from './constants'
-import { Product, useGetFeaturedProductsQuery } from '@fsd/entities'
+import { SliderSkeleton } from './components'
+import { Product, useGetNewProductsQuery } from '@fsd/entities'
 import 'swiper/css'
 import { SLDIER_AUTOPLAY_DELAY } from '@fsd/shared'
-import { SliderSkeleton } from './components'
 
-export const FeaturedProductsSlider = () => {
-  const { data, isLoading } = useGetFeaturedProductsQuery()
-
-  //const isLoading = true
+export const NewArrivalsSlider = () => {
+  const { data, isLoading } = useGetNewProductsQuery()
 
   return (
     <Box

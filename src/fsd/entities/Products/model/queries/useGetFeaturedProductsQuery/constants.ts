@@ -1,2 +1,0 @@
-export const FEATURED_PRODUCTS_QUERY_KEY =
-  'queries/products/FEATURED_PRODUCTS_QUERY_KEY'
