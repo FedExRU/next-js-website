@@ -1,4 +1,4 @@
 export * from './MainSlider'
 export * from './BannerGrid'
-export * from './NewArrivalsSlider'
+export * from './NewArrivals'
 export * from './WelcomeText'

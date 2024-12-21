@@ -81,7 +81,7 @@ export default {
       url: '#',
     },
   ],
-  featrueSliderItems: [
+  products: [
     {
       id: 1,
       name: 'Loveseat Sofa',
