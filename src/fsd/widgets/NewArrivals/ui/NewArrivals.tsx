@@ -9,10 +9,13 @@ import { SliderSkeleton } from './components'
 import { Product, useGetNewProductsQuery } from '@fsd/entities'
 import 'swiper/css'
 import { SLDIER_AUTOPLAY_DELAY } from '@fsd/shared'
+import { AddToCart } from '@fsd/features'
 
 export const NewArrivals = () => {
   const { data, isLoading } = useGetNewProductsQuery()
   const slidesCount = useSlidesCount()
+
+  const handleRenderActionButton = () => <AddToCart />
 
   return (
     <Box
@@ -28,7 +31,7 @@ export const NewArrivals = () => {
       })}
     >
       {isLoading ? (
-        <SliderSkeleton spaceBetween={24}>
+        <SliderSkeleton spaceBetween={24} slidesPerView={slidesCount}>
           {Array.from({ length: slidesCount }).map((_, id) => (
             <Product key={id} layout="secondary" skeleton />
           ))}
@@ -42,12 +45,18 @@ export const NewArrivals = () => {
             hide: false,
           }}
           spaceBetween={24}
+          height={100}
           modules={[Grid, Autoplay, Scrollbar]}
           slidesPerView={slidesCount}
         >
           {data?.items?.map(({ id, ...rest }) => (
             <SwiperSlide style={{ height: 'auto' }} key={id}>
-              <Product id={id} {...rest} layout="secondary" />
+              <Product
+                id={id}
+                {...rest}
+                layout="secondary"
+                renderActionButton={handleRenderActionButton}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

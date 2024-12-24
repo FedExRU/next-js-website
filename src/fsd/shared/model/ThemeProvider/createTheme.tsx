@@ -2,6 +2,7 @@ import { BreakpointsOptions, createTheme as _createTheme } from '@mui/material'
 
 import _shadows from '@mui/material/styles/shadows'
 import localFont from 'next/font/local'
+import mediaQuery from 'css-mediaquery'
 import { DeviceType } from '../../lib'
 import {
   CheckboxIcon,
@@ -50,9 +51,13 @@ const breakpoints: BreakpointsOptions = {
     lg: 1200,
     xl: 1536,
   },
+} as const
+
+const breakpointsAlias: Record<DeviceType, number> = {
+  desktop: (breakpoints as Required<BreakpointsOptions>).values.lg,
+  mobile: (breakpoints as Required<BreakpointsOptions>).values.xs,
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const createTheme = (deviceType: DeviceType) =>
   _createTheme({
     breakpoints,
@@ -92,6 +97,19 @@ export const createTheme = (deviceType: DeviceType) =>
       },
     },
     components: {
+      MuiUseMediaQuery: {
+        defaultProps: {
+          ssrMatchMedia: query => {
+            return {
+              matches: mediaQuery.match(query, {
+                width:
+                  localStorage.getItem('deviceWidth') ||
+                  breakpointsAlias[deviceType],
+              }),
+            }
+          },
+        },
+      },
       MuiTooltip: {
         styleOverrides: {
           tooltip: ({ theme }) => ({

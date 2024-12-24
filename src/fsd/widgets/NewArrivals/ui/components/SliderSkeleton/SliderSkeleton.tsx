@@ -4,14 +4,15 @@ import { SliderSkeletonProps } from './types'
 
 export const SliderSkeleton: FC<PropsWithChildren<SliderSkeletonProps>> = ({
   spaceBetween = 0,
+  slidesPerView = 0,
   children,
 }) => {
   const spacing = spaceBetween / 8
 
   return (
-    <Grid container spacing={spacing}>
+    <Grid container spacing={spacing} justifyContent="space-between">
       {ReactChildren.map(children, (child, index) => (
-        <Grid key={index} size={3}>
+        <Grid key={index} size={12 / slidesPerView}>
           {child}
         </Grid>
       ))}

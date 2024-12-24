@@ -73,6 +73,11 @@ export const Category: FC<CategoryProps> = ({
         <Grid size={isPrimary ? 12 : 6}>
           <Box
             sx={{
+              height: {
+                xs: isPrimary ? 300 : 'auto',
+                sm: isPrimary ? 400 : 'auto',
+                md: 'auto',
+              },
               position: 'relative',
               '& img': {
                 position: 'relative !important',
@@ -111,7 +116,7 @@ export const Category: FC<CategoryProps> = ({
               sizes="100vw"
               style={{
                 width: '100%',
-                height: 'auto',
+                height: '100%',
               }}
             />
           </Box>

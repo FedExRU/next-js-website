@@ -5,7 +5,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { ProductProps } from './types'
 import { Badges, Price } from './components'
-import { Skeleton, skeletonImage } from '@fsd/shared'
+import { Skeleton, skeletonImage, toDecimalString } from '@fsd/shared'
 
 export const Product: FC<ProductProps> = ({
   image,
@@ -16,18 +16,19 @@ export const Product: FC<ProductProps> = ({
   rating,
   price,
   priceDiscount,
+  renderActionButton,
 }) => {
   return (
     <Box sx={{ pb: 6 }}>
       <Grid container spacing={1.5}>
         <Grid size={12}>
-          <Box sx={{ position: 'relative', minHeight: 357.5 }}>
+          <Box sx={{ position: 'relative', height: { xs: 308, md: 357.5 } }}>
             {skeleton ? (
               <Skeleton
                 sx={{
                   width: '100%',
-                  maxWidth: 262,
-                  height: 348.99,
+                  height: '100%',
+                  maxHeight: 348.99,
                   transform: 'none',
                 }}
               />
@@ -40,7 +41,8 @@ export const Product: FC<ProductProps> = ({
                 sizes="100vw"
                 style={{
                   width: '100%',
-                  height: 'auto',
+                  height: '100%',
+                  objectFit: 'cover',
                 }}
               />
             )}
@@ -55,6 +57,20 @@ export const Product: FC<ProductProps> = ({
                 }}
               >
                 <Badges discountPercent={discountPercent} isNew={isNew} />
+              </Box>
+            )}
+            {!skeleton && renderActionButton && (
+              <Box
+                sx={{
+                  position: 'absolute',
+                  bottom: 0,
+                  width: '100%',
+                  p: 2,
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                {renderActionButton?.()}
               </Box>
             )}
           </Box>
@@ -80,8 +96,8 @@ export const Product: FC<ProductProps> = ({
             <Grid size={12}>
               <Box sx={{ height: 32, display: 'flex', alignItems: 'end' }}>
                 <Price
-                  value={price}
-                  valueDiscount={priceDiscount}
+                  value={toDecimalString(price)}
+                  valueDiscount={toDecimalString(priceDiscount)}
                   skeleton={skeleton}
                 />
               </Box>

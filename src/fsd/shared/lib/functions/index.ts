@@ -1,2 +1,2 @@
 export * from './extractNumbersFromString'
-export * from './toDecimal'
+export * from './toDecimalString'
