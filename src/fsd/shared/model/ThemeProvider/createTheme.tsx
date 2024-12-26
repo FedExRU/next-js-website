@@ -332,6 +332,9 @@ export const createTheme = (deviceType: DeviceType) =>
               : theme.palette.common.white,
             boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
             transition: theme.transitions.create('color'),
+            '& > *': {
+              pointerEvents: 'none',
+            },
             '&:hover': {
               background: theme.palette.common.white,
               color:

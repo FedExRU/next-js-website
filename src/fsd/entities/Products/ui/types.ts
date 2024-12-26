@@ -5,5 +5,7 @@ import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 export type ProductProps = Partial<IProduct> &
   EntityWithSkeleton &
   EntityWithLayout & {
-    renderActionButton?: () => ReactElement
+    renderAction?: () => ReactElement
+    renderActionSecondary?: (isFavorite?: boolean) => ReactElement
+    isFavorite?: boolean
   }

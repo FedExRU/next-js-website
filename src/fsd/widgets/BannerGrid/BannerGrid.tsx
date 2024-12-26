@@ -19,7 +19,7 @@ export const BannerGrid: FC = () => {
     },
   })
 
-  const handleRenderActionButton = () => <GoToCategory skeleton={isLoading} />
+  const handleRenderAction = () => <GoToCategory skeleton={isLoading} />
 
   return (
     <Grid container spacing={{ xs: 2, sm: 3 }}>
@@ -27,7 +27,7 @@ export const BannerGrid: FC = () => {
         <Category
           {...firstCategory}
           skeleton={isLoading}
-          renderActionButton={handleRenderActionButton}
+          renderAction={handleRenderAction}
         />
       </Grid>
       <Grid size={{ xs: 12, md: 6 }}>
@@ -37,7 +37,7 @@ export const BannerGrid: FC = () => {
               {...secondCategory}
               skeleton={isLoading}
               layout="secondary"
-              renderActionButton={handleRenderActionButton}
+              renderAction={handleRenderAction}
             />
           </Grid>
           <Grid size={12}>
@@ -45,7 +45,7 @@ export const BannerGrid: FC = () => {
               {...thirdCategory}
               skeleton={isLoading}
               layout="secondary"
-              renderActionButton={handleRenderActionButton}
+              renderAction={handleRenderAction}
             />
           </Grid>
         </Grid>

@@ -14,7 +14,7 @@ import {
 } from './components'
 import { LOADING_APPEAR_TIMEOUT } from './constants'
 import { SliderProps } from './types'
-import { SLDIER_AUTOPLAY_DELAY } from '@fsd/shared'
+import { SLIDER_AUTOPLAY_DELAY } from '@fsd/shared'
 
 export const Slider: FC<SliderProps> = ({
   loadingAppearTimeout = LOADING_APPEAR_TIMEOUT,
@@ -78,7 +78,7 @@ export const Slider: FC<SliderProps> = ({
           <Box>
             <Swiper
               autoplay={{
-                delay: SLDIER_AUTOPLAY_DELAY,
+                delay: SLIDER_AUTOPLAY_DELAY,
               }}
               modules={[Autoplay]}
               onSwiper={handleSwiper}

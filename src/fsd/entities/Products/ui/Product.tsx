@@ -1,10 +1,17 @@
 'use client'
 
-import { Box, Grid2 as Grid, Rating, Typography } from '@mui/material'
+import {
+  Box,
+  Grid2 as Grid,
+  Rating,
+  Typography,
+  useMediaQuery,
+} from '@mui/material'
 import { FC } from 'react'
 import Image from 'next/image'
 import { ProductProps } from './types'
 import { Badges, Price } from './components'
+import { getStyles } from './styles'
 import { Skeleton, skeletonImage, toDecimalString } from '@fsd/shared'
 
 export const Product: FC<ProductProps> = ({
@@ -16,22 +23,20 @@ export const Product: FC<ProductProps> = ({
   rating,
   price,
   priceDiscount,
-  renderActionButton,
+  renderAction,
+  renderActionSecondary,
+  isFavorite,
 }) => {
+  const isTablet = useMediaQuery(theme => theme.breakpoints.down('sm'))
+  const { styles, classes } = getStyles(isTablet, isFavorite)
+
   return (
-    <Box sx={{ pb: 6 }}>
+    <Box sx={styles.product}>
       <Grid container spacing={1.5}>
         <Grid size={12}>
-          <Box sx={{ position: 'relative', height: { xs: 308, md: 357.5 } }}>
+          <Box sx={styles.productImage}>
             {skeleton ? (
-              <Skeleton
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  maxHeight: 348.99,
-                  transform: 'none',
-                }}
-              />
+              <Skeleton sx={styles.productImageSkeleton} />
             ) : (
               <Image
                 alt={(name as string) || ''}
@@ -47,30 +52,32 @@ export const Product: FC<ProductProps> = ({
               />
             )}
             {!skeleton && (
-              <Box
-                sx={{
-                  position: 'absolute',
-                  height: 'calc(100% - 32px)',
-                  width: 'calc(100% - 32px)',
-                  top: 0,
-                  p: 2,
-                }}
-              >
-                <Badges discountPercent={discountPercent} isNew={isNew} />
+              <Box sx={styles.productInfo}>
+                <Grid container>
+                  <Grid size="grow">
+                    <Badges discountPercent={discountPercent} isNew={isNew} />
+                  </Grid>
+                  {renderActionSecondary && (
+                    <Grid size="grow">
+                      <Box
+                        className={classes.actionSecondary}
+                        sx={styles.productFavorite}
+                      >
+                        {renderActionSecondary?.(isFavorite)}
+                      </Box>
+                    </Grid>
+                  )}
+                </Grid>
               </Box>
             )}
-            {!skeleton && renderActionButton && (
-              <Box
-                sx={{
-                  position: 'absolute',
-                  bottom: 0,
-                  width: '100%',
-                  p: 2,
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
-                {renderActionButton?.()}
+            {!skeleton && renderAction && (
+              <Box sx={styles.productAction}>
+                <Box
+                  className={classes.action}
+                  sx={styles.productActionWrapper}
+                >
+                  {renderAction?.()}
+                </Box>
               </Box>
             )}
           </Box>
@@ -78,7 +85,7 @@ export const Product: FC<ProductProps> = ({
         <Grid size={12}>
           <Grid container spacing={0.5}>
             <Grid size={12}>
-              <Box sx={{ height: 32 }}>
+              <Box sx={styles.productRating}>
                 {skeleton ? (
                   <Skeleton width={85} height={16} />
                 ) : (
@@ -94,7 +101,7 @@ export const Product: FC<ProductProps> = ({
               )}
             </Grid>
             <Grid size={12}>
-              <Box sx={{ height: 32, display: 'flex', alignItems: 'end' }}>
+              <Box sx={styles.productPrice}>
                 <Price
                   value={toDecimalString(price)}
                   valueDiscount={toDecimalString(priceDiscount)}

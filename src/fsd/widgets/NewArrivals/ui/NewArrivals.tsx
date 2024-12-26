@@ -8,14 +8,18 @@ import { SWIPER_SCROLLBAR_HEIGHT } from './constants'
 import { SliderSkeleton } from './components'
 import { Product, useGetNewProductsQuery } from '@fsd/entities'
 import 'swiper/css'
-import { SLDIER_AUTOPLAY_DELAY } from '@fsd/shared'
-import { AddToCart } from '@fsd/features'
+import { SLIDER_AUTOPLAY_DELAY } from '@fsd/shared'
+import { AddToCart, AddToFavorites } from '@fsd/features'
 
 export const NewArrivals = () => {
   const { data, isLoading } = useGetNewProductsQuery()
   const slidesCount = useSlidesCount()
 
-  const handleRenderActionButton = () => <AddToCart />
+  const handleRenderAction = () => <AddToCart />
+
+  const handleRenderActionSecondary = (isFavorite?: boolean) => (
+    <AddToFavorites isAdded={isFavorite} />
+  )
 
   return (
     <Box
@@ -39,7 +43,7 @@ export const NewArrivals = () => {
       ) : (
         <Swiper
           autoplay={{
-            delay: SLDIER_AUTOPLAY_DELAY,
+            delay: SLIDER_AUTOPLAY_DELAY,
           }}
           scrollbar={{
             hide: false,
@@ -54,8 +58,10 @@ export const NewArrivals = () => {
               <Product
                 id={id}
                 {...rest}
+                isFavorite={id === 1}
                 layout="secondary"
-                renderActionButton={handleRenderActionButton}
+                renderAction={handleRenderAction}
+                renderActionSecondary={handleRenderActionSecondary}
               />
             </SwiperSlide>
           ))}
