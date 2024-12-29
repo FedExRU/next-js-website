@@ -2,7 +2,13 @@
 
 import * as React from 'react'
 import { Container, Grid2 as Grid } from '@mui/material'
-import { BannerGrid, MainSlider, WelcomeText, NewArrivals } from '@fsd/widgets'
+import {
+  BannerGrid,
+  MainSlider,
+  WelcomeText,
+  NewArrivals,
+  Advantages,
+} from '@fsd/widgets'
 
 export const HomePage = () => {
   return (
@@ -23,7 +29,9 @@ export const HomePage = () => {
         </Grid>
         <Grid size={12}>
           <NewArrivals />
-          <div style={{ height: 500 }} />
+        </Grid>
+        <Grid size={12}>
+          <Advantages />
         </Grid>
       </Grid>
     </Container>
