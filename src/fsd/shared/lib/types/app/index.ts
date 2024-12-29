@@ -1,4 +1,6 @@
-export type DeviceType = 'mobile' | 'desktop'
+import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT } from '../../constants'
+
+export type DeviceType = (typeof DEVICE_TYPE)[keyof typeof DEVICE_TYPE]
 
 export type EntityWithSkeleton = {
   skeleton?: boolean
@@ -8,7 +10,8 @@ export type EntityWithLayout = {
   layout?: Layout
 }
 
-export type DirectionOrder = 'asc' | 'desc'
+export type DirectionOrder =
+  (typeof DIRECTION_ORDER)[keyof typeof DIRECTION_ORDER]
 
 export type RequestResult<T> = {
   items: T[]
@@ -17,7 +20,7 @@ export type RequestResult<T> = {
 
 export type RequestError = typeof Error
 
-export type Layout = 'primary' | 'secondary'
+export type Layout = (typeof LAYOUT)[keyof typeof LAYOUT]
 
 export type GetAllArgs<T> = {
   limit?: number

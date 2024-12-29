@@ -1,1 +1,1 @@
-export * from './WelcomeText'
+export * from './ui'

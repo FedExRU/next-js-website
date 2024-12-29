@@ -19,7 +19,7 @@ const getCategoiesRequest = async () => {
   return data
 }
 
-export const useGetCategoiesQuery = <T = RequestResult<ICategory[]>>(
+export const useGetCategoriesQuery = <T = RequestResult<ICategory[]>>(
   options?: UseGetCategoriesOptions,
   config?: Partial<
     UseQueryOptions<RequestResult<ICategory[]>, RequestError, T>

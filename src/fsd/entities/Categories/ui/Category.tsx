@@ -5,7 +5,7 @@ import { FC } from 'react'
 import Image from 'next/image'
 import { CategoryProps } from './types'
 import { getStyles } from './styles'
-import { skeletonImage } from '@fsd/shared'
+import { LAYOUT, skeletonImage } from '@fsd/shared'
 
 export const Category: FC<CategoryProps> = ({
   image,
@@ -14,7 +14,7 @@ export const Category: FC<CategoryProps> = ({
   layout = 'primary',
   renderAction,
 }) => {
-  const isPrimary = layout === 'primary'
+  const isPrimary = layout === LAYOUT.PRIMARY
 
   const { styles } = getStyles(isPrimary, skeleton)
 

@@ -2,8 +2,9 @@
 
 import { Grid2 as Grid } from '@mui/material'
 import { FC } from 'react'
-import { Category, useGetCategoiesQuery } from '@fsd/entities/Categories'
+import { Category, useGetCategoriesQuery } from '@fsd/entities/Categories'
 import { GoToCategory } from '@fsd/features'
+import { LAYOUT } from '@fsd/shared'
 
 export const BannerGrid: FC = () => {
   const {
@@ -11,7 +12,7 @@ export const BannerGrid: FC = () => {
       items: [],
     },
     isLoading,
-  } = useGetCategoiesQuery({
+  } = useGetCategoriesQuery({
     limit: 3,
     orderBy: {
       field: 'updatedAt',
@@ -36,7 +37,7 @@ export const BannerGrid: FC = () => {
             <Category
               {...secondCategory}
               skeleton={isLoading}
-              layout="secondary"
+              layout={LAYOUT.SECONDARY}
               renderAction={handleRenderAction}
             />
           </Grid>
@@ -44,7 +45,7 @@ export const BannerGrid: FC = () => {
             <Category
               {...thirdCategory}
               skeleton={isLoading}
-              layout="secondary"
+              layout={LAYOUT.SECONDARY}
               renderAction={handleRenderAction}
             />
           </Grid>
