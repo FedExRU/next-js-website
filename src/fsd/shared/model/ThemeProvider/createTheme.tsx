@@ -19,7 +19,7 @@ const poppinsFont = localFont({
   src: './assets/fonts/poppins/Poppins-Medium.ttf',
 })
 
-const interFontReguar = localFont({
+const interFontRegular = localFont({
   src: './assets/fonts/inter/static/Inter-Regular.ttf',
 })
 
@@ -103,7 +103,8 @@ export const createTheme = (deviceType: DeviceType) =>
             return {
               matches: mediaQuery.match(query, {
                 width:
-                  localStorage.getItem('deviceWidth') ||
+                  (typeof localStorage !== 'undefined' &&
+                    localStorage?.getItem('deviceWidth')) ||
                   breakpointsAlias[deviceType],
               }),
             }
@@ -546,7 +547,7 @@ export const createTheme = (deviceType: DeviceType) =>
        * Default
        */
       allVariants: {
-        fontFamily: interFontReguar.style.fontFamily,
+        fontFamily: interFontRegular.style.fontFamily,
         color: palette.grey['700'],
       },
       /**
@@ -772,7 +773,7 @@ export const createTheme = (deviceType: DeviceType) =>
         lineHeight: '22px',
       },
       caption1: {
-        fontFamily: interFontReguar.style.fontFamily,
+        fontFamily: interFontRegular.style.fontFamily,
         fontSize: '14px',
         fontStyle: 'normal',
         fontWeight: 400,
