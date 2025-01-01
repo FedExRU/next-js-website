@@ -1,6 +1,6 @@
 import { createSxStyles } from '@fsd/shared'
 
-export const getStyles = (isTablet: boolean, isFavorite?: boolean) => {
+export const getStyles = (isFavorite?: boolean) => {
   const classes = {
     action: 'action',
     actionSecondary: 'actionSecondary',
@@ -10,16 +10,16 @@ export const getStyles = (isTablet: boolean, isFavorite?: boolean) => {
     {
       product: theme => ({
         pb: 6,
-        [`&:hover .${classes.action}, &:hover .${classes.actionSecondary}`]:
-          isTablet
-            ? {}
-            : {
-                opacity: 1,
-                visibility: 'visible',
-                transition: theme.transitions.create(['opacity', 'visibility']),
-              },
+        [`&:hover .${classes.action}, &:hover .${classes.actionSecondary}`]: {
+          opacity: 1,
+          visibility: 'visible',
+          transition: theme.transitions.create(['opacity', 'visibility']),
+        },
       }),
-      productImage: { position: 'relative', height: { xs: 308, md: 357.5 } },
+      productImageWrapper: {
+        position: 'relative',
+        height: { xs: 308, md: 357.5 },
+      },
       productImageSkeleton: {
         width: '100%',
         height: '100%',
@@ -42,19 +42,16 @@ export const getStyles = (isTablet: boolean, isFavorite?: boolean) => {
         display: 'flex',
         justifyContent: 'center',
       },
-      productActionWrapper: isTablet
-        ? {}
-        : { visibility: 'visible', opacity: 0 },
+      productActionWrapper: {
+        visibility: { xs: 'visible', md: 'hidden' },
+        opacity: { xs: 1, md: 0 },
+      },
       productPrice: { height: 32, display: 'flex', alignItems: 'end' },
       productFavorite: {
         display: 'flex',
         justifyContent: 'flex-end',
-        ...(isTablet || isFavorite
-          ? {}
-          : {
-              visibility: 'visible',
-              opacity: 0,
-            }),
+        visibility: { xs: 'visible', md: isFavorite ? 'visible' : 'hidden' },
+        opacity: { xs: 1, md: isFavorite ? 1 : 0 },
       },
     },
     classes,

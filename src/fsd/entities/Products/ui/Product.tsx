@@ -1,18 +1,17 @@
 'use client'
 
-import {
-  Box,
-  Grid2 as Grid,
-  Rating,
-  Typography,
-  useMediaQuery,
-} from '@mui/material'
+import { Box, Grid2 as Grid, Rating } from '@mui/material'
 import { FC } from 'react'
 import Image from 'next/image'
 import { ProductProps } from './types'
 import { Badges, Price } from './components'
 import { getStyles } from './styles'
-import { Skeleton, skeletonImage, toDecimalString } from '@fsd/shared'
+import {
+  Skeleton,
+  skeletonImage,
+  toDecimalString,
+  Typography,
+} from '@fsd/shared'
 
 export const Product: FC<ProductProps> = ({
   image,
@@ -27,14 +26,13 @@ export const Product: FC<ProductProps> = ({
   renderActionSecondary,
   isFavorite,
 }) => {
-  const isTablet = useMediaQuery(theme => theme.breakpoints.down('sm'))
-  const { styles, classes } = getStyles(isTablet, isFavorite)
+  const { styles, classes } = getStyles(isFavorite)
 
   return (
     <Box sx={styles.product}>
       <Grid container spacing={1.5}>
         <Grid size={12}>
-          <Box sx={styles.productImage}>
+          <Box sx={styles.productImageWrapper}>
             {skeleton ? (
               <Skeleton sx={styles.productImageSkeleton} />
             ) : (

@@ -62,20 +62,22 @@ export const SubscribeForm: FC = () => {
       <FormControl error={!state.success || !isValid}>
         <TextField
           variant="standard"
-          InputProps={{
-            name: 'email',
-            value: values.email,
-            onChange: handleChange,
-            size: 'medium',
-            error: !state.success || !isValid,
-            type: 'email',
-            placeholder: 'Email Address',
-            startAdornment: <EnvelopeIcon />,
-            inputProps: {
-              'aria-describedby': 'signup-email-error-text',
-              'aria-label': 'Email Address',
+          slotProps={{
+            input: {
+              name: 'email',
+              value: values.email,
+              onChange: handleChange,
+              size: 'medium',
+              error: !state.success || !isValid,
+              type: 'email',
+              placeholder: 'Email Address',
+              startAdornment: <EnvelopeIcon />,
+              inputProps: {
+                'aria-describedby': 'signup-email-error-text',
+                'aria-label': 'Email Address',
+              },
+              endAdornment: <SubmitButton />,
             },
-            endAdornment: <SubmitButton />,
           }}
         />
         <FormHelperText id="signup-email-error-text" sx={{ minHeight: 22 }}>
