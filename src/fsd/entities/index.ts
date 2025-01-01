@@ -1,3 +1,5 @@
 export * from './MainSliderItem'
 export * from './Products'
 export * from './Categories'
+export * from './Advantages'
+export * from './Articles'

@@ -52,7 +52,7 @@ export const WelcomeText: FC = () => (
         >
           <Typography
             variant={{
-              md: 'body2',
+              sm: 'body2',
               xs: 'caption1',
             }}
             sx={theme => ({
@@ -65,7 +65,7 @@ export const WelcomeText: FC = () => (
           >
             <Typography
               variant={{
-                md: 'body2Semi',
+                sm: 'body2Semi',
                 xs: 'caption1Semi',
               }}
               component="span"

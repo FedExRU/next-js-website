@@ -1,4 +1,4 @@
 import { IProduct } from '../../../api'
-import { GetAllArgs } from '@fsd/shared'
+import { RequestBase } from '@fsd/shared'
 
-export type UseGetNewProductsOptions = GetAllArgs<IProduct>
+export type UseGetNewProductsOptions = RequestBase<IProduct>

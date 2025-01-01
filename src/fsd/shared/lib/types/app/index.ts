@@ -22,10 +22,16 @@ export type RequestError = typeof Error
 
 export type Layout = (typeof LAYOUT)[keyof typeof LAYOUT]
 
-export type GetAllArgs<T> = {
+export type RequestBase<T> = {
   limit?: number
   orderBy?: {
     field: keyof T
     direction: DirectionOrder
   }
+}
+
+export type BaseSingleResponse = {
+  code: number
+  message: string
+  success: boolean
 }
