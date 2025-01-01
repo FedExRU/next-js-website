@@ -1,4 +1,4 @@
 import { ICategory } from '../../../api'
-import { GetAllArgs } from '@fsd/shared'
+import { RequestBase } from '@fsd/shared'
 
-export type UseGetCategoriesOptions = GetAllArgs<ICategory>
+export type UseGetCategoriesOptions = RequestBase<ICategory>

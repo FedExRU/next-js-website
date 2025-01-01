@@ -1,22 +1,20 @@
 'use client'
 
-import { useMediaQuery } from '@mui/material'
+import { useAdaptive } from '@fsd/shared'
 
 export const useSlidesCount = () => {
-  const isTablet = useMediaQuery(theme => theme.breakpoints.down('sm'))
-  const isLaptop = useMediaQuery(theme => theme.breakpoints.between('sm', 'md'))
-  const isDESKTOP = useMediaQuery(theme => theme.breakpoints.up('md'))
+  const { isTablet, isLaptop, isMobile } = useAdaptive()
 
-  if (isTablet) {
+  if (isMobile) {
     return 1
   }
 
-  if (isLaptop) {
+  if (isTablet) {
     return 2
   }
 
-  if (isDESKTOP) {
-    return 4
+  if (isLaptop) {
+    return 3
   }
 
   return 4

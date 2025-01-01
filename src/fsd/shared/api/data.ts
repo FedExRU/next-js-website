@@ -12,6 +12,10 @@ import productImg03 from './assets/lamp2.webp'
 import productImg04 from './assets/basket.webp'
 import productImg05 from './assets/toaster.webp'
 
+import articlePreviewImg01 from './assets/article-01.webp'
+import articlePreviewImg02 from './assets/article-02.webp'
+import articlePreviewImg03 from './assets/article-03.webp'
+
 export default {
   categories: [
     {
@@ -200,6 +204,32 @@ export default {
       priceDiscount: null,
       discountPercent: null,
       rating: 5,
+      isNew: true,
+    },
+  ],
+  articles: [
+    {
+      id: 1,
+      name: '7 ways to decor your home',
+      imagePreview: articlePreviewImg01.src,
+      createdAt: 'May 5, 2024 at 3:01:06 PM UTC+3',
+      updatedAt: 'May 5, 2024 at 3:01:06 PM UTC+3',
+      isNew: true,
+    },
+    {
+      id: 2,
+      name: 'Kitchen organization',
+      imagePreview: articlePreviewImg02.src,
+      createdAt: 'May 5, 2024 at 3:01:06 PM UTC+3',
+      updatedAt: 'May 5, 2024 at 3:01:06 PM UTC+3',
+      isNew: true,
+    },
+    {
+      id: 3,
+      name: 'Decor your bedroom',
+      imagePreview: articlePreviewImg03.src,
+      createdAt: 'May 5, 2024 at 3:01:06 PM UTC+3',
+      updatedAt: 'May 5, 2024 at 3:01:06 PM UTC+3',
       isNew: true,
     },
   ],

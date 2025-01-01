@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Grid2 as Grid, useMediaQuery } from '@mui/material'
+import { Box, Grid2 as Grid } from '@mui/material'
 import { Autoplay, Scrollbar, Grid as SwiperGrid } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useSlidesCount } from '../lib/hooks'
@@ -15,7 +15,6 @@ const { styles } = getStyles()
 
 export const NewArrivals = () => {
   const { data, isLoading } = useGetNewProductsQuery()
-  const isMobile = useMediaQuery(theme => theme.breakpoints.down('sm'))
   const slidesCount = useSlidesCount()
 
   const handleRenderAction = () => <AddToCart />
@@ -27,7 +26,7 @@ export const NewArrivals = () => {
   return (
     <Grid container>
       <Grid size={{ xs: 12, sm: 'grow' }} order={1}>
-        <Typography variant={isMobile ? 'h5' : 'h4'} sx={styles.title}>
+        <Typography variant={{ xs: 'h5', sm: 'h4' }} sx={styles.title}>
           New Arrivals
         </Typography>
       </Grid>

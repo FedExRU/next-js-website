@@ -102,10 +102,7 @@ export const createTheme = (deviceType: DeviceType) =>
           ssrMatchMedia: query => {
             return {
               matches: mediaQuery.match(query, {
-                width:
-                  (typeof localStorage !== 'undefined' &&
-                    localStorage?.getItem('deviceWidth')) ||
-                  breakpointsAlias[deviceType],
+                width: breakpointsAlias[deviceType],
               }),
             }
           },
