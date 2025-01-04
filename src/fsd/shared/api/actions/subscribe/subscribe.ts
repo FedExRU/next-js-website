@@ -6,7 +6,7 @@ import { SubscribeResponse } from './types'
 import { validationSchema } from './validationSchema'
 
 export async function subscribe(
-  _: unknown,
+  initialState: SubscribeResponse,
   data: FormData,
 ): Promise<SubscribeResponse> {
   try {

@@ -21,7 +21,7 @@ export const Slider: FC<SliderProps> = ({
   isLoading = false,
   children,
 }) => {
-  const swiper = useRef<SwiperClass>()
+  const swiper = useRef<SwiperClass>(undefined)
 
   const [isEnd, setIsEnd] = useState(false)
   const [isStart, setIsStart] = useState(true)

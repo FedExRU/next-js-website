@@ -5,5 +5,5 @@ import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 export type ArticleProps = Partial<IArticle> &
   EntityWithSkeleton &
   EntityWithLayout & {
-    renderAction?: () => ReactElement
+    renderAction?: () => ReactElement<unknown>
   }
