@@ -20,7 +20,7 @@ export const NavBarSearch: FC = () => {
     alert(term)
   }
 
-  const inputRef = useRef<HTMLInputElement>()
+  const inputRef = useRef<HTMLInputElement>(undefined)
 
   const {
     values: { term },

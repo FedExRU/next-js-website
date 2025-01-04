@@ -1,11 +1,11 @@
 'use client'
 
-import React, { FC, FormEvent, useCallback } from 'react'
+import React, { FC, FormEvent, useCallback, useActionState } from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import FormHelperText from '@mui/material/FormHelperText'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useFormStatus } from 'react-dom'
 import { useFormik } from 'formik'
 import { initialState, initialValues } from './constants'
 import { SubscribeFormData } from './types'
@@ -34,7 +34,7 @@ const SubmitButton = () => {
 }
 
 export const SubscribeForm: FC = () => {
-  const [state, formAction] = useFormState<ServerActionResponse, FormData>(
+  const [state, formAction] = useActionState<ServerActionResponse, FormData>(
     sendEmail,
     initialState,
   )

@@ -5,5 +5,5 @@ import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 export type CategoryProps = Partial<ICategory> &
   EntityWithSkeleton &
   EntityWithLayout & {
-    renderAction?: () => ReactElement
+    renderAction?: () => ReactElement<unknown>
   }
