@@ -1,4 +1,4 @@
 export type BadgesProps = {
-  discountPercent?: number | null
+  discountPercent?: null | number
   isNew?: boolean
 }

@@ -1,22 +1,23 @@
 import Link from 'next/link'
+
 import { Button } from '../Button'
 import { ArrowRightMediumIcon } from '../Icons'
 import { ActionLinkProps } from './types'
 
-export const ActionLink: React.FC<ActionLinkProps> = ({ to = '#', text }) => (
+export const ActionLink: React.FC<ActionLinkProps> = ({ text, to = '#' }) => (
   <Button
-    variant="text"
+    component={Link}
+    href={to}
     size={{
       sm: 'small',
       xs: 'xSmall',
     }}
-    component={Link}
-    href={to}
     sx={{
       px: '0 !important',
     }}
+    variant="text"
   >
     {text}
-    <ArrowRightMediumIcon sx={{ pl: 0.5, '& path': { strokeWidth: 1.25 } }} />
+    <ArrowRightMediumIcon sx={{ '& path': { strokeWidth: 1.25 }, pl: 0.5 }} />
   </Button>
 )

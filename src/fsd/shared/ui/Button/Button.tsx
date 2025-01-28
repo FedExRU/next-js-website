@@ -1,10 +1,11 @@
 'use client'
 
-import { FC } from 'react'
 import {
   Button as MuiButton,
   ButtonProps as MuiButtonProps,
 } from '@mui/material'
+import { FC } from 'react'
+
 import { ButtonProps } from './types'
 import { makeGetSx } from './utils'
 
@@ -19,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
   if (typeof sizeProp === 'string') {
     size = sizeProp
   } else if (typeof sizeProp === 'object') {
-    sx = makeGetSx({ sx, size: sizeProp })
+    sx = makeGetSx({ size: sizeProp, sx })
   }
 
   return <MuiButton {...rest} size={size} sx={sx} />

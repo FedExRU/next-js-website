@@ -1,9 +1,10 @@
+import { EntityWithLayout, EntityWithSkeleton } from '@fsd/shared'
 import { ReactElement } from 'react'
-import { ICategory } from '../api'
-import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 
-export type CategoryProps = Partial<ICategory> &
+import { ICategory } from '../api'
+
+export type CategoryProps = EntityWithLayout &
   EntityWithSkeleton &
-  EntityWithLayout & {
+  Partial<ICategory> & {
     renderAction?: () => ReactElement<unknown>
   }

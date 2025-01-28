@@ -1,6 +1,6 @@
 export const UseImageLoadedStatus = {
+  error: 'error',
   pending: 'pending',
   ready: 'ready',
-  error: 'error',
   skipped: 'skipped',
 } as const

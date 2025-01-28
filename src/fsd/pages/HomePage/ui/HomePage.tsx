@@ -1,17 +1,17 @@
 'use client'
 
-import * as React from 'react'
-import { Container, Grid2 as Grid, Box } from '@mui/material'
 import {
   BannerGrid,
-  MainSlider,
-  WelcomeText,
-  NewArrivals,
-  FeaturesGrid,
   BannerInfo,
   BlogSection,
+  FeaturesGrid,
+  MainSlider,
+  NewArrivals,
   SubscribeForm,
+  WelcomeText,
 } from '@fsd/widgets'
+import { Box, Container, Grid2 as Grid } from '@mui/material'
+import * as React from 'react'
 
 export const HomePage = () => {
   return (
@@ -39,7 +39,7 @@ export const HomePage = () => {
           </Grid>
         </Grid>
       </Container>
-      <Box sx={{ mt: 6, mb: 10 }}>
+      <Box sx={{ mb: 10, mt: 6 }}>
         <BannerInfo />
       </Box>
       <Container>

@@ -1,6 +1,6 @@
+import { ADVANTAGES_KIND } from './constants'
 import { data } from './data'
 import { AdvantagesKind, UseAdvantagesReturnProps } from './types'
-import { ADVANTAGES_KIND } from './constants'
 
 export const useAdvantages = (): UseAdvantagesReturnProps => {
   const getAdvantageData = (kind: AdvantagesKind) => data[kind]

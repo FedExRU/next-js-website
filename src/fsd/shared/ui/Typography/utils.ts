@@ -1,4 +1,5 @@
 import { Breakpoint, Theme } from '@mui/material'
+
 import { GetSxArgs } from './types'
 
 export const makeGetSx =

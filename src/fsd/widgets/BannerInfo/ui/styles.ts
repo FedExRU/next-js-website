@@ -2,35 +2,35 @@ import { createSxStyles } from '@fsd/shared'
 
 export const getStyles = () =>
   createSxStyles({
+    bannerInfoContent: {
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: 452,
+      width: '100%',
+    },
+    bannerInfoContentTitle: { maxWidth: { sm: 350, xs: 295 }, mt: 2 },
+    bannerInfoContentWrapper: theme => ({
+      alignItems: 'center',
+      backgroundColor: theme.palette.grey[200],
+      display: 'flex',
+      height: '100%',
+      justifyContent: 'start',
+      pl: {
+        md: 9,
+        xs: 4,
+      },
+      pr: {
+        md: 0,
+        xs: 4,
+      },
+      py: {
+        md: 0,
+        xs: 7.5,
+      },
+      width: '100%',
+    }),
     bannerInfoImageWrapper: {
       height: 532,
       position: 'relative',
     },
-    bannerInfoContentWrapper: theme => ({
-      py: {
-        xs: 7.5,
-        md: 0,
-      },
-      pr: {
-        xs: 4,
-        md: 0,
-      },
-      pl: {
-        xs: 4,
-        md: 9,
-      },
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'start',
-      height: '100%',
-      width: '100%',
-      backgroundColor: theme.palette.grey[200],
-    }),
-    bannerInfoContent: {
-      width: '100%',
-      maxWidth: 452,
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    bannerInfoContentTitle: { mt: 2, maxWidth: { xs: 295, sm: 350 } },
   })

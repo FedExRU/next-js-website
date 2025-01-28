@@ -3,11 +3,11 @@ import { createSxStyles } from '@fsd/shared'
 export const getStyles = () =>
   createSxStyles({
     sliderWrapper: {
+      backgroundColor: 'grey.200',
+      height: '100%',
+      left: 0,
       position: 'absolute',
       top: 0,
-      left: 0,
-      height: '100%',
       width: '100%',
-      backgroundColor: 'grey.200',
     },
   })

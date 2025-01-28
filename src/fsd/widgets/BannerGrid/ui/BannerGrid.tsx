@@ -1,10 +1,10 @@
 'use client'
 
-import { Grid2 as Grid } from '@mui/material'
-import { FC } from 'react'
 import { Category, useGetCategoriesQuery } from '@fsd/entities/Categories'
 import { GoToCategory } from '@fsd/features'
 import { LAYOUT } from '@fsd/shared'
+import { Grid2 as Grid } from '@mui/material'
+import { FC } from 'react'
 
 export const BannerGrid: FC = () => {
   const {
@@ -15,38 +15,38 @@ export const BannerGrid: FC = () => {
   } = useGetCategoriesQuery({
     limit: 3,
     orderBy: {
-      field: 'updatedAt',
       direction: 'desc',
+      field: 'updatedAt',
     },
   })
 
   const handleRenderAction = () => <GoToCategory skeleton={isLoading} />
 
   return (
-    <Grid container spacing={{ xs: 2, sm: 3 }}>
-      <Grid size={{ xs: 12, md: 6 }}>
+    <Grid container spacing={{ sm: 3, xs: 2 }}>
+      <Grid size={{ md: 6, xs: 12 }}>
         <Category
           {...firstCategory}
-          skeleton={isLoading}
           renderAction={handleRenderAction}
+          skeleton={isLoading}
         />
       </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <Grid container spacing={{ xs: 2, sm: 3 }}>
+      <Grid size={{ md: 6, xs: 12 }}>
+        <Grid container spacing={{ sm: 3, xs: 2 }}>
           <Grid size={12}>
             <Category
               {...secondCategory}
-              skeleton={isLoading}
               layout={LAYOUT.SECONDARY}
               renderAction={handleRenderAction}
+              skeleton={isLoading}
             />
           </Grid>
           <Grid size={12}>
             <Category
               {...thirdCategory}
-              skeleton={isLoading}
               layout={LAYOUT.SECONDARY}
               renderAction={handleRenderAction}
+              skeleton={isLoading}
             />
           </Grid>
         </Grid>

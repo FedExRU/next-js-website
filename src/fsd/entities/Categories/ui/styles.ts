@@ -3,62 +3,62 @@ import { createSxStyles } from '@fsd/shared'
 export const getStyles = (isPrimary: boolean, skeleton?: boolean) =>
   createSxStyles({
     category: {
+      backgroundColor: 'grey.200',
+      display: 'flex',
+      height: '100%',
       p: {
-        xs: 4,
         md: isPrimary ? 6 : 4,
+        xs: 4,
       },
       pr: {
         xs: isPrimary ? 4 : 3,
       },
-      backgroundColor: 'grey.200',
-      height: '100%',
-      display: 'flex',
-    },
-    categoryName: theme => ({
-      minHeight: 41,
-      [theme.breakpoints.up('sm')]: {
-        ...theme.typography.h5,
-      },
-      [theme.breakpoints.down('sm')]: {
-        ...theme.typography.h6,
-      },
-    }),
-    categoryNameSkeleton: {
-      width: '100%',
-      maxWidth: 201,
-      height: { xs: 34, sm: 38 },
-      transform: 'none',
     },
     categoryAction: { mt: 1, sm: isPrimary ? 0 : 2 },
+    categoryImageSkeleton: {
+      height: '100%',
+      left: 0,
+      position: 'absolute',
+      top: 0,
+      transform: 'none',
+      width: '100%',
+      zIndex: 1,
+    },
     categoryImageWrapper: {
-      height: {
-        xs: isPrimary ? 300 : 'auto',
-        sm: isPrimary ? 400 : 'auto',
-        md: 'auto',
-      },
-      position: 'relative',
       '& img': {
-        position: 'relative !important',
+        maxHeight: {
+          sm: isPrimary ? 'none' : 286,
+          xs: 'none',
+        },
+        minHeight: {
+          sm: isPrimary ? 'auto' : 286,
+          xs: 'auto',
+        },
         objectFit: 'contain',
         objectPosition: 'bottom',
         opacity: skeleton ? 0 : 1,
-        maxHeight: {
-          xs: 'none',
-          sm: isPrimary ? 'none' : 286,
-        },
-        minHeight: {
-          xs: 'auto',
-          sm: isPrimary ? 'auto' : 286,
-        },
+        position: 'relative !important',
       },
+      height: {
+        md: 'auto',
+        sm: isPrimary ? 400 : 'auto',
+        xs: isPrimary ? 300 : 'auto',
+      },
+      position: 'relative',
     },
-    categoryImageSkeleton: {
+    categoryName: theme => ({
+      minHeight: 41,
+      [theme.breakpoints.down('sm')]: {
+        ...theme.typography.h6,
+      },
+      [theme.breakpoints.up('sm')]: {
+        ...theme.typography.h5,
+      },
+    }),
+    categoryNameSkeleton: {
+      height: { sm: 38, xs: 34 },
+      maxWidth: 201,
       transform: 'none',
-      top: 0,
-      left: 0,
-      position: 'absolute',
-      zIndex: 1,
-      height: '100%',
       width: '100%',
     },
   })

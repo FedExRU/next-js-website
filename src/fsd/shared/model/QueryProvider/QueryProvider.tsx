@@ -1,7 +1,8 @@
 'use client'
 
-import { FC } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { FC } from 'react'
+
 import { QueryProviderProps } from './types'
 
 const queryClient = new QueryClient()

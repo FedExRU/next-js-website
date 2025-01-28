@@ -1,15 +1,16 @@
 'use client'
 
+import { type RequestError, type RequestResult } from '@fsd/shared'
 import {
   QueryKey,
+  useQuery,
   UseQueryOptions,
   UseQueryResult,
-  useQuery,
 } from '@tanstack/react-query'
+
 import { CategoriesApi, ICategory } from '../../../api'
 import { CATEGORIES_QUERY_KEY } from './constants'
 import { UseGetCategoriesOptions } from './types'
-import { type RequestResult, type RequestError } from '@fsd/shared'
 
 export const getCategoiesQueryKey = (): QueryKey => [CATEGORIES_QUERY_KEY]
 
@@ -26,7 +27,7 @@ export const useGetCategoriesQuery = <T = RequestResult<ICategory[]>>(
   >,
 ): UseQueryResult<T, RequestError> =>
   useQuery({
-    queryKey: getCategoiesQueryKey(),
     queryFn: () => getCategoiesRequest(),
+    queryKey: getCategoiesQueryKey(),
     ...(config || {}),
   })

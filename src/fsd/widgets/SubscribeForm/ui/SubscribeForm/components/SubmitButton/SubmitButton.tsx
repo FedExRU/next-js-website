@@ -1,20 +1,20 @@
-import { useFormStatus } from 'react-dom'
 import { Button } from '@fsd/shared'
+import { useFormStatus } from 'react-dom'
 
 export const SubmitButton = () => {
   const { pending } = useFormStatus()
 
   return (
     <Button
-      type="submit"
-      variant="text"
       disabled={pending}
       sx={{
+        '&:focus': { color: 'text.primary' },
+        '&:hover': { color: 'text.primary' },
         borderBottom: 'none',
         color: pending ? 'red' : 'text.secondary',
-        '&:hover': { color: 'text.primary' },
-        '&:focus': { color: 'text.primary' },
       }}
+      type="submit"
+      variant="text"
     >
       Signup
     </Button>

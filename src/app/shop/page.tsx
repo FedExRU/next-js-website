@@ -1,12 +1,12 @@
 import {
-  Typography,
-  Container,
-  Card,
   Box,
   Button,
+  Card,
   Checkbox,
-  Radio,
+  Container,
   IconButton,
+  Radio,
+  Typography,
 } from '@mui/material'
 import {
   ArrowLeftLargeIcon,
@@ -18,8 +18,14 @@ import {
   CalendarIcon,
   CallIcon,
   CameraIcon,
+  CloseIcon,
   EditIcon,
+  EnvelopeIcon,
   FacebookIcon,
+  GridLargeIcon,
+  GridMediumIcon,
+  GridSmallIcon,
+  GridXLargeIcon,
   HeartIconFilled,
   HeartIconOutlined,
   InstagramIcon,
@@ -35,12 +41,6 @@ import {
   TicketPercentIcon,
   UserIcon,
   YoutubeIcon,
-  EnvelopeIcon,
-  GridSmallIcon,
-  GridMediumIcon,
-  GridLargeIcon,
-  GridXLargeIcon,
-  CloseIcon,
 } from 'components/Icons'
 
 export default function Home() {
@@ -51,20 +51,20 @@ export default function Home() {
           <Card>
             <Box display="flex">
               <Box>
-                <Box sx={{ height: 50, width: 50 }} bgcolor="primary.main" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="secondary.main" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="error.main" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="warning.main" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="success.main" />
+                <Box bgcolor="primary.main" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="secondary.main" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="error.main" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="warning.main" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="success.main" sx={{ height: 50, width: 50 }} />
               </Box>
               <Box style={{ marginLeft: 16 }}>
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.700" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.600" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.500" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.400" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.300" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.200" />
-                <Box sx={{ height: 50, width: 50 }} bgcolor="grey.100" />
+                <Box bgcolor="grey.700" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="grey.600" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="grey.500" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="grey.400" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="grey.300" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="grey.200" sx={{ height: 50, width: 50 }} />
+                <Box bgcolor="grey.100" sx={{ height: 50, width: 50 }} />
               </Box>
             </Box>
           </Card>
@@ -116,47 +116,47 @@ export default function Home() {
             </Box>
           </Card>
           <Card>
-            <Box mt={5} mb={2}>
-              <Button variant="contained" rounded="small">
+            <Box mb={2} mt={5}>
+              <Button rounded="small" variant="contained">
                 Rounded small
               </Button>
-              <Box marginLeft={1} marginRight={1} display="inline-block">
-                <Button variant="contained" rounded="medium">
+              <Box display="inline-block" marginLeft={1} marginRight={1}>
+                <Button rounded="medium" variant="contained">
                   Rounded medium
                 </Button>
               </Box>
-              <Button variant="contained" rounded="large">
+              <Button rounded="large" variant="contained">
                 Rounded large
               </Button>
             </Box>
             <Box mb={2}>
-              <Box marginRight={1} display="inline-block">
-                <Button variant="contained" size="xLarge">
+              <Box display="inline-block" marginRight={1}>
+                <Button size="xLarge" variant="contained">
                   Button contained xLarge
                 </Button>
               </Box>
-              <Button variant="contained" size="large">
+              <Button size="large" variant="contained">
                 Button contained large
               </Button>
             </Box>
             <Box mb={2}>
-              <Box marginRight={1} display="inline-block">
-                <Button variant="text" size="xSmall">
+              <Box display="inline-block" marginRight={1}>
+                <Button size="xSmall" variant="text">
                   Button text xSmall
                 </Button>
               </Box>
               <Button variant="text">Button text medium</Button>
             </Box>
             <Box mb={2}>
-              <Button variant="contained" size="medium">
+              <Button size="medium" variant="contained">
                 Button contained medium
               </Button>
-              <Box marginLeft={1} marginRight={1} display="inline-block">
-                <Button variant="contained" size="small">
+              <Box display="inline-block" marginLeft={1} marginRight={1}>
+                <Button size="small" variant="contained">
                   Button contained small
                 </Button>
               </Box>
-              <Button variant="contained" size="xSmall">
+              <Button size="xSmall" variant="contained">
                 Button contained xSmall
               </Button>
             </Box>

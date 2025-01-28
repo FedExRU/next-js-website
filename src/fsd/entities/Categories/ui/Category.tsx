@@ -1,18 +1,19 @@
 'use client'
 
-import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
-import { FC } from 'react'
-import Image from 'next/image'
-import { CategoryProps } from './types'
-import { getStyles } from './styles'
 import { LAYOUT, skeletonImage } from '@fsd/shared'
+import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
+import Image from 'next/image'
+import { FC } from 'react'
+
+import { getStyles } from './styles'
+import { CategoryProps } from './types'
 
 export const Category: FC<CategoryProps> = ({
   image,
-  skeleton,
-  name,
   layout = 'primary',
+  name,
   renderAction,
+  skeleton,
 }) => {
   const isPrimary = layout === LAYOUT.PRIMARY
 
@@ -21,10 +22,10 @@ export const Category: FC<CategoryProps> = ({
   return (
     <Box sx={styles.category}>
       <Grid
-        container
-        spacing={{ xs: 2, sm: 3 }}
-        sx={{ width: '100%' }}
         alignItems={isPrimary ? 'flex-start' : 'end'}
+        container
+        spacing={{ sm: 3, xs: 2 }}
+        sx={{ width: '100%' }}
       >
         <Grid size={isPrimary ? 12 : 6}>
           <Box>
@@ -41,14 +42,14 @@ export const Category: FC<CategoryProps> = ({
             {skeleton && <Skeleton sx={styles.categoryImageSkeleton} />}
             <Image
               alt={(name as string) || ''}
-              src={skeleton ? skeletonImage : (image as string)}
-              width={0}
               height={0}
               sizes="100vw"
+              src={skeleton ? skeletonImage : (image as string)}
               style={{
-                width: '100%',
                 height: '100%',
+                width: '100%',
               }}
+              width={0}
             />
           </Box>
         </Grid>
