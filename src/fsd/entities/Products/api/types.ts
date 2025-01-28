@@ -1,12 +1,12 @@
 export interface IProduct {
-  id: number
-  name: string
-  image: string
   createdAt: string
-  updatedAt: string
-  price: number
-  priceDiscount: number | null
-  discountPercent: number | null
-  rating: number
+  discountPercent: null | number
+  id: number
+  image: string
   isNew: boolean
+  name: string
+  price: number
+  priceDiscount: null | number
+  rating: number
+  updatedAt: string
 }

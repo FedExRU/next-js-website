@@ -1,5 +1,6 @@
-import { IProduct } from './types'
 import { query } from '@fsd/shared'
+
+import { IProduct } from './types'
 
 export class ProductsApi {
   static getNew = async () => {

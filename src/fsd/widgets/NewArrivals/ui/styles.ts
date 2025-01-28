@@ -1,29 +1,30 @@
-import { SWIPER_SCROLLBAR_HEIGHT } from './constants'
 import { createSxStyles } from '@fsd/shared'
+
+import { SWIPER_SCROLLBAR_HEIGHT } from './constants'
 
 export const getStyles = () =>
   createSxStyles({
-    title: {
-      maxWidth: 149,
+    actionLinkWrapper: {
+      alignItems: 'end',
+      display: 'flex',
+      height: '100%',
     },
     sliderWrapper: theme => ({
-      mt: 5,
-      mb: {
-        xs: 5,
-        sm: 0,
-      },
       '& .swiper-scrollbar': {
-        height: SWIPER_SCROLLBAR_HEIGHT,
         background: theme.palette.grey[300],
+        height: SWIPER_SCROLLBAR_HEIGHT,
       },
       '& .swiper-scrollbar .swiper-scrollbar-drag': {
-        height: SWIPER_SCROLLBAR_HEIGHT,
         background: theme.palette.grey[500],
+        height: SWIPER_SCROLLBAR_HEIGHT,
       },
+      mb: {
+        sm: 0,
+        xs: 5,
+      },
+      mt: 5,
     }),
-    actionLinkWrapper: {
-      display: 'flex',
-      alignItems: 'end',
-      height: '100%',
+    title: {
+      maxWidth: 149,
     },
   })

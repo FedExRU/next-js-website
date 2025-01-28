@@ -1,9 +1,10 @@
 'use client'
 
-import { FC } from 'react'
-import { GoToCategoryProps } from './types'
-import { GO_TO_CATEGORY_TEXT } from './constants'
 import { ActionLink, Skeleton } from '@fsd/shared'
+import { FC } from 'react'
+
+import { GO_TO_CATEGORY_TEXT } from './constants'
+import { GoToCategoryProps } from './types'
 
 export const GoToCategory: FC<GoToCategoryProps> = ({
   skeleton,
@@ -13,12 +14,12 @@ export const GoToCategory: FC<GoToCategoryProps> = ({
     {skeleton ? (
       <Skeleton
         sx={{
-          width: '100%',
+          height: { sm: 35.53, xs: 32 },
           maxWidth: {
-            xs: 87.13,
             sm: 96.63,
+            xs: 87.13,
           },
-          height: { xs: 32, sm: 35.53 },
+          width: '100%',
         }}
       />
     ) : (

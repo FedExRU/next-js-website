@@ -1,5 +1,5 @@
-import { SelectProps as MuiSelectProps } from '@mui/material/Select'
 import { MenuItemProps } from '@mui/material/MenuItem'
+import { SelectProps as MuiSelectProps } from '@mui/material/Select'
 
 export type SelectItem = MenuItemProps & {
   label: string

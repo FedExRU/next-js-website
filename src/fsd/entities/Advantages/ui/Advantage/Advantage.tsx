@@ -1,8 +1,9 @@
+import { Typography } from '@fsd/shared'
 import { Box } from '@mui/material'
 import { FC } from 'react'
-import { AdvantageProps } from './types'
+
 import { getStyles } from './styles'
-import { Typography } from '@fsd/shared'
+import { AdvantageProps } from './types'
 
 export const Advantage: FC<AdvantageProps> = ({ description, icon, title }) => {
   const { styles } = getStyles()
@@ -11,14 +12,14 @@ export const Advantage: FC<AdvantageProps> = ({ description, icon, title }) => {
     <Box sx={styles.advantage}>
       <Box sx={styles.icon}>{icon}</Box>
       <Box sx={{ mb: 1 }}></Box>
-      <Typography variant={{ xs: 'caption1Semi', sm: 'h7' }} component="p">
+      <Typography component="p" variant={{ sm: 'h7', xs: 'caption1Semi' }}>
         {title}
       </Typography>
       <Typography
-        variant={{ xs: 'caption1', sm: 'body2' }}
-        component="p"
         color="textSecondary"
+        component="p"
         sx={styles.description}
+        variant={{ sm: 'body2', xs: 'caption1' }}
       >
         {description}
       </Typography>

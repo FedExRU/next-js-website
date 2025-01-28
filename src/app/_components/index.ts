@@ -1,2 +1,2 @@
-export * from './SubscribeForm'
 export * from './NavBar'
+export * from './SubscribeForm'

@@ -1,14 +1,15 @@
 'use client'
 
+import { RequestError, type RequestResult } from '@fsd/shared'
 import {
   QueryKey,
+  useQuery,
   UseQueryOptions,
   UseQueryResult,
-  useQuery,
 } from '@tanstack/react-query'
-import { MainSliderItemApi, IMainSliderItem } from '../../../api'
+
+import { IMainSliderItem, MainSliderItemApi } from '../../../api'
 import { MAIN_SLIDER_ITEMS_QUERY_KEY } from './constants'
-import { RequestError, type RequestResult } from '@fsd/shared'
 
 export const getMainSliderItemsQueryKey = (): QueryKey => [
   MAIN_SLIDER_ITEMS_QUERY_KEY,
@@ -28,7 +29,7 @@ export const useGetMainSliderItemsQuery = <
   >,
 ): UseQueryResult<T, RequestError> =>
   useQuery({
-    queryKey: getMainSliderItemsQueryKey(),
     queryFn: () => getMainSliderItemsRequest(),
+    queryKey: getMainSliderItemsQueryKey(),
     ...(config || {}),
   })

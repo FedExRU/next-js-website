@@ -1,17 +1,17 @@
-import { FC } from 'react'
-import { Grid2 as Grid, Box } from '@mui/material'
 import { Advantage, useAdvantages } from '@fsd/entities'
+import { Box, Grid2 as Grid } from '@mui/material'
+import { FC } from 'react'
 
 export const FeaturesGrid: FC = () => {
   const { getAdvantageData, getAdvantagesKinds } = useAdvantages()
   return (
     <Box sx={{ mt: 1 }}>
-      <Grid container spacing={{ xs: 1, sm: 3 }} sx={{ mt: { xs: -2, sm: 0 } }}>
+      <Grid container spacing={{ sm: 3, xs: 1 }} sx={{ mt: { sm: 0, xs: -2 } }}>
         {getAdvantagesKinds().map(kind => (
           <Grid
             key={kind}
-            size={{ xs: 6, md: 3 }}
-            sx={{ mt: { xs: 2, sm: 0 } }}
+            size={{ md: 3, xs: 6 }}
+            sx={{ mt: { sm: 0, xs: 2 } }}
           >
             <Advantage {...getAdvantageData(kind)} />
           </Grid>

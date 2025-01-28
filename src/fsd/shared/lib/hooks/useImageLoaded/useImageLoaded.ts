@@ -1,15 +1,16 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { UseImageLoadedProps, UseImageLoadedStatusType } from './types'
+
 import { UseImageLoadedStatus } from './constants'
+import { UseImageLoadedProps, UseImageLoadedStatusType } from './types'
 
 export const useImageLoaded = ({
   crossOrigin,
+  onError,
   referrerPolicy,
   src,
   srcSet,
-  onError,
 }: UseImageLoadedProps): UseImageLoadedStatusType => {
   const [imageStatus, setImageStatus] = useState<UseImageLoadedStatusType>(
     UseImageLoadedStatus.pending,

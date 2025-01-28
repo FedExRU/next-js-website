@@ -1,6 +1,6 @@
 import { NavBarRoute } from '../../types'
 
 export type NavBarDesktopProps = {
-  routes: NavBarRoute[]
   currentPath: string
+  routes: NavBarRoute[]
 }

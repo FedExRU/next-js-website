@@ -1,7 +1,7 @@
-import { Box, Grid2 as Grid } from '@mui/material'
 import { Article, IArticle, useGetNewArticlesQuery } from '@fsd/entities'
-import { ActionLink, Typography } from '@fsd/shared'
 import { GoToArticle } from '@fsd/features'
+import { ActionLink, Typography } from '@fsd/shared'
+import { Box, Grid2 as Grid } from '@mui/material'
 
 export const BlogSection = () => {
   const { data, isLoading } = useGetNewArticlesQuery()
@@ -11,9 +11,9 @@ export const BlogSection = () => {
   return (
     <Grid container>
       <Grid size="grow">
-        <Typography variant={{ xs: 'h5', sm: 'h4' }}>Articles</Typography>
+        <Typography variant={{ sm: 'h4', xs: 'h5' }}>Articles</Typography>
       </Grid>
-      <Grid sx={{ display: 'flex', alignItems: 'end' }}>
+      <Grid sx={{ alignItems: 'end', display: 'flex' }}>
         <ActionLink text="More Articles" />
       </Grid>
       <Grid size={12}>
@@ -23,7 +23,7 @@ export const BlogSection = () => {
               ? (Array.from({ length: 3 }) as IArticle[])
               : data?.items
             )?.map((article, i) => (
-              <Grid key={article?.id ?? i} size={{ xs: 12, md: 4 }}>
+              <Grid key={article?.id ?? i} size={{ md: 4, xs: 12 }}>
                 <Article
                   skeleton={isLoading}
                   {...article}

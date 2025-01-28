@@ -1,14 +1,14 @@
 import {
-  ButtonPropsSizeOverrides as MuiButtonPropsSizeOverrides,
   ButtonOwnProps as MuiButtonOwnProps,
+  ButtonPropsSizeOverrides as MuiButtonPropsSizeOverrides,
 } from '@mui/material'
 
 declare module '@mui/material/Button' {
-  interface ButtonPropsSizeOverrides extends MuiButtonPropsSizeOverrides {
-    xSmall: true
-    xLarge: true
-  }
   interface ButtonOwnProps extends MuiButtonOwnProps {
-    rounded?: 'small' | 'medium' | 'large'
+    rounded?: 'large' | 'medium' | 'small'
+  }
+  interface ButtonPropsSizeOverrides extends MuiButtonPropsSizeOverrides {
+    xLarge: true
+    xSmall: true
   }
 }

@@ -1,32 +1,33 @@
 'use client'
 
-import { Box, Grid2 as Grid, Rating } from '@mui/material'
-import { FC } from 'react'
-import Image from 'next/image'
-import { ProductProps } from './types'
-import { Badges, Price } from './components'
-import { getStyles } from './styles'
 import {
   Skeleton,
   skeletonImage,
   toDecimalString,
   Typography,
 } from '@fsd/shared'
+import { Box, Grid2 as Grid, Rating } from '@mui/material'
+import Image from 'next/image'
+import { FC } from 'react'
+
+import { Badges, Price } from './components'
+import { getStyles } from './styles'
+import { ProductProps } from './types'
 
 export const Product: FC<ProductProps> = ({
-  image,
-  skeleton = false,
-  name,
   discountPercent,
+  image,
+  isFavorite,
   isNew,
-  rating,
+  name,
   price,
   priceDiscount,
+  rating,
   renderAction,
   renderActionSecondary,
-  isFavorite,
+  skeleton = false,
 }) => {
-  const { styles, classes } = getStyles(isFavorite)
+  const { classes, styles } = getStyles(isFavorite)
 
   return (
     <Box sx={styles.product}>
@@ -38,15 +39,15 @@ export const Product: FC<ProductProps> = ({
             ) : (
               <Image
                 alt={(name as string) || ''}
-                src={skeleton ? skeletonImage : (image as string)}
-                width={0}
                 height={0}
                 sizes="100vw"
+                src={skeleton ? skeletonImage : (image as string)}
                 style={{
-                  width: '100%',
                   height: '100%',
                   objectFit: 'cover',
+                  width: '100%',
                 }}
+                width={0}
               />
             )}
             {!skeleton && (
@@ -85,7 +86,7 @@ export const Product: FC<ProductProps> = ({
             <Grid size={12}>
               <Box sx={styles.productRating}>
                 {skeleton ? (
-                  <Skeleton width={85} height={16} />
+                  <Skeleton height={16} width={85} />
                 ) : (
                   <Rating defaultValue={rating} precision={0.01} readOnly />
                 )}
@@ -93,7 +94,7 @@ export const Product: FC<ProductProps> = ({
             </Grid>
             <Grid size={12}>
               {skeleton ? (
-                <Skeleton width={126} height={20} />
+                <Skeleton height={20} width={126} />
               ) : (
                 <Typography variant="body2Semi">{name}</Typography>
               )}
@@ -101,9 +102,9 @@ export const Product: FC<ProductProps> = ({
             <Grid size={12}>
               <Box sx={styles.productPrice}>
                 <Price
+                  skeleton={skeleton}
                   value={toDecimalString(price)}
                   valueDiscount={toDecimalString(priceDiscount)}
-                  skeleton={skeleton}
                 />
               </Box>
             </Grid>

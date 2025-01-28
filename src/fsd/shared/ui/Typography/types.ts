@@ -5,18 +5,18 @@ import {
   Theme,
 } from '@mui/material'
 
-export type TypographyVariantStatic = {
-  variant?: MuiTypographyProps['variant']
+export type GetSxArgs = {
+  sx?: SxProps<Theme>
+  variant?: TypographyVariantAdaptive['variant']
 }
+
+export type TypographyProps = Omit<MuiTypographyProps, 'variant'> &
+  (TypographyVariantAdaptive | TypographyVariantStatic)
 
 export type TypographyVariantAdaptive = {
   variant?: Partial<Record<Breakpoint, keyof Theme['typography']>>
 }
 
-export type TypographyProps = Omit<MuiTypographyProps, 'variant'> &
-  (TypographyVariantStatic | TypographyVariantAdaptive)
-
-export type GetSxArgs = {
-  sx?: SxProps<Theme>
-  variant?: TypographyVariantAdaptive['variant']
+export type TypographyVariantStatic = {
+  variant?: MuiTypographyProps['variant']
 }

@@ -1,16 +1,17 @@
 'use client'
 
-import { Theme } from '@mui/material/styles'
-import IconButton from '@mui/material/IconButton'
-import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
-import { FC, useRef, useState } from 'react'
 import Collapse from '@mui/material/Collapse'
-import { useFormik } from 'formik'
+import IconButton from '@mui/material/IconButton'
+import { Theme } from '@mui/material/styles'
+import TextField from '@mui/material/TextField'
 import Tooltip from '@mui/material/Tooltip'
-import { TOOLTIP_TEXT, initialValues } from './constants'
-import { SearchForm } from './types'
 import { SearchIcon } from 'components/Icons'
+import { useFormik } from 'formik'
+import { FC, useRef, useState } from 'react'
+
+import { initialValues, TOOLTIP_TEXT } from './constants'
+import { SearchForm } from './types'
 
 export const NavBarSearch: FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -23,10 +24,10 @@ export const NavBarSearch: FC = () => {
   const inputRef = useRef<HTMLInputElement>(undefined)
 
   const {
-    values: { term },
-    handleSubmit,
     handleChange,
+    handleSubmit,
     resetForm,
+    values: { term },
   } = useFormik<SearchForm>({
     initialValues,
     onSubmit: handleSubmitFormik,
@@ -53,25 +54,18 @@ export const NavBarSearch: FC = () => {
   return (
     <Box sx={{ display: 'flex' }}>
       <Collapse
-        orientation="horizontal"
-        in={isOpen}
         collapsedSize={34}
+        in={isOpen}
         onExited={handleCollapseExited}
+        orientation="horizontal"
       >
         <Box
           component="form"
-          sx={{ maxWidth: 300, width: 250 }}
           onSubmit={handleSubmit}
+          sx={{ maxWidth: 300, width: 250 }}
         >
           <TextField
-            variant="standard"
-            name="term"
             fullWidth
-            size="small"
-            value={term}
-            placeholder="What would you like to find?"
-            onChange={handleChange}
-            inputRef={inputRef}
             InputProps={{
               inputProps: {
                 'aria-label': 'Website search field',
@@ -79,24 +73,31 @@ export const NavBarSearch: FC = () => {
                   ...theme.typography.caption1,
                 }),
               },
-              sx: {
-                '&::before': {
-                  opacity: isOpen ? '1' : '0',
-                },
-              },
               startAdornment: (
-                <Tooltip title={tooltipText} arrow>
+                <Tooltip arrow title={tooltipText}>
                   <IconButton
                     color="primary"
+                    onClick={handleToggleSearchForm}
                     size="small"
                     sx={{ boxShadow: 'none' }}
-                    onClick={handleToggleSearchForm}
                   >
                     <SearchIcon />
                   </IconButton>
                 </Tooltip>
               ),
+              sx: {
+                '&::before': {
+                  opacity: isOpen ? '1' : '0',
+                },
+              },
             }}
+            inputRef={inputRef}
+            name="term"
+            onChange={handleChange}
+            placeholder="What would you like to find?"
+            size="small"
+            value={term}
+            variant="standard"
           />
         </Box>
       </Collapse>

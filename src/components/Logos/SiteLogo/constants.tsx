@@ -1,15 +1,16 @@
 import { ReactNode } from 'react'
+
 import { SiteLogoSize } from './types'
 
 export const logoBySize: Record<SiteLogoSize, ReactNode> = {
   medium: (
     <svg
-      role="img"
       aria-label="Logo"
-      width="97"
-      height="25"
-      viewBox="0 0 97 25"
       fill="none"
+      height="25"
+      role="img"
+      viewBox="0 0 97 25"
+      width="97"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -24,12 +25,12 @@ export const logoBySize: Record<SiteLogoSize, ReactNode> = {
   ),
   small: (
     <svg
-      role="img"
       aria-label="Logo"
-      width="65"
-      height="17"
-      viewBox="0 0 65 17"
       fill="none"
+      height="17"
+      role="img"
+      viewBox="0 0 65 17"
+      width="65"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

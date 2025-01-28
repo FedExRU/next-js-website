@@ -1,19 +1,14 @@
-import * as React from 'react'
-import { Grid2 as Grid, Box } from '@mui/material'
-import { FC } from 'react'
 import { Typography } from '@fsd/shared'
+import { Box, Grid2 as Grid } from '@mui/material'
+import * as React from 'react'
+import { FC } from 'react'
 
 export const WelcomeText: FC = () => (
   <Grid size={12}>
-    <Grid container spacing={{ xs: 2, md: 3 }}>
-      <Grid size={{ xs: 12, md: 7 }}>
+    <Grid container spacing={{ md: 3, xs: 2 }}>
+      <Grid size={{ md: 7, xs: 12 }}>
         <Typography
           component="h1"
-          variant={{
-            md: 'h2',
-            sm: 'h3',
-            xs: 'h4',
-          }}
           sx={theme => ({
             display: 'flex',
             flexDirection: 'column',
@@ -21,55 +16,60 @@ export const WelcomeText: FC = () => (
               textAlign: 'center',
             },
           })}
+          variant={{
+            md: 'h2',
+            sm: 'h3',
+            xs: 'h4',
+          }}
         >
           <Box component="span">
             Simply Unique
-            <Box component="span" color="text.secondary">
+            <Box color="text.secondary" component="span">
               /
             </Box>
           </Box>
           <Box component="span">
             Simply Better
-            <Box component="span" color="text.secondary">
+            <Box color="text.secondary" component="span">
               .
             </Box>
           </Box>
         </Typography>
       </Grid>
-      <Grid size={{ xs: 12, md: 5 }}>
+      <Grid size={{ md: 5, xs: 12 }}>
         <Box
           sx={{
-            display: {
-              xs: 'block',
-              md: 'flex',
-            },
             alignItems: {
               md: 'center',
+            },
+            display: {
+              md: 'flex',
+              xs: 'block',
             },
             height: '100%',
             width: '100%',
           }}
         >
           <Typography
-            variant={{
-              sm: 'body2',
-              xs: 'caption1',
-            }}
+            color="text.secondary"
+            component="p"
             sx={theme => ({
               [theme.breakpoints.between('sm', 'md')]: {
                 textAlign: 'center',
               },
             })}
-            component="p"
-            color="text.secondary"
+            variant={{
+              sm: 'body2',
+              xs: 'caption1',
+            }}
           >
             <Typography
+              color="text.primary"
+              component="span"
               variant={{
                 sm: 'body2Semi',
                 xs: 'caption1Semi',
               }}
-              component="span"
-              color="text.primary"
             >
               3legant
             </Typography>{' '}

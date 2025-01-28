@@ -1,19 +1,19 @@
-import { BreakpointsOptions, createTheme as _createTheme } from '@mui/material'
-
+import { createTheme as _createTheme, BreakpointsOptions } from '@mui/material'
 import _shadows from '@mui/material/styles/shadows'
-import localFont from 'next/font/local'
-import mediaQuery from 'css-mediaquery'
-import { DeviceType } from '../../lib'
 import {
-  CheckboxIcon,
-  CheckboxCheckedIcon,
-  RadioIcon,
-  RadioCheckedIcon,
-  ChevronRightIcon,
-  StarIconOutlined,
-  StarIconFilled,
   ArrowDownSimpleIcon,
+  CheckboxCheckedIcon,
+  CheckboxIcon,
+  ChevronRightIcon,
+  RadioCheckedIcon,
+  RadioIcon,
+  StarIconFilled,
+  StarIconOutlined,
 } from 'components/Icons'
+import mediaQuery from 'css-mediaquery'
+import localFont from 'next/font/local'
+
+import { DeviceType } from '../../lib'
 
 const poppinsFont = localFont({
   src: './assets/fonts/poppins/Poppins-Medium.ttf',
@@ -45,11 +45,11 @@ const shadows = (() => {
 
 const breakpoints: BreakpointsOptions = {
   values: {
-    xs: 0,
-    sm: 600,
-    md: 900,
     lg: 1200,
+    md: 900,
+    sm: 600,
     xl: 1536,
+    xs: 0,
   },
 } as const
 
@@ -61,233 +61,11 @@ const breakpointsAlias: Record<DeviceType, number> = {
 export const createTheme = (deviceType: DeviceType) =>
   _createTheme({
     breakpoints,
-    palette: {
-      text: {
-        primary: '#000',
-        secondary: '#6C7275',
-      },
-      action: {
-        active: '#6C7275',
-      },
-      primary: {
-        main: '#000',
-        light: '#605F5F',
-      },
-      secondary: {
-        main: '#377DFF',
-      },
-      error: {
-        main: '#FF5630',
-      },
-      warning: {
-        main: '#FFAB00',
-      },
-      success: {
-        dark: '#00884b',
-        main: '#38CB89',
-      },
-      grey: {
-        '700': '#141718',
-        '600': '#232627',
-        '500': '#343839',
-        '400': '#6C7275',
-        '300': '#E8ECEF',
-        '200': '#F3F5F7',
-        '100': '#FEFEFE',
-      },
-    },
     components: {
-      MuiUseMediaQuery: {
-        defaultProps: {
-          ssrMatchMedia: query => {
-            return {
-              matches: mediaQuery.match(query, {
-                width: breakpointsAlias[deviceType],
-              }),
-            }
-          },
-        },
-      },
-      MuiTooltip: {
-        styleOverrides: {
-          tooltip: ({ theme }) => ({
-            ...theme.typography.caption2,
-            color: theme.palette.common.white,
-          }),
-        },
-      },
-      MuiToolbar: {
-        styleOverrides: {
-          root: ({ theme }) => ({
-            [theme.breakpoints.up('sm')]: {
-              minHeight: 60,
-            },
-            minHeight: 60,
-          }),
-        },
-      },
-      MuiContainer: {
-        styleOverrides: {
-          root: ({ theme }) => ({
-            [theme.breakpoints.up('md')]: {
-              maxWidth: 1168,
-            },
-            [theme.breakpoints.down('sm')]: {
-              maxWidth: 'auto',
-            },
-          }),
-        },
-      },
       MuiAppBar: {
         styleOverrides: {
           colorDefault: ({ theme }) => ({
             backgroundColor: theme.palette.common.white,
-          }),
-        },
-      },
-      MuiFormControl: {
-        defaultProps: {
-          fullWidth: true,
-        },
-      },
-      MuiInputBase: {
-        defaultProps: {
-          size: 'small',
-        },
-        styleOverrides: {
-          root: {
-            borderRadius: 8,
-          },
-          input: ({ theme }) => ({
-            ...theme.typography.body2Semi,
-            paddingLeft: theme.spacing(1),
-            paddingRight: theme.spacing(1),
-            paddingTop: theme.spacing(1),
-            paddingBottom: theme.spacing(1),
-            height: 36,
-          }),
-          sizeSmall: {
-            height: 48,
-          },
-          inputSizeSmall: {
-            height: 48,
-          },
-        },
-      },
-      MuiTextField: {
-        defaultProps: {
-          size: 'small',
-        },
-      },
-      MuiOutlinedInput: {
-        styleOverrides: {
-          notchedOutline: ({ theme }) => ({
-            border: `2px solid ${theme.palette.text.secondary}`,
-            borderRadius: 8,
-            '& legend span:not(.notranslate)': {
-              display: 'none',
-            },
-          }),
-          input: ({ theme }) => ({
-            ...theme.typography.body2Semi,
-            paddingLeft: theme.spacing(2),
-            paddingRight: theme.spacing(1),
-            paddingTop: theme.spacing(1),
-            paddingBottom: theme.spacing(1),
-          }),
-          inputSizeSmall: {
-            height: 32,
-          },
-        },
-      },
-      MuiSelect: {
-        defaultProps: {
-          notched: true,
-          size: 'small',
-          IconComponent: ArrowDownSimpleIcon,
-          MenuProps: {
-            sx: theme => ({
-              '& .MuiPopover-paper': {
-                borderRadius: 3,
-              },
-              '& .MuiMenu-list': {
-                paddingLeft: theme.spacing(1),
-                paddingRight: theme.spacing(1),
-                paddingTop: theme.spacing(1),
-                paddingBottom: theme.spacing(1),
-              },
-              '& .MuiMenuItem-root': {
-                ...theme.typography.body2,
-                borderRadius: 2,
-                paddingLeft: theme.spacing(1),
-                paddingRight: theme.spacing(1),
-                paddingTop: theme.spacing(1),
-                paddingBottom: theme.spacing(1),
-                color: theme.palette.text.secondary,
-                transition: theme.transitions.create(
-                  ['background-color, color'],
-                  { duration: 300 },
-                ),
-                '&.Mui-selected, &.Mui-focusVisible': {
-                  backgroundColor: theme.palette.grey['200'],
-                  color: theme.palette.text.primary,
-                },
-                '&:hover': {
-                  backgroundColor: theme.palette.grey['200'],
-                  color: theme.palette.text.primary,
-                },
-              },
-            }),
-          },
-        },
-        styleOverrides: {
-          outlined: {
-            minHeight: 32,
-          },
-          select: ({ theme, ownerState: { size = 'small' } }) => ({
-            ...theme.typography.body2,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-            ...(size === 'small' && {
-              display: 'flex',
-              alignItems: 'center',
-            }),
-          }),
-          iconOutlined: ({ theme, ownerState: { size = 'small' } }) => ({
-            ...(size === 'small' && {
-              marginRight: theme.spacing(0.5),
-            }),
-          }),
-        },
-      },
-      MuiInputLabel: {
-        defaultProps: {
-          shrink: true,
-        },
-        styleOverrides: {
-          root: ({ theme }) => ({
-            position: 'static',
-            transform: 'none',
-            textTransform: 'uppercase',
-            ...theme.typography.body2,
-            fontWeight: 600,
-            fontFamily: interFontSemi.style.fontFamily,
-            color: theme.palette.text.secondary,
-            marginBottom: theme.spacing(1),
-          }),
-        },
-      },
-      MuiRating: {
-        defaultProps: {
-          emptyIcon: <StarIconOutlined />,
-          icon: <StarIconFilled />,
-        },
-        styleOverrides: {
-          iconFilled: ({ theme }) => ({
-            color: theme.palette.primary.main,
-          }),
-          iconEmpty: ({ theme }) => ({
-            color: theme.palette.grey['400'],
           }),
         },
       },
@@ -296,7 +74,7 @@ export const createTheme = (deviceType: DeviceType) =>
           separator: (
             <ChevronRightIcon
               fontSize="small"
-              sx={{ height: 12, width: 12, paddingTop: '1px' }}
+              sx={{ height: 12, paddingTop: '1px', width: 12 }}
             />
           ),
         },
@@ -312,175 +90,90 @@ export const createTheme = (deviceType: DeviceType) =>
           }),
         },
       },
-      MuiIconButton: {
-        styleOverrides: {
-          sizeMedium: ({ theme }) => ({
-            height: 40,
-            width: 40,
-            padding: theme.spacing(1),
-          }),
-          sizeLarge: ({ theme }) => ({
-            height: 52,
-            width: 52,
-            padding: theme.spacing(1.25),
-          }),
-          root: ({ theme, ownerState: { color, disabled } }) => ({
-            background: disabled
-              ? `${theme.palette.grey.A200} !important`
-              : theme.palette.common.white,
-            boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
-            transition: theme.transitions.create('color'),
-            '& > *': {
-              pointerEvents: 'none',
-            },
-            '&:hover': {
-              background: theme.palette.common.white,
-              color:
-                color === undefined ||
-                color === 'default' ||
-                color === 'inherit'
-                  ? 'currentColor'
-                  : theme.palette?.[color].main,
-            },
-          }),
-        },
-      },
-      MuiRadio: {
-        defaultProps: {
-          icon: <RadioIcon />,
-          checkedIcon: <RadioCheckedIcon />,
-          disableRipple: true,
-        },
-        styleOverrides: {
-          root: ({ theme, ownerState: { color } }) => ({
-            padding: 0,
-            transition: theme.transitions.create('color'),
-            '&:hover': {
-              color:
-                color === undefined || color === 'default'
-                  ? 'currentColor'
-                  : theme.palette?.[color].main,
-            },
-          }),
-        },
-      },
-      MuiCheckbox: {
-        defaultProps: {
-          icon: <CheckboxIcon />,
-          checkedIcon: <CheckboxCheckedIcon />,
-          disableRipple: true,
-        },
-        styleOverrides: {
-          root: ({ theme, ownerState: { color } }) => ({
-            padding: 0,
-            transition: theme.transitions.create('color'),
-            '&:hover': {
-              color:
-                color === undefined || color === 'default'
-                  ? 'currentColor'
-                  : theme.palette?.[color].main,
-            },
-          }),
-        },
-      },
-      MuiTypography: {
-        defaultProps: {
-          variantMapping: {
-            /**
-             * Headings
-             */
-            h7: 'h6',
-            /**
-             * Text
-             */
-            text1: 'p',
-            text1Semi: 'p',
-            text1Bold: 'p',
-            text2: 'p',
-            text2Semi: 'p',
-            text2Bold: 'p',
-            text3: 'p',
-            text3Semi: 'p',
-            text3Bold: 'p',
-            hairline1: 'p',
-            hairline1Semi: 'p',
-            hairline1Bold: 'p',
-            hairline2: 'p',
-            hairline2Semi: 'p',
-            hairline2Bold: 'p',
-            body1Semi: 'p',
-            body1Bold: 'p',
-            body2Semi: 'p',
-            body2Bold: 'p',
-            caption1: 'span',
-            caption1Semi: 'span',
-            caption1Bold: 'span',
-            caption2: 'span',
-            caption2Semi: 'span',
-            caption2Bold: 'span',
-          },
-        },
-      },
       MuiButton: {
         defaultProps: {
           rounded: 'medium',
+        },
+        styleOverrides: {
+          root: {
+            fontFamily: interFontMedium.style.fontFamily,
+            textTransform: 'none',
+          },
+          text: {
+            '& .MuiTouchRipple-child': { borderRadius: '0px !important' },
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+            borderBottomStyle: 'solid',
+            borderBottomWidth: 1,
+            borderRadius: '0px !important',
+          },
+          textSizeLarge: {
+            padding: 0,
+          },
+          textSizeMedium: {
+            padding: 0,
+          },
+          textSizeSmall: {
+            padding: 0,
+          },
         },
         variants: [
           {
             props: { size: 'xSmall' },
             style: ({ theme }) => ({
-              height: 28,
-              padding: theme.spacing(0.5, 5),
               fontSize: '14px',
               fontStyle: 'normal',
               fontWeight: 500,
+              height: 28,
               lineHeight: '24px',
+              padding: theme.spacing(0.5, 5),
             }),
           },
           {
             props: { size: 'small' },
             style: ({ theme }) => ({
-              padding: theme.spacing(0.75, 5),
-              height: 34,
               fontSize: '16px',
               fontStyle: 'normal',
               fontWeight: 500,
-              lineHeight: '28px',
+              height: 34,
               letterSpacing: '-0.4px',
+              lineHeight: '28px',
+              padding: theme.spacing(0.75, 5),
             }),
           },
           {
             props: { size: 'medium' },
             style: ({ theme }) => ({
-              padding: theme.spacing(1.25, 5),
-              height: 42,
               fontSize: '18px',
               fontStyle: 'normal',
               fontWeight: 500,
-              lineHeight: '32px',
+              height: 42,
               letterSpacing: '-0.4px',
+              lineHeight: '32px',
+              padding: theme.spacing(1.25, 5),
             }),
           },
           {
             props: { size: 'large' },
             style: ({ theme }) => ({
-              padding: theme.spacing(1.5, 5),
-              height: 48,
               fontSize: '22px',
               fontStyle: 'normal',
               fontWeight: 500,
+              height: 48,
               lineHeight: '34px',
+              padding: theme.spacing(1.5, 5),
             }),
           },
           {
             props: { size: 'xLarge' },
             style: ({ theme }) => ({
-              height: 56,
-              padding: theme.spacing(2, 5),
               fontSize: '26px',
               fontStyle: 'normal',
               fontWeight: 500,
+              height: 56,
               lineHeight: '38px',
+              padding: theme.spacing(2, 5),
             }),
           },
           {
@@ -502,50 +195,471 @@ export const createTheme = (deviceType: DeviceType) =>
             },
           },
         ],
+      },
+      MuiCheckbox: {
+        defaultProps: {
+          checkedIcon: <CheckboxCheckedIcon />,
+          disableRipple: true,
+          icon: <CheckboxIcon />,
+        },
         styleOverrides: {
-          textSizeSmall: {
-            padding: 0,
-          },
-          textSizeMedium: {
-            padding: 0,
-          },
-          textSizeLarge: {
-            padding: 0,
-          },
-          text: {
-            borderBottomWidth: 1,
-            borderBottomStyle: 'solid',
-            borderRadius: '0px !important',
+          root: ({ ownerState: { color }, theme }) => ({
             '&:hover': {
-              backgroundColor: 'transparent',
+              color:
+                color === undefined || color === 'default'
+                  ? 'currentColor'
+                  : theme.palette?.[color].main,
             },
-            '& .MuiTouchRipple-child': { borderRadius: '0px !important' },
+            padding: 0,
+            transition: theme.transitions.create('color'),
+          }),
+        },
+      },
+      MuiContainer: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            [theme.breakpoints.down('sm')]: {
+              maxWidth: 'auto',
+            },
+            [theme.breakpoints.up('md')]: {
+              maxWidth: 1168,
+            },
+          }),
+        },
+      },
+      MuiFormControl: {
+        defaultProps: {
+          fullWidth: true,
+        },
+      },
+      MuiIconButton: {
+        styleOverrides: {
+          root: ({ ownerState: { color, disabled }, theme }) => ({
+            '&:hover': {
+              background: theme.palette.common.white,
+              color:
+                color === undefined ||
+                color === 'default' ||
+                color === 'inherit'
+                  ? 'currentColor'
+                  : theme.palette?.[color].main,
+            },
+            '& > *': {
+              pointerEvents: 'none',
+            },
+            background: disabled
+              ? `${theme.palette.grey.A200} !important`
+              : theme.palette.common.white,
+            boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
+            transition: theme.transitions.create('color'),
+          }),
+          sizeLarge: ({ theme }) => ({
+            height: 52,
+            padding: theme.spacing(1.25),
+            width: 52,
+          }),
+          sizeMedium: ({ theme }) => ({
+            height: 40,
+            padding: theme.spacing(1),
+            width: 40,
+          }),
+        },
+      },
+      MuiInputBase: {
+        defaultProps: {
+          size: 'small',
+        },
+        styleOverrides: {
+          input: ({ theme }) => ({
+            ...theme.typography.body2Semi,
+            height: 36,
+            paddingBottom: theme.spacing(1),
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
+            paddingTop: theme.spacing(1),
+          }),
+          inputSizeSmall: {
+            height: 48,
           },
           root: {
-            textTransform: 'none',
-            fontFamily: interFontMedium.style.fontFamily,
+            borderRadius: 8,
           },
+          sizeSmall: {
+            height: 48,
+          },
+        },
+      },
+      MuiInputLabel: {
+        defaultProps: {
+          shrink: true,
+        },
+        styleOverrides: {
+          root: ({ theme }) => ({
+            position: 'static',
+            textTransform: 'uppercase',
+            transform: 'none',
+            ...theme.typography.body2,
+            color: theme.palette.text.secondary,
+            fontFamily: interFontSemi.style.fontFamily,
+            fontWeight: 600,
+            marginBottom: theme.spacing(1),
+          }),
+        },
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          input: ({ theme }) => ({
+            ...theme.typography.body2Semi,
+            paddingBottom: theme.spacing(1),
+            paddingLeft: theme.spacing(2),
+            paddingRight: theme.spacing(1),
+            paddingTop: theme.spacing(1),
+          }),
+          inputSizeSmall: {
+            height: 32,
+          },
+          notchedOutline: ({ theme }) => ({
+            '& legend span:not(.notranslate)': {
+              display: 'none',
+            },
+            border: `2px solid ${theme.palette.text.secondary}`,
+            borderRadius: 8,
+          }),
+        },
+      },
+      MuiRadio: {
+        defaultProps: {
+          checkedIcon: <RadioCheckedIcon />,
+          disableRipple: true,
+          icon: <RadioIcon />,
+        },
+        styleOverrides: {
+          root: ({ ownerState: { color }, theme }) => ({
+            '&:hover': {
+              color:
+                color === undefined || color === 'default'
+                  ? 'currentColor'
+                  : theme.palette?.[color].main,
+            },
+            padding: 0,
+            transition: theme.transitions.create('color'),
+          }),
+        },
+      },
+      MuiRating: {
+        defaultProps: {
+          emptyIcon: <StarIconOutlined />,
+          icon: <StarIconFilled />,
+        },
+        styleOverrides: {
+          iconEmpty: ({ theme }) => ({
+            color: theme.palette.grey['400'],
+          }),
+          iconFilled: ({ theme }) => ({
+            color: theme.palette.primary.main,
+          }),
+        },
+      },
+      MuiSelect: {
+        defaultProps: {
+          IconComponent: ArrowDownSimpleIcon,
+          MenuProps: {
+            sx: theme => ({
+              '& .MuiMenu-list': {
+                paddingBottom: theme.spacing(1),
+                paddingLeft: theme.spacing(1),
+                paddingRight: theme.spacing(1),
+                paddingTop: theme.spacing(1),
+              },
+              '& .MuiMenuItem-root': {
+                ...theme.typography.body2,
+                '&.Mui-selected, &.Mui-focusVisible': {
+                  backgroundColor: theme.palette.grey['200'],
+                  color: theme.palette.text.primary,
+                },
+                '&:hover': {
+                  backgroundColor: theme.palette.grey['200'],
+                  color: theme.palette.text.primary,
+                },
+                borderRadius: 2,
+                color: theme.palette.text.secondary,
+                paddingBottom: theme.spacing(1),
+                paddingLeft: theme.spacing(1),
+                paddingRight: theme.spacing(1),
+                paddingTop: theme.spacing(1),
+                transition: theme.transitions.create(
+                  ['background-color, color'],
+                  { duration: 300 },
+                ),
+              },
+              '& .MuiPopover-paper': {
+                borderRadius: 3,
+              },
+            }),
+          },
+          notched: true,
+          size: 'small',
+        },
+        styleOverrides: {
+          iconOutlined: ({ ownerState: { size = 'small' }, theme }) => ({
+            ...(size === 'small' && {
+              marginRight: theme.spacing(0.5),
+            }),
+          }),
+          outlined: {
+            minHeight: 32,
+          },
+          select: ({ ownerState: { size = 'small' }, theme }) => ({
+            ...theme.typography.body2,
+            fontFamily: interFontSemi.style.fontFamily,
+            fontWeight: 600,
+            ...(size === 'small' && {
+              alignItems: 'center',
+              display: 'flex',
+            }),
+          }),
         },
       },
       MuiSvgIcon: {
         styleOverrides: {
+          fontSizeLarge: {
+            fontSize: '2rem',
+          },
           fontSizeMedium: {
             fontSize: '1.5rem',
           },
-          fontSizeLarge: {
-            fontSize: '2rem',
+        },
+      },
+      MuiTextField: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiToolbar: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            minHeight: 60,
+            [theme.breakpoints.up('sm')]: {
+              minHeight: 60,
+            },
+          }),
+        },
+      },
+      MuiTooltip: {
+        styleOverrides: {
+          tooltip: ({ theme }) => ({
+            ...theme.typography.caption2,
+            color: theme.palette.common.white,
+          }),
+        },
+      },
+      MuiTypography: {
+        defaultProps: {
+          variantMapping: {
+            body1Bold: 'p',
+            body1Semi: 'p',
+            body2Bold: 'p',
+            body2Semi: 'p',
+            caption1: 'span',
+            caption1Bold: 'span',
+            caption1Semi: 'span',
+            caption2: 'span',
+            caption2Bold: 'span',
+            caption2Semi: 'span',
+            /**
+             * Headings
+             */
+            h7: 'h6',
+            hairline1: 'p',
+            hairline1Bold: 'p',
+            hairline1Semi: 'p',
+            hairline2: 'p',
+            hairline2Bold: 'p',
+            hairline2Semi: 'p',
+            /**
+             * Text
+             */
+            text1: 'p',
+            text1Bold: 'p',
+            text1Semi: 'p',
+            text2: 'p',
+            text2Bold: 'p',
+            text2Semi: 'p',
+            text3: 'p',
+            text3Bold: 'p',
+            text3Semi: 'p',
+          },
+        },
+      },
+      MuiUseMediaQuery: {
+        defaultProps: {
+          ssrMatchMedia: query => {
+            return {
+              matches: mediaQuery.match(query, {
+                width: breakpointsAlias[deviceType],
+              }),
+            }
           },
         },
       },
     },
+    palette: {
+      action: {
+        active: '#6C7275',
+      },
+      error: {
+        main: '#FF5630',
+      },
+      grey: {
+        '100': '#FEFEFE',
+        '200': '#F3F5F7',
+        '300': '#E8ECEF',
+        '400': '#6C7275',
+        '500': '#343839',
+        '600': '#232627',
+        '700': '#141718',
+      },
+      primary: {
+        light: '#605F5F',
+        main: '#000',
+      },
+      secondary: {
+        main: '#377DFF',
+      },
+      success: {
+        dark: '#00884b',
+        main: '#38CB89',
+      },
+      text: {
+        primary: '#000',
+        secondary: '#6C7275',
+      },
+      warning: {
+        main: '#FFAB00',
+      },
+    },
     shadows,
+    transitions: {
+      duration: {
+        standard: 150,
+      },
+    },
     typography: palette => ({
       /**
        * Default
        */
       allVariants: {
-        fontFamily: interFontRegular.style.fontFamily,
         color: palette.grey['700'],
+        fontFamily: interFontRegular.style.fontFamily,
+      },
+      body1: {
+        fontSize: '20px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '32px',
+      },
+      body1Bold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '20px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '32px',
+      },
+      body1Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '20px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '32px',
+      },
+      body2: {
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '26px',
+      },
+      body2Bold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '26px',
+      },
+      body2Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 500,
+        lineHeight: '26px',
+      },
+      button: {
+        fontFamily: interFontMedium.style.fontFamily,
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 500,
+        lineHeight: '24px',
+        textTransform: 'none',
+      },
+      caption: {
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '22px',
+      },
+      caption1: {
+        fontFamily: interFontRegular.style.fontFamily,
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '22px',
+      },
+      caption1Bold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '22px',
+      },
+      caption1Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '22px',
+      },
+      caption2: {
+        fontSize: '12px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '20px',
+      },
+      caption2Bold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '12px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '20px',
+      },
+      caption2Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '12px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '20px',
+      },
+      captionBold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '22px',
+      },
+      captionSemi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '14px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '22px',
       },
       /**
        * Headings
@@ -555,56 +669,96 @@ export const createTheme = (deviceType: DeviceType) =>
         fontSize: '80px',
         fontStyle: 'normal',
         fontWeight: 500,
-        lineHeight: '84px',
         letterSpacing: '-3px',
+        lineHeight: '84px',
       },
       h2: {
         fontFamily: poppinsFont.style.fontFamily,
         fontSize: '72px',
         fontStyle: 'normal',
         fontWeight: 500,
-        lineHeight: '76px',
         letterSpacing: '-2px',
+        lineHeight: '76px',
       },
       h3: {
         fontFamily: poppinsFont.style.fontFamily,
         fontSize: '54px',
         fontStyle: 'normal',
         fontWeight: 500,
-        lineHeight: '58px',
         letterSpacing: '-1px',
+        lineHeight: '58px',
       },
       h4: {
         fontFamily: poppinsFont.style.fontFamily,
         fontSize: '40px',
         fontStyle: 'normal',
         fontWeight: 500,
-        lineHeight: '44px',
         letterSpacing: '-0.4px',
+        lineHeight: '44px',
       },
       h5: {
         fontFamily: poppinsFont.style.fontFamily,
         fontSize: '34px',
         fontStyle: 'normal',
         fontWeight: '500',
-        lineHeight: '38px',
         letterSpacing: '-0.6px',
+        lineHeight: '38px',
       },
       h6: {
         fontFamily: poppinsFont.style.fontFamily,
         fontSize: '28px',
         fontStyle: 'normal',
         fontWeight: 500,
-        lineHeight: '34px',
         letterSpacing: '-0.6px',
+        lineHeight: '34px',
       },
       h7: {
+        color: palette.grey['600'],
         fontFamily: poppinsFont.style.fontFamily,
         fontSize: '20px',
         fontStyle: 'normal',
         fontWeight: 500,
         lineHeight: '28px',
-        color: palette.grey['600'],
+      },
+      hairline1: {
+        fontSize: '18px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '18px',
+      },
+      hairline1Bold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '18px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '18px',
+      },
+      hairline1Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '18px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '18px',
+      },
+      hairline2: {
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 400,
+        lineHeight: '16px',
+      },
+      hairline2Bold: {
+        fontFamily: interFontBold.style.fontFamily,
+        fontSize: '16px',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        lineHeight: '16px',
+      },
+      hairline2Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
+        fontSize: '18px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        lineHeight: '18px',
       },
       /**
        * Text
@@ -615,15 +769,15 @@ export const createTheme = (deviceType: DeviceType) =>
         fontWeight: 400,
         lineHeight: '40px',
       },
-      text1Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
+      text1Bold: {
+        fontFamily: interFontBold.style.fontFamily,
         fontSize: '26px',
         fontStyle: 'normal',
         fontWeight: 600,
         lineHeight: '40px',
       },
-      text1Bold: {
-        fontFamily: interFontBold.style.fontFamily,
+      text1Semi: {
+        fontFamily: interFontSemi.style.fontFamily,
         fontSize: '26px',
         fontStyle: 'normal',
         fontWeight: 600,
@@ -635,13 +789,6 @@ export const createTheme = (deviceType: DeviceType) =>
         fontWeight: 400,
         lineHeight: '34px',
       },
-      text2Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '22px',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        lineHeight: '34px',
-      },
       text2Bold: {
         fontFamily: interFontBold.style.fontFamily,
         fontSize: '22px',
@@ -649,37 +796,17 @@ export const createTheme = (deviceType: DeviceType) =>
         fontWeight: 700,
         lineHeight: '34px',
       },
-      body1: {
-        fontSize: '20px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '32px',
-      },
-      body1Semi: {
+      text2Semi: {
         fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '20px',
+        fontSize: '22px',
         fontStyle: 'normal',
         fontWeight: 600,
-        lineHeight: '32px',
-      },
-      body1Bold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '20px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '32px',
+        lineHeight: '34px',
       },
       text3: {
         fontSize: '18px',
         fontStyle: 'normal',
         fontWeight: 400,
-        lineHeight: '30px',
-      },
-      text3Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '18px',
-        fontStyle: 'normal',
-        fontWeight: 600,
         lineHeight: '30px',
       },
       text3Bold: {
@@ -689,139 +816,12 @@ export const createTheme = (deviceType: DeviceType) =>
         fontWeight: 700,
         lineHeight: '30px',
       },
-      body2: {
-        fontSize: '16px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '26px',
-      },
-      body2Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '16px',
-        fontStyle: 'normal',
-        fontWeight: 500,
-        lineHeight: '26px',
-      },
-      body2Bold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '16px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '26px',
-      },
-      hairline1: {
-        fontSize: '18px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '18px',
-      },
-      hairline1Semi: {
+      text3Semi: {
         fontFamily: interFontSemi.style.fontFamily,
         fontSize: '18px',
         fontStyle: 'normal',
         fontWeight: 600,
-        lineHeight: '18px',
-      },
-      hairline1Bold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '18px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '18px',
-      },
-      hairline2: {
-        fontSize: '16px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '16px',
-      },
-      hairline2Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '18px',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        lineHeight: '18px',
-      },
-      hairline2Bold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '16px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '16px',
-      },
-      caption: {
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '22px',
-      },
-      captionSemi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        lineHeight: '22px',
-      },
-      captionBold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '22px',
-      },
-      caption1: {
-        fontFamily: interFontRegular.style.fontFamily,
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '22px',
-      },
-      caption1Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        lineHeight: '22px',
-      },
-      caption1Bold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '22px',
-      },
-      caption2: {
-        fontSize: '12px',
-        fontStyle: 'normal',
-        fontWeight: 400,
-        lineHeight: '20px',
-      },
-      caption2Semi: {
-        fontFamily: interFontSemi.style.fontFamily,
-        fontSize: '12px',
-        fontStyle: 'normal',
-        fontWeight: 600,
-        lineHeight: '20px',
-      },
-      caption2Bold: {
-        fontFamily: interFontBold.style.fontFamily,
-        fontSize: '12px',
-        fontStyle: 'normal',
-        fontWeight: 700,
-        lineHeight: '20px',
-      },
-      button: {
-        fontFamily: interFontMedium.style.fontFamily,
-        fontSize: '14px',
-        fontStyle: 'normal',
-        fontWeight: 500,
-        lineHeight: '24px',
-        textTransform: 'none',
+        lineHeight: '30px',
       },
     }),
-    transitions: {
-      duration: {
-        standard: 150,
-      },
-    },
   })

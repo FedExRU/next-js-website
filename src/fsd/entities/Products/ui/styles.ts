@@ -9,50 +9,50 @@ export const getStyles = (isFavorite?: boolean) => {
   return createSxStyles(
     {
       product: theme => ({
-        pb: 6,
         [`&:hover .${classes.action}, &:hover .${classes.actionSecondary}`]: {
           opacity: 1,
-          visibility: 'visible',
           transition: theme.transitions.create(['opacity', 'visibility']),
+          visibility: 'visible',
         },
+        pb: 6,
       }),
-      productImageWrapper: {
-        position: 'relative',
-        height: { xs: 308, md: 357.5 },
-      },
-      productImageSkeleton: {
-        width: '100%',
-        height: '100%',
-        maxHeight: 348.99,
-        transform: 'none',
-      },
-      productRating: { height: 32 },
-      productInfo: {
-        position: 'absolute',
-        height: '100%',
-        width: '100%',
-        top: 0,
-        p: 2,
-      },
       productAction: {
-        position: 'absolute',
         bottom: 0,
-        width: '100%',
-        p: 2,
         display: 'flex',
         justifyContent: 'center',
+        p: 2,
+        position: 'absolute',
+        width: '100%',
       },
       productActionWrapper: {
-        visibility: { xs: 'visible', md: 'hidden' },
-        opacity: { xs: 1, md: 0 },
+        opacity: { md: 0, xs: 1 },
+        visibility: { md: 'hidden', xs: 'visible' },
       },
-      productPrice: { height: 32, display: 'flex', alignItems: 'end' },
       productFavorite: {
         display: 'flex',
         justifyContent: 'flex-end',
-        visibility: { xs: 'visible', md: isFavorite ? 'visible' : 'hidden' },
-        opacity: { xs: 1, md: isFavorite ? 1 : 0 },
+        opacity: { md: isFavorite ? 1 : 0, xs: 1 },
+        visibility: { md: isFavorite ? 'visible' : 'hidden', xs: 'visible' },
       },
+      productImageSkeleton: {
+        height: '100%',
+        maxHeight: 348.99,
+        transform: 'none',
+        width: '100%',
+      },
+      productImageWrapper: {
+        height: { md: 357.5, xs: 308 },
+        position: 'relative',
+      },
+      productInfo: {
+        height: '100%',
+        p: 2,
+        position: 'absolute',
+        top: 0,
+        width: '100%',
+      },
+      productPrice: { alignItems: 'end', display: 'flex', height: 32 },
+      productRating: { height: 32 },
     },
     classes,
   )

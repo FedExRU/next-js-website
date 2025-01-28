@@ -1,12 +1,13 @@
 'use client'
 
-import { FC } from 'react'
-import Image from 'next/image'
 import { Box } from '@mui/material'
+import Image from 'next/image'
+import { FC } from 'react'
+
 import { getSliderItemImageProps } from '../../utils'
-import { SliderWrapperProps } from './types'
 import wrapperImage from './assets/wrapper.webp'
 import { getStyles } from './styles'
+import { SliderWrapperProps } from './types'
 
 export const SliderWrapper: FC<SliderWrapperProps> = ({ children }) => {
   const { sx, ...rest } = getSliderItemImageProps()

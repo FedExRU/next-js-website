@@ -1,23 +1,22 @@
-import { Theme } from '@mui/material'
-import { SxProps } from '@mui/system'
+import { SxProps, Theme } from '@mui/material'
 
-export type SxStyleModel<TName extends string | number | symbol> = Record<
+export type SxStyleModel<TName extends number | string | symbol> = Record<
   TName,
   SxProps<Theme>
 >
 
 export type SxStyles<
-  TName extends string | number | symbol,
-  TClassName extends string | number | symbol = string,
+  TName extends number | string | symbol,
+  TClassName extends number | string | symbol = string,
 > = {
-  styles: Record<TName, Required<SxProps<Theme>>>
   classes: Record<TClassName, string>
+  styles: Record<TName, Required<SxProps<Theme>>>
 }
 
 export const createSxStyles = <
-  TName extends string | number | symbol = string,
-  TClassName extends string | number | symbol = string,
+  TName extends number | string | symbol = string,
+  TClassName extends number | string | symbol = string,
 >(
   model: SxStyleModel<TName>,
   classes?: Record<TClassName, string>,
-) => ({ styles: model, classes }) as SxStyles<TName, TClassName>
+) => ({ classes, styles: model }) as SxStyles<TName, TClassName>

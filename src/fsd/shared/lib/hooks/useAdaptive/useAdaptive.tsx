@@ -11,8 +11,8 @@ export const useAdaptive = (): UseAdaptiveReturnProps => {
   const isLaptop = useIsLaptop()
 
   return {
-    isTablet,
-    isMobile,
     isLaptop,
+    isMobile,
+    isTablet,
   }
 }
