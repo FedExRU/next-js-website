@@ -1,9 +1,10 @@
+import { EntityWithLayout, EntityWithSkeleton } from '@fsd/shared'
 import { ReactElement } from 'react'
-import { IArticle } from '../api'
-import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 
-export type ArticleProps = Partial<IArticle> &
+import { IArticle } from '../api'
+
+export type ArticleProps = EntityWithLayout &
   EntityWithSkeleton &
-  EntityWithLayout & {
+  Partial<IArticle> & {
     renderAction?: () => ReactElement<unknown>
   }

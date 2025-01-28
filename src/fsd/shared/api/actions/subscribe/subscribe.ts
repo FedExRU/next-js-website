@@ -1,6 +1,7 @@
 'use server'
 
 import * as yup from 'yup'
+
 import { ServerActionResponseCodes } from '../constants'
 import { SubscribeResponse } from './types'
 import { validationSchema } from './validationSchema'
@@ -16,15 +17,15 @@ export async function subscribe(
 
     return {
       code: ServerActionResponseCodes.Success,
-      success: true,
       message: 'Success subscribe',
+      success: true,
     }
   } catch (e) {
     const { message } = e as yup.ValidationError
 
     return {
-      message,
       code: ServerActionResponseCodes.BadRequest,
+      message,
       success: false,
     }
   }

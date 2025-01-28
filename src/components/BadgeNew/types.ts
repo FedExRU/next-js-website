@@ -1,6 +1,6 @@
-export type BadgeNewSize = 'medium' | 'large'
-
 export type BadgeNewProps = {
-  size?: BadgeNewSize
   caption?: string
+  size?: BadgeNewSize
 }
+
+export type BadgeNewSize = 'large' | 'medium'

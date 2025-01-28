@@ -1,8 +1,9 @@
 import { Breakpoint, Theme } from '@mui/material'
+
 import { GetSxArgs } from './types'
 
 export const makeGetSx =
-  ({ sx, size = {} }: GetSxArgs) =>
+  ({ size = {}, sx }: GetSxArgs) =>
   (theme: Theme) => {
     const sxData = typeof sx === 'function' ? sx(theme) : sx || {}
     const breakpoints = Object.keys(size) as Breakpoint[]

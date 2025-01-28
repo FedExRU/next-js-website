@@ -1,5 +1,6 @@
-import { IArticle } from './types'
 import { query } from '@fsd/shared'
+
+import { IArticle } from './types'
 
 export class ArticlesApi {
   static getNew = async () => {

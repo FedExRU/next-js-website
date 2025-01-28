@@ -6,17 +6,17 @@ import { forwardRef } from 'react'
 export const SliderLoader = forwardRef<HTMLDivElement, BoxProps>(
   (props, ref) => (
     <Box
+      ref={ref}
       sx={{
+        alignItems: 'center',
+        display: 'flex',
+        height: '100%',
+        justifyContent: 'center',
+        left: 0,
         position: 'absolute',
         top: 0,
-        left: 0,
-        height: '100%',
         width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
       }}
-      ref={ref}
       {...props}
     >
       <CircularProgress size={60} />

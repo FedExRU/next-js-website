@@ -1,15 +1,16 @@
 'use client'
 
+import { type RequestError, type RequestResult } from '@fsd/shared'
 import {
   QueryKey,
+  useQuery,
   UseQueryOptions,
   UseQueryResult,
-  useQuery,
 } from '@tanstack/react-query'
-import { ProductsApi, IProduct } from '../../../api'
+
+import { IProduct, ProductsApi } from '../../../api'
 import { NEW_PRODUCTS_QUERY_KEY } from './constants'
 import { UseGetNewProductsOptions } from './types'
-import { type RequestResult, type RequestError } from '@fsd/shared'
 
 export const getNewProductsQueryKey = (): QueryKey => [NEW_PRODUCTS_QUERY_KEY]
 
@@ -24,7 +25,7 @@ export const useGetNewProductsQuery = <T = RequestResult<IProduct>>(
   config?: Partial<UseQueryOptions<RequestResult<IProduct>, RequestError, T>>,
 ): UseQueryResult<T, RequestError> =>
   useQuery({
-    queryKey: getNewProductsQueryKey(),
     queryFn: () => getNewProductsRequest(),
+    queryKey: getNewProductsQueryKey(),
     ...(config || {}),
   })

@@ -1,9 +1,10 @@
+import { subscribe, SubscribeResponse } from '@fsd/shared'
 import { useFormik } from 'formik'
 import { useActionState } from 'react'
+
 import { initialFormState, initialValues } from './constants'
-import { validationSchema } from './validationSchema'
 import { SubscribeFormData, UseSubscribeFormReturnProps } from './types'
-import { subscribe, SubscribeResponse } from '@fsd/shared'
+import { validationSchema } from './validationSchema'
 
 export const useSubscribeForm = (): UseSubscribeFormReturnProps => {
   const [state, formAction] = useActionState<SubscribeResponse, FormData>(
@@ -11,19 +12,19 @@ export const useSubscribeForm = (): UseSubscribeFormReturnProps => {
     initialFormState,
   )
 
-  const { isValid, errors, handleChange, values } =
+  const { errors, handleChange, isValid, values } =
     useFormik<SubscribeFormData>({
       initialValues,
-      validationSchema,
       onSubmit: () => {},
+      validationSchema,
     })
 
   return {
-    isValid,
     errors,
-    handleChange,
-    values,
-    state,
     formAction,
+    handleChange,
+    isValid,
+    state,
+    values,
   }
 }

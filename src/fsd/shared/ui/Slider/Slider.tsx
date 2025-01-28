@@ -1,25 +1,26 @@
 'use client'
 
-import { FC, useRef, useState, Children as ReactChildren } from 'react'
+import { SLIDER_AUTOPLAY_DELAY } from '@fsd/shared'
 import 'swiper/css'
-import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react'
-import { Autoplay } from 'swiper/modules'
 import { Box, Fade } from '@mui/material'
+import { FC, Children as ReactChildren, useRef, useState } from 'react'
+import { Autoplay } from 'swiper/modules'
+import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react'
+
 import {
-  SliderNavigationButton,
-  SliderNavigationVariant,
   SliderBullets,
   SliderLoader,
+  SliderNavigationButton,
+  SliderNavigationVariant,
   SliderWrapper,
 } from './components'
 import { LOADING_APPEAR_TIMEOUT } from './constants'
 import { SliderProps } from './types'
-import { SLIDER_AUTOPLAY_DELAY } from '@fsd/shared'
 
 export const Slider: FC<SliderProps> = ({
-  loadingAppearTimeout = LOADING_APPEAR_TIMEOUT,
-  isLoading = false,
   children,
+  isLoading = false,
+  loadingAppearTimeout = LOADING_APPEAR_TIMEOUT,
 }) => {
   const swiper = useRef<SwiperClass>(undefined)
 
@@ -62,47 +63,47 @@ export const Slider: FC<SliderProps> = ({
     <Box sx={{ position: 'relative' }}>
       <SliderNavigationButton
         disabled={isStart || isLoading}
-        variant={SliderNavigationVariant.prev}
         onClick={handleClickPrev}
+        variant={SliderNavigationVariant.prev}
       />
       <SliderWrapper>
         <Fade
           appear={false}
           in={isLoading}
-          unmountOnExit
           timeout={loadingAppearTimeout}
+          unmountOnExit
         >
           <SliderLoader />
         </Fade>
-        <Fade in={!isLoading} unmountOnExit timeout={loadingAppearTimeout}>
+        <Fade in={!isLoading} timeout={loadingAppearTimeout} unmountOnExit>
           <Box>
             <Swiper
               autoplay={{
                 delay: SLIDER_AUTOPLAY_DELAY,
               }}
               modules={[Autoplay]}
-              onSwiper={handleSwiper}
               onSlideChange={handleSlideChange}
+              onSwiper={handleSwiper}
               slidesPerView={1}
             >
               {ReactChildren.map(children, (child, index) => (
-                <SwiperSlide style={{ height: 'auto' }} key={index}>
+                <SwiperSlide key={index} style={{ height: 'auto' }}>
                   {child}
                 </SwiperSlide>
               ))}
             </Swiper>
             <SliderBullets
+              activeSlideIndex={activeSlideIndex}
               onClick={handleBulletClick}
               slidesCount={ReactChildren.count(children)}
-              activeSlideIndex={activeSlideIndex}
             />
           </Box>
         </Fade>
       </SliderWrapper>
       <SliderNavigationButton
         disabled={isEnd || isLoading}
-        variant={SliderNavigationVariant.next}
         onClick={handleClickNext}
+        variant={SliderNavigationVariant.next}
       />
     </Box>
   )

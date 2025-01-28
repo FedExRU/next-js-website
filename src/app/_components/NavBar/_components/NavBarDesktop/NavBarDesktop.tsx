@@ -1,50 +1,51 @@
-import { FC, memo } from 'react'
 import Box from '@mui/material/Box'
-import Link from 'next/link'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { NavBarDesktopProps } from './types'
-import { NavBarTools } from './NavBarTools'
 import { SiteLogo } from 'components/Logos'
+import Link from 'next/link'
+import { FC, memo } from 'react'
+
+import { NavBarTools } from './NavBarTools'
+import { NavBarDesktopProps } from './types'
 
 export const NavBarDesktop: FC<NavBarDesktopProps> = memo(
   ({ currentPath, routes }) => {
     return (
       <Box
         sx={{
-          width: '100%',
-          display: { xs: 'none', md: 'flex' },
           alignItems: 'center',
+          display: { md: 'flex', xs: 'none' },
+          width: '100%',
         }}
       >
         <Button
+          aria-label="3legant"
           component={Link}
           href="/"
           sx={{
             borderBottom: 'none',
             display: 'flex',
-            paddingLeft: 1,
-            paddingRight: 1,
             marginLeft: -1,
             marginRight: -1,
+            paddingLeft: 1,
+            paddingRight: 1,
           }}
-          aria-label="3legant"
         >
           <SiteLogo />
         </Button>
         <Box
           component="nav"
-          sx={{ margin: 'auto', display: { xs: 'none', md: 'flex' } }}
+          sx={{ display: { md: 'flex', xs: 'none' }, margin: 'auto' }}
         >
           <Box
             component="ul"
             sx={theme => ({
-              padding: 0,
-              margin: theme.spacing(0, 5),
               display: 'flex',
+              margin: theme.spacing(0, 5),
+              padding: 0,
             })}
           >
-            {routes.map(({ path, id, label }) => (
+            {routes.map(({ id, label, path }) => (
               <Box
                 component="li"
                 key={id}
@@ -54,21 +55,21 @@ export const NavBarDesktop: FC<NavBarDesktopProps> = memo(
                 })}
               >
                 <Typography
-                  variant="button"
                   component={Link}
                   href={path}
                   sx={theme => ({
-                    transition: theme.transitions.create('color'),
-                    display: 'flex',
-                    textTransform: 'capitalize',
-                    color:
-                      currentPath === path ? 'text.primary' : 'text.secondary',
-                    textDecoration: 'none',
-                    fontWeight: 'medium',
                     '&:hover': {
                       color: 'common.black',
                     },
+                    color:
+                      currentPath === path ? 'text.primary' : 'text.secondary',
+                    display: 'flex',
+                    fontWeight: 'medium',
+                    textDecoration: 'none',
+                    textTransform: 'capitalize',
+                    transition: theme.transitions.create('color'),
                   })}
+                  variant="button"
                 >
                   {label}
                 </Typography>

@@ -1,22 +1,23 @@
 'use client'
 
-import { FC } from 'react'
 import Box from '@mui/material/Box'
-import { BadgeNewProps } from './types'
+import { FC } from 'react'
+
 import { BadgeNewSxProps } from './constants'
+import { BadgeNewProps } from './types'
 
 export const BadgeNew: FC<BadgeNewProps> = ({
   caption = 'New',
   size = 'medium',
 }) => (
   <Box
-    sx={BadgeNewSxProps[size]}
+    aria-label="New product"
     bgcolor="common.white"
     borderRadius={1}
-    textTransform="uppercase"
     component="span"
     display="inline-flex"
-    aria-label="New product"
+    sx={BadgeNewSxProps[size]}
+    textTransform="uppercase"
   >
     {caption}
   </Box>

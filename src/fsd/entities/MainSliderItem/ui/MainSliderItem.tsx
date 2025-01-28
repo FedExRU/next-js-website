@@ -1,17 +1,18 @@
 'use client'
 
-import React, { FC } from 'react'
+import { getSliderItemImageProps } from '@fsd/shared'
 import { Box } from '@mui/material'
 import Image from 'next/image'
-import { MainSliderItemProps } from './types'
+import React, { FC } from 'react'
+
 import { getStyles } from './styles'
-import { getSliderItemImageProps } from '@fsd/shared'
+import { MainSliderItemProps } from './types'
 
 export const MainSliderItem: FC<MainSliderItemProps> = ({
   id,
+  image,
   title,
   url,
-  image,
 }) => {
   const { sx, ...rest } = getSliderItemImageProps()
   const { styles } = getStyles()

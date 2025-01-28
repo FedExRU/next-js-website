@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
+
 import { HomePage } from '@fsd/pages'
 
 export const metadata: Metadata = {
-  title: '...',
   description: '...',
+  title: '...',
 }
 
 export default function Home() {

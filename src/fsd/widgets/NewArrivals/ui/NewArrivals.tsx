@@ -1,15 +1,16 @@
 'use client'
 
+import { Product, useGetNewProductsQuery } from '@fsd/entities'
+import 'swiper/css'
+import { AddToCart, AddToFavorites } from '@fsd/features'
+import { ActionLink, SLIDER_AUTOPLAY_DELAY, Typography } from '@fsd/shared'
 import { Box, Grid2 as Grid } from '@mui/material'
 import { Autoplay, Scrollbar, Grid as SwiperGrid } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
 import { useSlidesCount } from '../lib/hooks'
 import { SliderSkeleton } from './components'
 import { getStyles } from './styles'
-import { Product, useGetNewProductsQuery } from '@fsd/entities'
-import 'swiper/css'
-import { ActionLink, SLIDER_AUTOPLAY_DELAY, Typography } from '@fsd/shared'
-import { AddToCart, AddToFavorites } from '@fsd/features'
 
 const { styles } = getStyles()
 
@@ -25,20 +26,20 @@ export const NewArrivals = () => {
 
   return (
     <Grid container>
-      <Grid size={{ xs: 12, sm: 'grow' }} order={1}>
-        <Typography variant={{ xs: 'h5', sm: 'h4' }} sx={styles.title}>
+      <Grid order={1} size={{ sm: 'grow', xs: 12 }}>
+        <Typography sx={styles.title} variant={{ sm: 'h4', xs: 'h5' }}>
           New Arrivals
         </Typography>
       </Grid>
-      <Grid size={{ xs: 12, sm: 'auto' }} order={{ xs: 3, sm: 2 }}>
+      <Grid order={{ sm: 2, xs: 3 }} size={{ sm: 'auto', xs: 12 }}>
         <Box sx={styles.actionLinkWrapper}>
           <ActionLink text="More Products" />
         </Box>
       </Grid>
-      <Grid size={12} order={{ xs: 2, sm: 3 }}>
+      <Grid order={{ sm: 3, xs: 2 }} size={12}>
         <Box sx={styles.sliderWrapper}>
           {isLoading ? (
-            <SliderSkeleton spaceBetween={24} slidesPerView={slidesCount}>
+            <SliderSkeleton slidesPerView={slidesCount} spaceBetween={24}>
               {Array.from({ length: slidesCount }).map((_, id) => (
                 <Product key={id} layout="secondary" skeleton />
               ))}
@@ -49,16 +50,16 @@ export const NewArrivals = () => {
                 delay: SLIDER_AUTOPLAY_DELAY,
                 pauseOnMouseEnter: true,
               }}
+              height={100}
+              modules={[SwiperGrid, Autoplay, Scrollbar]}
               scrollbar={{
                 hide: false,
               }}
-              spaceBetween={24}
-              height={100}
-              modules={[SwiperGrid, Autoplay, Scrollbar]}
               slidesPerView={slidesCount}
+              spaceBetween={24}
             >
               {data?.items?.map(({ id, ...rest }) => (
-                <SwiperSlide style={{ height: 'auto' }} key={id}>
+                <SwiperSlide key={id} style={{ height: 'auto' }}>
                   <Product
                     id={id}
                     {...rest}

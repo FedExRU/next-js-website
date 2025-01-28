@@ -1,11 +1,12 @@
+import { EntityWithLayout, EntityWithSkeleton } from '@fsd/shared'
 import { ReactElement } from 'react'
-import { IProduct } from '../api'
-import { EntityWithSkeleton, EntityWithLayout } from '@fsd/shared'
 
-export type ProductProps = Partial<IProduct> &
+import { IProduct } from '../api'
+
+export type ProductProps = EntityWithLayout &
   EntityWithSkeleton &
-  EntityWithLayout & {
+  Partial<IProduct> & {
+    isFavorite?: boolean
     renderAction?: () => ReactElement<unknown>
     renderActionSecondary?: (isFavorite?: boolean) => ReactElement<unknown>
-    isFavorite?: boolean
   }

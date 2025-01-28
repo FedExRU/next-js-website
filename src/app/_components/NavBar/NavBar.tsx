@@ -1,14 +1,15 @@
 'use client'
 
-import { FC } from 'react'
-import { usePathname } from 'next/navigation'
+import { useMediaQuery, useTheme } from '@mui/material'
 import AppBar from '@mui/material/AppBar'
 import Container from '@mui/material/Container'
 import Toolbar from '@mui/material/Toolbar'
-import { useMediaQuery, useTheme } from '@mui/material'
-import { NavBarProps } from './types'
+import { usePathname } from 'next/navigation'
+import { FC } from 'react'
+
 import { NavBarDesktop } from './_components'
 import { NavBarRoutes } from './constants'
+import { NavBarProps } from './types'
 
 export const NavBar: FC<NavBarProps> = () => {
   const currentPath = usePathname()
@@ -17,11 +18,11 @@ export const NavBar: FC<NavBarProps> = () => {
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
-    <AppBar position="static" color="default" elevation={0}>
+    <AppBar color="default" elevation={0} position="static">
       <Container>
         <Toolbar disableGutters>
           {isDesktop ? (
-            <NavBarDesktop routes={NavBarRoutes} currentPath={currentPath} />
+            <NavBarDesktop currentPath={currentPath} routes={NavBarRoutes} />
           ) : (
             <h1>123</h1>
           )}

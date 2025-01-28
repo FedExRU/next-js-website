@@ -3,7 +3,7 @@
 import { useAdaptive } from '@fsd/shared'
 
 export const useSlidesCount = () => {
-  const { isTablet, isLaptop, isMobile } = useAdaptive()
+  const { isLaptop, isMobile, isTablet } = useAdaptive()
 
   if (isMobile) {
     return 1

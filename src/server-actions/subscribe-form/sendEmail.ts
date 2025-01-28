@@ -1,8 +1,9 @@
 'use server'
 
 import * as yup from 'yup'
-import { ServerActionResponse } from '../types'
+
 import { ServerActionResponseCodes } from '../constants'
+import { ServerActionResponse } from '../types'
 import { validationSchema } from './vaidationSchema'
 
 export async function sendEmail(
@@ -20,8 +21,8 @@ export async function sendEmail(
     const { message } = e as yup.ValidationError
 
     return {
-      message,
       code: ServerActionResponseCodes.BadRequest,
+      message,
       success: false,
     }
   }

@@ -1,16 +1,17 @@
 'use client'
 
-import { FC } from 'react'
 import {
   Typography as MuiTypography,
   TypographyProps as MuiTypographyProps,
 } from '@mui/material'
+import { FC } from 'react'
+
 import { TypographyProps } from './types'
 import { makeGetSx } from './utils'
 
 export const Typography: FC<TypographyProps> = ({
-  variant: variantProp,
   sx: sxProp,
+  variant: variantProp,
   ...rest
 }) => {
   let sx = sxProp
@@ -22,5 +23,5 @@ export const Typography: FC<TypographyProps> = ({
     sx = makeGetSx({ sx, variant: variantProp })
   }
 
-  return <MuiTypography {...rest} variant={variant} sx={sx} />
+  return <MuiTypography {...rest} sx={sx} variant={variant} />
 }

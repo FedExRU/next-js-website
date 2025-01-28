@@ -1,9 +1,10 @@
 'use client'
 
-import { FC } from 'react'
-import { GoToArticleProps } from './types'
-import { GO_TO_ARTICLE_TEXT } from './constants'
 import { ActionLink, Skeleton } from '@fsd/shared'
+import { FC } from 'react'
+
+import { GO_TO_ARTICLE_TEXT } from './constants'
+import { GoToArticleProps } from './types'
 
 export const GoToArticle: FC<GoToArticleProps> = ({
   skeleton,
@@ -13,9 +14,9 @@ export const GoToArticle: FC<GoToArticleProps> = ({
     {skeleton ? (
       <Skeleton
         sx={{
-          width: '100%',
-          maxWidth: 121,
           height: 28,
+          maxWidth: 121,
+          width: '100%',
         }}
       />
     ) : (

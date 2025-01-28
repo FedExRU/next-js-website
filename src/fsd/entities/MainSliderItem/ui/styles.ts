@@ -4,9 +4,9 @@ export const getStyles = () =>
   createSxStyles({
     mainSliderItem: {
       height: '100%',
-      width: '100%',
-      position: 'relative',
       maxHeight: 536,
+      position: 'relative',
+      width: '100%',
     },
     mainSliderItemWrapper: {
       display: 'flex',

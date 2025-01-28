@@ -1,19 +1,21 @@
+import { FlatCompat } from '@eslint/eslintrc'
+import js from '@eslint/js'
+import typescriptEslint from '@typescript-eslint/eslint-plugin'
+import perfectionist from 'eslint-plugin-perfectionist'
+import prettier from 'eslint-plugin-prettier'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import prettier from 'eslint-plugin-prettier'
-import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
+  allConfig: js.configs.all,
   baseDirectory: __dirname,
   recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
 })
 
 const config = [
+  perfectionist.configs['recommended-natural'],
   ...compat.extends(
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
@@ -29,7 +31,13 @@ const config = [
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       'no-duplicate-imports': 'error',
-      'import/order': ['warn'],
+      'perfectionist/sort-imports': [
+        'error',
+        {
+          order: 'asc',
+          type: 'natural',
+        },
+      ],
 
       'prettier/prettier': [
         'error',

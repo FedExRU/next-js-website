@@ -1,4 +1,5 @@
 import type { JSX } from 'react'
+
 import { UseImageLoadedStatus } from './constants'
 
 export type UseImageLoadedProps = JSX.IntrinsicElements['img']

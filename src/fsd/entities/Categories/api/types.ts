@@ -1,8 +1,8 @@
 export interface ICategory {
+  createdAt: string
   id: number
   image: string
-  slug: string
   name: string
-  createdAt: string
+  slug: string
   updatedAt: string
 }

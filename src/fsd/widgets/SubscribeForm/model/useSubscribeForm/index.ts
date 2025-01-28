@@ -1,2 +1,2 @@
-export * from './useSubscribeForm'
 export * from './types'
+export * from './useSubscribeForm'

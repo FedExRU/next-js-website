@@ -3,22 +3,22 @@ import { NavBarRoute } from './types'
 export const NavBarRoutes: NavBarRoute[] = [
   {
     id: 1,
-    path: '/',
     label: 'Home',
+    path: '/',
   },
   {
     id: 2,
-    path: '/shop',
     label: 'Shop',
+    path: '/shop',
   },
   {
     id: 3,
-    path: '/product',
     label: 'Product',
+    path: '/product',
   },
   {
     id: 4,
-    path: '/contact-us',
     label: 'Contact us',
+    path: '/contact-us',
   },
 ]

@@ -1,10 +1,11 @@
 'use client'
 
-import React, { FC } from 'react'
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
-import { ThemeProviderProps } from './types'
+import React, { FC } from 'react'
+
 import { createTheme } from './createTheme'
+import { ThemeProviderProps } from './types'
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
   children,

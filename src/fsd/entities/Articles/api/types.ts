@@ -1,8 +1,8 @@
 export interface IArticle {
-  id: number
-  name: string
-  imagePreview: string
   createdAt: string
-  updatedAt: string
+  id: number
+  imagePreview: string
   isNew: boolean
+  name: string
+  updatedAt: string
 }

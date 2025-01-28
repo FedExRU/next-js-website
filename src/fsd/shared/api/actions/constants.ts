@@ -1,4 +1,4 @@
 export enum ServerActionResponseCodes {
-  Success = 200,
   BadRequest = 400,
+  Success = 200,
 }

@@ -1,15 +1,16 @@
 'use client'
 
+import { type RequestError, type RequestResult } from '@fsd/shared'
 import {
   QueryKey,
+  useQuery,
   UseQueryOptions,
   UseQueryResult,
-  useQuery,
 } from '@tanstack/react-query'
+
 import { ArticlesApi, IArticle } from '../../../api'
 import { NEW_ARTICLES_QUERY_KEY } from './constants'
 import { UseGetNewArticlesOptions } from './types'
-import { type RequestResult, type RequestError } from '@fsd/shared'
 
 export const getNewArticlesQueryKey = (): QueryKey => [NEW_ARTICLES_QUERY_KEY]
 
@@ -24,7 +25,7 @@ export const useGetNewArticlesQuery = <T = RequestResult<IArticle>>(
   config?: Partial<UseQueryOptions<RequestResult<IArticle>, RequestError, T>>,
 ): UseQueryResult<T, RequestError> =>
   useQuery({
-    queryKey: getNewArticlesQueryKey(),
     queryFn: () => getNewArticlesRequest(),
+    queryKey: getNewArticlesQueryKey(),
     ...(config || {}),
   })

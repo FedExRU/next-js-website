@@ -1,13 +1,14 @@
-import { FC } from 'react'
-import { Grid2 as Grid, Typography } from '@mui/material'
-import { PriceProps } from './types'
 import { Skeleton } from '@fsd/shared'
+import { Grid2 as Grid, Typography } from '@mui/material'
+import { FC } from 'react'
 
-export const Price: FC<PriceProps> = ({ value, valueDiscount, skeleton }) => (
+import { PriceProps } from './types'
+
+export const Price: FC<PriceProps> = ({ skeleton, value, valueDiscount }) => (
   <Grid container spacing={1.5}>
     <Grid>
       {skeleton ? (
-        <Skeleton width={50.2} height={17} />
+        <Skeleton height={17} width={50.2} />
       ) : (
         <Typography variant="caption1Semi">
           ${valueDiscount || value}
@@ -17,9 +18,9 @@ export const Price: FC<PriceProps> = ({ value, valueDiscount, skeleton }) => (
     {valueDiscount && (
       <Grid>
         <Typography
-          variant="caption1"
           color="text.secondary"
           sx={{ textDecoration: 'line-through' }}
+          variant="caption1"
         >
           ${value}
         </Typography>

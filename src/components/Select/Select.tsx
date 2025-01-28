@@ -1,24 +1,25 @@
 'use client'
 
-import { FC } from 'react'
-import InputLabel from '@mui/material/InputLabel'
 import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import MuiSelect from '@mui/material/Select'
+import { FC } from 'react'
+
 import { SelectProps } from './types'
 
 export const Select: FC<SelectProps> = ({
-  items,
-  value,
   id,
+  items,
+  label,
   labelId,
   onChange,
-  label,
   placeholder,
+  value,
 }) => (
   <FormControl>
     {label && <InputLabel id={labelId}>{label}</InputLabel>}
-    <MuiSelect labelId={labelId} id={id} value={value} onChange={onChange}>
+    <MuiSelect id={id} labelId={labelId} onChange={onChange} value={value}>
       {placeholder && (
         <MenuItem disabled value="">
           {placeholder}

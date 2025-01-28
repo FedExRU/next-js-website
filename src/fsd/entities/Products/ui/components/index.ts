@@ -1,2 +1,2 @@
-export * from './Price'
 export * from './Badges'
+export * from './Price'

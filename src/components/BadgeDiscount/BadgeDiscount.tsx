@@ -1,25 +1,26 @@
 'use client'
 
-import { FC } from 'react'
 import Box from '@mui/material/Box'
-import { BadgeDiscountProps } from './types'
+import { FC } from 'react'
+
 import { BadgeDiscountSxProps } from './constants'
+import { BadgeDiscountProps } from './types'
 
 export const BadgeDiscount: FC<BadgeDiscountProps> = ({
-  value,
   size = 'medium',
+  value,
 }) => (
   <Box
+    alignItems="center"
+    aria-label="Product with discount"
     bgcolor="success.main"
-    color="common.white"
     borderRadius={1}
-    textTransform="uppercase"
+    color="common.white"
     component="span"
     display="inline-flex"
-    sx={BadgeDiscountSxProps[size]}
-    alignItems="center"
     justifyContent="center"
-    aria-label="Product with discount"
+    sx={BadgeDiscountSxProps[size]}
+    textTransform="uppercase"
   >
     {value && `-${value}%`}
   </Box>

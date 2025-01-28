@@ -1,8 +1,8 @@
 export const SLIDER_AUTOPLAY_DELAY = 5000 as const
 
 export const DEVICE_TYPE = {
-  MOBILE: 'mobile',
   DESKTOP: 'desktop',
+  MOBILE: 'mobile',
 } as const
 
 export const DIRECTION_ORDER = {

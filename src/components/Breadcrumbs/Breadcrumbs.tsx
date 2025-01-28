@@ -2,19 +2,20 @@
 
 import { default as MuiBreadcrumbs } from '@mui/material/Breadcrumbs'
 import { default as MuiLink } from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Typography from '@mui/material/Typography'
+
 import { BreadcrumbsProps } from './types'
 
 export const localItems = [
   {
-    label: 'Home',
     href: '/',
+    label: 'Home',
   },
   {
-    label: 'Shop',
     href: '/components',
+    label: 'Shop',
   },
 ]
 
@@ -25,21 +26,21 @@ export const Breadcrumbs = ({ items }: BreadcrumbsProps) => {
     <MuiBreadcrumbs aria-label="breadcrumb">
       {(items || localItems).map(({ href, label }) =>
         href === pathname ? (
-          <Typography variant="button" key={href}>
+          <Typography key={href} variant="button">
             {label}
           </Typography>
         ) : (
           <MuiLink
-            key={href}
-            component={Link}
-            underline="hover"
-            href="/"
             color="primary.light"
+            component={Link}
+            href="/"
+            key={href}
             sx={{
               '&:hover': {
                 color: 'primary.main',
               },
             }}
+            underline="hover"
           >
             {label}
           </MuiLink>

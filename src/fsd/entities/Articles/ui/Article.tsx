@@ -1,17 +1,18 @@
 'use client'
 
-import { Box, Grid2 as Grid } from '@mui/material'
-import { FC } from 'react'
-import Image from 'next/image'
-import { ArticleProps } from './types'
-import { getStyles } from './styles'
 import { Skeleton, skeletonImage, Typography } from '@fsd/shared'
+import { Box, Grid2 as Grid } from '@mui/material'
+import Image from 'next/image'
+import { FC } from 'react'
+
+import { getStyles } from './styles'
+import { ArticleProps } from './types'
 
 export const Article: FC<ArticleProps> = ({
   imagePreview,
-  skeleton = false,
   name,
   renderAction,
+  skeleton = false,
 }) => {
   const { styles } = getStyles()
 
@@ -25,8 +26,8 @@ export const Article: FC<ArticleProps> = ({
             ) : (
               <Image
                 alt={(name as string) || ''}
-                src={skeleton ? skeletonImage : (imagePreview as string)}
                 fill
+                src={skeleton ? skeletonImage : (imagePreview as string)}
                 style={{
                   objectFit: 'cover',
                 }}
@@ -38,7 +39,7 @@ export const Article: FC<ArticleProps> = ({
           {skeleton ? (
             <Skeleton sx={styles.articleTitleSkeleton} />
           ) : (
-            <Typography variant={{ xs: 'body2Semi', sm: 'h7' }}>
+            <Typography variant={{ sm: 'h7', xs: 'body2Semi' }}>
               {name}
             </Typography>
           )}

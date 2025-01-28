@@ -1,5 +1,6 @@
-import { SubscribeFormData } from './types'
 import { ServerActionResponse } from 'server-actions/types'
+
+import { SubscribeFormData } from './types'
 
 export const initialState: ServerActionResponse = {
   code: 0,
