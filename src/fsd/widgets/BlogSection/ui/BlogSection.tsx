@@ -11,7 +11,9 @@ export const BlogSection = () => {
   return (
     <Grid container>
       <Grid size="grow">
-        <Typography variant={{ sm: 'h4', xs: 'h5' }}>Articles</Typography>
+        <Typography component="h4" variant={{ sm: 'h4', xs: 'h5' }}>
+          Articles
+        </Typography>
       </Grid>
       <Grid sx={{ alignItems: 'end', display: 'flex' }}>
         <ActionLink text="More Articles" />

@@ -7,11 +7,13 @@ import {
   FeaturesGrid,
   MainSlider,
   NewArrivals,
+  Notifications,
   SubscribeForm,
   WelcomeText,
 } from '@fsd/widgets'
 import { Box, Container, Grid2 as Grid } from '@mui/material'
 import * as React from 'react'
+import { createPortal } from 'react-dom'
 
 export const HomePage = () => {
   return (
@@ -52,6 +54,7 @@ export const HomePage = () => {
       <Box sx={{ mt: 10 }}>
         <SubscribeForm />
       </Box>
+      {createPortal(<Notifications />, document.body)}
     </>
   )
 }

@@ -29,7 +29,7 @@ export const BannerInfo = () => (
             SALE UP TO 35% OFF
           </Typography>
           <Typography
-            component="p"
+            component="h3"
             sx={styles.bannerInfoContentTitle}
             variant={{ sm: 'h4', xs: 'h5' }}
           >
