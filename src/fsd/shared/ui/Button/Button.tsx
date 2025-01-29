@@ -6,8 +6,8 @@ import {
 } from '@mui/material'
 import { FC } from 'react'
 
+import { getStyles } from './styles'
 import { ButtonProps } from './types'
-import { makeGetSx } from './utils'
 
 export const Button: FC<ButtonProps> = ({
   size: sizeProp,
@@ -20,7 +20,7 @@ export const Button: FC<ButtonProps> = ({
   if (typeof sizeProp === 'string') {
     size = sizeProp
   } else if (typeof sizeProp === 'object') {
-    sx = makeGetSx({ size: sizeProp, sx })
+    sx = getStyles({ size: sizeProp, sx }).styles.button
   }
 
   return <MuiButton {...rest} size={size} sx={sx} />

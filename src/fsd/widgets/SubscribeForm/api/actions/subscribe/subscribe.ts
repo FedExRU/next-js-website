@@ -2,30 +2,34 @@
 
 import * as yup from 'yup'
 
-import { ServerActionResponseCodes } from '../constants'
+import { SubscribeFormStatus } from './constants'
 import { SubscribeResponse } from './types'
 import { validationSchema } from './validationSchema'
 
 export async function subscribe(
-  initialState: SubscribeResponse,
+  _: SubscribeResponse,
   data: FormData,
 ): Promise<SubscribeResponse> {
+  const email = data.get('email') as string
+
   try {
     await validationSchema.validate({
-      email: data.get('email') as string,
+      email,
     })
 
     return {
-      code: ServerActionResponseCodes.Success,
-      message: 'Success subscribe',
+      email: '',
+      message: '',
+      status: SubscribeFormStatus.Success,
       success: true,
     }
   } catch (e) {
     const { message } = e as yup.ValidationError
 
     return {
-      code: ServerActionResponseCodes.BadRequest,
+      email,
       message,
+      status: SubscribeFormStatus.Error,
       success: false,
     }
   }
