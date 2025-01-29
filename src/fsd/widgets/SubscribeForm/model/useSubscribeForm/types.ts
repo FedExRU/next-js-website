@@ -1,15 +1,13 @@
-import { SubscribeResponse } from '@fsd/shared'
-import { FormikErrors } from 'formik'
+import { FormEvent, RefObject } from 'react'
 
-export type SubscribeFormData = {
-  email: string
-}
+import { SubscribeResponse } from '../../api'
 
 export type UseSubscribeFormReturnProps = {
-  errors: FormikErrors<SubscribeFormData>
-  formAction: (payload: FormData) => void
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  isValid: boolean
+  action: (payload: FormData) => void
+  error: null | string
+  formRef: RefObject<HTMLFormElement | null>
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>
+  inputRef: RefObject<HTMLInputElement | null>
+  resetError: () => void
   state: SubscribeResponse
-  values: SubscribeFormData
 }

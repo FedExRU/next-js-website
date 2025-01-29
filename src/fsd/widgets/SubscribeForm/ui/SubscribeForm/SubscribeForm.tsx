@@ -1,5 +1,6 @@
 import { EnvelopeIcon, Typography } from '@fsd/shared'
 import { Box, FormControl, FormHelperText, TextField } from '@mui/material'
+import { useId } from 'react'
 
 import { useSubscribeForm } from '../../model'
 import { SubmitButton } from './components'
@@ -8,14 +9,26 @@ import { getStyles } from './styles'
 const { styles } = getStyles()
 
 export const SubscribeForm = () => {
-  const { errors, formAction, handleChange, isValid, state, values } =
-    useSubscribeForm()
+  const {
+    action,
+    error,
+    formRef,
+    handleSubmit,
+    inputRef,
+    resetError,
+    state: { email, message, success } = {},
+  } = useSubscribeForm()
+
+  const formHelperTextHint = useId()
+
+  const hasError = !success || !!error
+
   return (
     <Box sx={styles.subscribeForm}>
       <Box sx={styles.subscribeFormContent}>
         <Typography
           align="center"
-          component="p"
+          component="h5"
           sx={styles.title}
           variant={{ sm: 'h4', xs: 'h6' }}
         >
@@ -28,30 +41,40 @@ export const SubscribeForm = () => {
         >
           Sign up for deals, new products and promotions
         </Typography>
-        <Box action={formAction} component="form" noValidate sx={styles.form}>
-          <FormControl error={!state.success || !isValid}>
+        <Box
+          action={action}
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          ref={formRef}
+          sx={styles.form}
+        >
+          <FormControl error={hasError}>
             <TextField
               slotProps={{
                 input: {
+                  defaultValue: email,
                   endAdornment: <SubmitButton />,
-                  error: !state.success || !isValid,
+                  error: hasError,
+                  id: 'email',
                   inputProps: {
-                    'aria-describedby': 'signup-email-error-text',
+                    'aria-describedby': formHelperTextHint,
                     'aria-label': 'Email Address',
                   },
+                  inputRef,
                   name: 'email',
-                  onChange: handleChange,
+                  onChange: resetError,
                   placeholder: 'Email Address',
+                  required: true,
                   size: 'medium',
                   startAdornment: <EnvelopeIcon />,
                   type: 'email',
-                  value: values.email,
                 },
               }}
               variant="standard"
             />
-            <FormHelperText id="signup-email-error-text" sx={{ minHeight: 22 }}>
-              {errors?.email || (!state.success && state.message)}
+            <FormHelperText id={formHelperTextHint} sx={{ minHeight: 22 }}>
+              {(!success && message) || error}
             </FormHelperText>
           </FormControl>
         </Box>

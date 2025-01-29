@@ -11,7 +11,6 @@ export const SubmitButton = () => {
         '&:focus': { color: 'text.primary' },
         '&:hover': { color: 'text.primary' },
         borderBottom: 'none',
-        color: pending ? 'red' : 'text.secondary',
       }}
       type="submit"
       variant="text"

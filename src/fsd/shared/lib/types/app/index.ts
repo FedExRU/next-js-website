@@ -1,7 +1,6 @@
 import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT } from '../../constants'
 
-export type BaseSingleResponse = {
-  code: number
+export type BaseActionResponse<T = unknown> = T & {
   message: string
   success: boolean
 }
