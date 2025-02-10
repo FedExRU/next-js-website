@@ -1,11 +1,12 @@
-import { macroTask } from '@fsd/shared'
-import { useActionState, useEffect, useRef, useState } from 'react'
+import { macroTask, useActionState } from '@fsd/shared'
+import { sendNotification } from '@fsd/widgets/Notifications'
+import { startTransition, useEffect, useRef, useState } from 'react'
 
 import {
   subscribe,
-  SubscribeFormErrors,
   SubscribeFormStatus,
   SubscribeResponse,
+  validationSchema,
 } from '../../api'
 import { initialFormState } from './constants'
 import { UseSubscribeFormReturnProps } from './types'
@@ -15,57 +16,60 @@ export const useSubscribeForm = (): UseSubscribeFormReturnProps => {
     subscribe,
     initialFormState,
   )
-  const [formKey, setFormKey] = useState(0)
 
   const inputRef = useRef<HTMLInputElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const [error, setError] = useState<null | string>(null)
 
-  /**
-   * Validating the form by the user input with the `validity` API.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/ValidityState
-   */
-  const validate = () => {
-    const input = inputRef.current
-
-    if (!input) {
+  useEffect(() => {
+    if (state.status !== SubscribeFormStatus.Error) {
       return
     }
 
-    if (input.validity.typeMismatch) {
-      return input.setCustomValidity(SubscribeFormErrors.IncorrectEmail)
-    }
+    sendNotification('error!!!')
+  }, [state.status])
 
-    if (input.validity.valueMissing) {
-      return input.setCustomValidity(SubscribeFormErrors.EmailIsEmpty)
-    }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
-    return input.setCustomValidity('')
+    try {
+      await validationSchema.validate({
+        email: e.currentTarget.email.value,
+      })
+
+      startTransition(() => {
+        if (e.target instanceof HTMLFormElement === false) {
+          return
+        }
+
+        action(new FormData(e.target))
+        formRef.current?.reset()
+        macroTask(() => inputRef.current?.blur())
+        sendNotification(
+          'Thank you for subscribing to our newsletter! Soon, you will start receiving interesting events, information about discounts, and much more in your email!',
+          {
+            title: 'You have successfully joined our newsletter',
+          },
+        )
+      })
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e.message)
+      }
+    }
   }
 
-  /**
-   * Resetting the form with a new key.
-   *
-   * @see https://react.dev/learn/preserving-and-resetting-state#resetting-a-form-with-a-key
-   */
-  useEffect(() => {
-    if (state.status === SubscribeFormStatus.Idle) {
-      return validate()
-    }
-
-    if (state.status !== SubscribeFormStatus.Success) {
-      return
-    }
-
-    setFormKey(prev => prev + 1)
-    macroTask(() => inputRef.current?.blur())
-    console.log('ready!')
-  }, [state.status])
+  const resetError = () => {
+    setError('')
+  }
 
   return {
     action,
-    formKey,
+    error,
+    formRef,
+    handleSubmit,
     inputRef,
+    resetError,
     state,
-    validate,
   }
 }

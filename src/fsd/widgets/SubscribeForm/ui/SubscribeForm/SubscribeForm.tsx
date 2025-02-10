@@ -11,13 +11,17 @@ const { styles } = getStyles()
 export const SubscribeForm = () => {
   const {
     action,
-    formKey,
+    error,
+    formRef,
+    handleSubmit,
     inputRef,
+    resetError,
     state: { email, message, success } = {},
-    validate,
   } = useSubscribeForm()
 
   const formHelperTextHint = useId()
+
+  const hasError = !success || !!error
 
   return (
     <Box sx={styles.subscribeForm}>
@@ -37,21 +41,28 @@ export const SubscribeForm = () => {
         >
           Sign up for deals, new products and promotions
         </Typography>
-        <Box action={action} component="form" key={formKey} sx={styles.form}>
-          <FormControl error={!success}>
+        <Box
+          action={action}
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          ref={formRef}
+          sx={styles.form}
+        >
+          <FormControl error={hasError}>
             <TextField
               slotProps={{
                 input: {
                   defaultValue: email,
                   endAdornment: <SubmitButton />,
-                  error: !success,
+                  error: hasError,
                   inputProps: {
                     'aria-describedby': formHelperTextHint,
                     'aria-label': 'Email Address',
                   },
                   inputRef,
                   name: 'email',
-                  onInput: validate,
+                  onChange: resetError,
                   placeholder: 'Email Address',
                   required: true,
                   size: 'medium',
@@ -62,7 +73,7 @@ export const SubscribeForm = () => {
               variant="standard"
             />
             <FormHelperText id={formHelperTextHint} sx={{ minHeight: 22 }}>
-              {!success && message}
+              {(!success && message) || error}
             </FormHelperText>
           </FormControl>
         </Box>

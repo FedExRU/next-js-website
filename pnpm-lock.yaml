@@ -29,6 +29,9 @@ importers:
       '@tanstack/react-query':
         specifier: 5.29.2
         version: 5.29.2(react@19.0.0)
+      '@types/react-transition-group':
+        specifier: ^4.4.12
+        version: 4.4.12(@types/react@19.0.2)
       '@typescript-eslint/parser':
         specifier: ^8.18.0
         version: 8.22.0(eslint@9.19.0)(typescript@5.7.3)
@@ -47,6 +50,9 @@ importers:
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
+      react-transition-group:
+        specifier: ^4.4.5
+        version: 4.4.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       sharp:
         specifier: ^0.33.5
         version: 0.33.5

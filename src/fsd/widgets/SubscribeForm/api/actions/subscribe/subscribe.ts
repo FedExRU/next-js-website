@@ -6,6 +6,11 @@ import { SubscribeFormStatus } from './constants'
 import { SubscribeResponse } from './types'
 import { validationSchema } from './validationSchema'
 
+/**
+ * Subscribe form action with reset state.
+ *
+ * @see https://www.nico.fyi/blog/reset-state-from-react-useactionstate
+ */
 export async function subscribe(
   _: SubscribeResponse,
   data: FormData,

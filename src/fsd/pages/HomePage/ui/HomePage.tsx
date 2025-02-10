@@ -7,6 +7,7 @@ import {
   FeaturesGrid,
   MainSlider,
   NewArrivals,
+  Notifications,
   SubscribeForm,
   WelcomeText,
 } from '@fsd/widgets'
@@ -52,6 +53,7 @@ export const HomePage = () => {
       <Box sx={{ mt: 10 }}>
         <SubscribeForm />
       </Box>
+      <Notifications />
     </>
   )
 }
