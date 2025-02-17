@@ -2,6 +2,7 @@ import { CloseIcon } from '@fsd/shared'
 import {
   Alert,
   AlertTitle,
+  Box,
   Collapse,
   Fade,
   IconButton,
@@ -17,14 +18,13 @@ export const NotificationItem: FC<NotificationItemProps> = ({
   color,
   id,
   message,
-  onClose,
   onClosed,
   onOpened,
-  open,
   title,
 }) => {
   const itemRef = useRef<HTMLDivElement | null>(null)
   const autoCloseTimer = useRef<null | ReturnType<typeof setTimeout>>(null)
+  const [isOpen, setIsOpen] = useState(true)
 
   const [fadeOpen, setFadeOpen] = useState(false)
   const [collapseOpen, setCollapseOpen] = useState(false)
@@ -40,7 +40,7 @@ export const NotificationItem: FC<NotificationItemProps> = ({
   }
 
   const handleClose = () => {
-    onClose?.(id)
+    setIsOpen(false)
     eraseTimer()
     setFadeOpen(false)
   }
@@ -59,12 +59,12 @@ export const NotificationItem: FC<NotificationItemProps> = ({
   }
 
   useEffect(() => {
-    if (open) {
+    if (isOpen) {
       setCollapseOpen(true)
     } else {
       setFadeOpen(false)
     }
-  }, [open])
+  }, [isOpen])
 
   useEffect(() => {
     return () => eraseTimer()
@@ -77,30 +77,61 @@ export const NotificationItem: FC<NotificationItemProps> = ({
       onExited={handleCollapseExited}
       unmountOnExit
     >
-      <Fade in={fadeOpen} onExited={handleFadeExited} timeout={500}>
-        <Alert
-          action={
-            <IconButton
-              color="inherit"
-              onClick={handleClose}
-              size="small"
-              sx={{
-                bgcolor: 'transparent !important',
-                borderBottom: 'none',
-                boxShadow: 'none',
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
-          }
-          color={color}
-          key={id}
-          ref={itemRef}
-        >
-          {title && <AlertTitle component="p">{title}</AlertTitle>}
-          <Typography variant="body2">{message}</Typography>
-        </Alert>
-      </Fade>
+      <Box
+        aria-atomic="true"
+        aria-live="assertive"
+        role="alert"
+        sx={{ position: 'relative' }}
+      >
+        <Fade in={fadeOpen} onExited={handleFadeExited} timeout={500}>
+          <Box
+            action={
+              <IconButton
+                color="primary"
+                onClick={handleClose}
+                size="small"
+                sx={{
+                  bgcolor: 'transparent !important',
+                  borderBottom: 'none',
+                  boxShadow: 'none',
+                }}
+              >
+                <Box
+                  component="span"
+                  sx={{ left: -999999, position: 'absolute' }}
+                >
+                  Close Notification
+                </Box>
+                <CloseIcon />
+              </IconButton>
+            }
+            boxShadow={1}
+            component={Alert}
+            key={id}
+            ref={itemRef}
+            severity={color}
+            sx={{
+              bgcolor: 'common.white',
+            }}
+          >
+            <Box
+              sx={theme => ({
+                backgroundColor:
+                  color === undefined
+                    ? theme.palette.primary.main
+                    : theme.palette[color].main,
+                height: '100%',
+                left: 0,
+                position: 'absolute',
+                top: 0,
+                width: 4,
+              })}
+            />
+            {title && <AlertTitle component="p">{title}</AlertTitle>}
+            <Typography variant="body2">{message}</Typography>
+          </Box>
+        </Fade>
+      </Box>
     </Collapse>
   )
 }
