@@ -27,7 +27,11 @@ export const NewArrivals = () => {
   return (
     <Grid container>
       <Grid order={1} size={{ sm: 'grow', xs: 12 }}>
-        <Typography sx={styles.title} variant={{ sm: 'h4', xs: 'h5' }}>
+        <Typography
+          component="h2"
+          sx={styles.title}
+          variant={{ sm: 'h4', xs: 'h5' }}
+        >
           New Arrivals
         </Typography>
       </Grid>

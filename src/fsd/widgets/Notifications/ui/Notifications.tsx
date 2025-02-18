@@ -5,24 +5,15 @@ import { TransitionGroup } from 'react-transition-group'
 
 import { useNotifications } from '../model'
 import { NotificationItem } from './components'
+import { getStyles } from './styles'
+
 export const Notifications = () => {
   const { erase, notifications } = useNotifications()
+  const { styles } = getStyles()
 
   return (
-    <Stack
-      sx={{
-        bottom: 0,
-        maxWidth: 600,
-        paddingBottom: 2,
-        position: 'fixed',
-        width: '100%',
-        zIndex: 100,
-      }}
-    >
-      <Box
-        component={TransitionGroup}
-        sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
-      >
+    <Stack sx={styles.notificationsStack}>
+      <Box component={TransitionGroup} sx={styles.transitionGroup}>
         {notifications.map(({ id, ...rest }) => (
           <NotificationItem id={id} key={id} onClosed={erase} {...rest} />
         ))}

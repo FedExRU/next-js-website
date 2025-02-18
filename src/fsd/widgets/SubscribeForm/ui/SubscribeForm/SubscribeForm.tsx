@@ -28,7 +28,7 @@ export const SubscribeForm = () => {
       <Box sx={styles.subscribeFormContent}>
         <Typography
           align="center"
-          component="p"
+          component="h5"
           sx={styles.title}
           variant={{ sm: 'h4', xs: 'h6' }}
         >
@@ -56,6 +56,7 @@ export const SubscribeForm = () => {
                   defaultValue: email,
                   endAdornment: <SubmitButton />,
                   error: hasError,
+                  id: 'email',
                   inputProps: {
                     'aria-describedby': formHelperTextHint,
                     'aria-label': 'Email Address',
