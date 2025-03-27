@@ -11,7 +11,7 @@ export const MainSlider = () => {
     <Box>
       <Grid container spacing={4}>
         <Grid size={12}>
-          <Slider isLoading={isLoading}>
+          <Slider autoplay endless isLoading={isLoading}>
             {data?.items?.map(({ id, ...rest }) => (
               <MainSliderItem id={id} key={id} {...rest} />
             ))}
