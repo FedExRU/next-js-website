@@ -1,3 +1,5 @@
+'use client'
+
 import { GoToCategory } from '@fsd/features'
 import { Typography } from '@fsd/shared'
 import { Box, Grid2 as Grid } from '@mui/material'

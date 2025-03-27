@@ -1,9 +1,4 @@
 /**
- * Delay for autoplay.
- */
-export const SLIDER_AUTOPLAY_DELAY = 5000 as const
-
-/**
  * Device types for media queries.
  */
 export const DEVICE_TYPE = {

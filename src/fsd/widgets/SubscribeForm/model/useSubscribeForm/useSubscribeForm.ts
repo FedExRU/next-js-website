@@ -1,3 +1,5 @@
+'use client'
+
 import { macroTask, useActionState } from '@fsd/shared'
 import { sendNotification } from '@fsd/widgets/Notifications'
 import { startTransition, useEffect, useRef, useState } from 'react'

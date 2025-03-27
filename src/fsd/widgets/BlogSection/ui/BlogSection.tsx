@@ -1,3 +1,5 @@
+'use client'
+
 import { Article, IArticle, useGetNewArticlesQuery } from '@fsd/entities'
 import { GoToArticle } from '@fsd/features'
 import { ActionLink, Typography } from '@fsd/shared'
