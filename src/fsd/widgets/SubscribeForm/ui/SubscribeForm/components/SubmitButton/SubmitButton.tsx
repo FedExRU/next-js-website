@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@fsd/shared'
 import { useFormStatus } from 'react-dom'
 

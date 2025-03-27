@@ -1,3 +1,5 @@
+'use client'
+
 import { ADVANTAGES_KIND } from './constants'
 import { data } from './data'
 import { AdvantagesKind, UseAdvantagesReturnProps } from './types'

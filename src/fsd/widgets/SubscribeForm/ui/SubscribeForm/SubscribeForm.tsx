@@ -1,6 +1,8 @@
+'use client'
+
 import { EnvelopeIcon, Typography } from '@fsd/shared'
 import { Box, FormControl, FormHelperText, TextField } from '@mui/material'
-import { useId } from 'react'
+import * as React from 'react'
 
 import { useSubscribeForm } from '../../model'
 import { SubmitButton } from './components'
@@ -8,7 +10,7 @@ import { getStyles } from './styles'
 
 const { styles } = getStyles()
 
-export const SubscribeForm = () => {
+export const SubscribeForm: React.FC = () => {
   const {
     action,
     error,
@@ -19,7 +21,7 @@ export const SubscribeForm = () => {
     state: { email, message, success } = {},
   } = useSubscribeForm()
 
-  const formHelperTextHint = useId()
+  const formHelperTextHint = React.useId()
 
   const hasError = !success || !!error
 

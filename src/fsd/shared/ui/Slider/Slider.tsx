@@ -1,71 +1,95 @@
 'use client'
 
-import { SLIDER_AUTOPLAY_DELAY } from '@fsd/shared'
-import 'swiper/css'
 import { Box, Fade } from '@mui/material'
-import { FC, Children as ReactChildren, useRef, useState } from 'react'
-import { Autoplay } from 'swiper/modules'
-import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react'
+import {
+  type FC,
+  type PropsWithChildren,
+  Children as ReactChildren,
+  useRef,
+  useState,
+} from 'react'
+import SlickSliderComponent from 'react-slick'
 
 import {
   SliderBullets,
   SliderLoader,
   SliderNavigationButton,
-  SliderNavigationVariant,
   SliderWrapper,
 } from './components'
-import { LOADING_APPEAR_TIMEOUT } from './constants'
-import { SliderProps } from './types'
+import { getStyles } from './styles'
+import { SlickSlider, SliderAutoplayTimers, SliderProps } from './types'
 
-export const Slider: FC<SliderProps> = ({
+export const Slider: FC<PropsWithChildren<SliderProps>> = ({
+  autoplay,
+  autoplaySpeed = 5000,
   children,
-  isLoading = false,
-  loadingAppearTimeout = LOADING_APPEAR_TIMEOUT,
+  endless,
+  initialSlide = 0,
+  isLoading,
+  lazyLoad,
+  loadingAppearTimeout = 500,
+  slidesToShow = 1,
+  speed = 500,
+  withArrows,
+  withDots,
 }) => {
-  const swiper = useRef<SwiperClass>(undefined)
+  const sliderRef = useRef<null | SlickSlider>(null)
+  const autoplayEndlessTimer = useRef<SliderAutoplayTimers>({
+    end: undefined,
+    start: undefined,
+  })
+  const [isPrevArrowDisabled, setIsPrevArrowDisabled] = useState(false)
+  const [isNextArrowDisabled, setIsNextArrowDisabled] = useState(false)
 
-  const [isEnd, setIsEnd] = useState(false)
-  const [isStart, setIsStart] = useState(true)
-  const [activeSlideIndex, setActiveSlideIndex] = useState<number>()
+  const { styles } = getStyles()
 
-  const handleSwiper = (s: SwiperClass) => {
-    swiper.current = s
-    setActiveSlideIndex(s.activeIndex)
-  }
-
-  const handleSlideChange = (s: SwiperClass) => {
-    setIsEnd(s.isEnd)
-    setIsStart(s.isBeginning)
-    setActiveSlideIndex(s.activeIndex)
-  }
-
-  const handleClickPrev = () => {
-    if (isStart) {
+  const processArrowsDisabling = (slider?: null | SlickSlider) => {
+    if (!slider) {
       return
     }
+    const currentSlide = slider?.innerSlider?.state?.currentSlide
 
-    swiper.current?.slidePrev()
+    setIsPrevArrowDisabled(currentSlide === 0)
+    setIsNextArrowDisabled(currentSlide === ReactChildren.count(children) - 1)
   }
 
-  const handleClickNext = () => {
-    if (isEnd) {
+  const handleAfterChange = (currentSlide: number) => {
+    processArrowsDisabling(sliderRef.current)
+
+    if (!endless || !autoplay) {
       return
     }
+    clearTimeout(autoplayEndlessTimer.current.start)
+    clearTimeout(autoplayEndlessTimer.current.end)
 
-    swiper.current?.slideNext()
+    const createTimer = () =>
+      setTimeout(() => {
+        sliderRef.current?.slickGoTo(0)
+      }, autoplaySpeed)
+
+    if (currentSlide === ReactChildren.count(children) - 1) {
+      autoplayEndlessTimer.current.end = createTimer()
+    }
+    if (currentSlide === 0) {
+      autoplayEndlessTimer.current.start = createTimer()
+    }
   }
 
-  const handleBulletClick = (slideIndex: number) => {
-    swiper.current?.slideTo(slideIndex)
+  const handleAppendDots = () => (
+    <SliderBullets
+      activeSlideIndex={sliderRef?.current?.innerSlider?.state?.currentSlide}
+      onClick={index => sliderRef?.current?.slickGoTo(index)}
+      slidesCount={ReactChildren.count(children)}
+    />
+  )
+
+  const handleRef = (slider: SlickSlider) => {
+    processArrowsDisabling(slider)
+    sliderRef.current = slider
   }
 
   return (
-    <Box sx={{ position: 'relative' }}>
-      <SliderNavigationButton
-        disabled={isStart || isLoading}
-        onClick={handleClickPrev}
-        variant={SliderNavigationVariant.prev}
-      />
+    <Box sx={styles.sliderWrapper}>
       <SliderWrapper>
         <Fade
           appear={false}
@@ -75,36 +99,52 @@ export const Slider: FC<SliderProps> = ({
         >
           <SliderLoader />
         </Fade>
-        <Fade in={!isLoading} timeout={loadingAppearTimeout} unmountOnExit>
+        <Box
+          component={Fade}
+          in={!isLoading}
+          sx={styles.fade}
+          timeout={loadingAppearTimeout}
+          unmountOnExit
+        >
           <Box>
-            <Swiper
-              autoplay={{
-                delay: SLIDER_AUTOPLAY_DELAY,
-              }}
-              modules={[Autoplay]}
-              onSlideChange={handleSlideChange}
-              onSwiper={handleSwiper}
-              slidesPerView={1}
+            <Box
+              afterChange={handleAfterChange}
+              appendDots={handleAppendDots}
+              autoplay={autoplay}
+              autoplaySpeed={autoplaySpeed}
+              component={SlickSliderComponent}
+              dots={withDots}
+              infinite={!endless}
+              initialSlide={initialSlide}
+              lazyLoad={lazyLoad ? 'anticipated' : undefined}
+              nextArrow={
+                withArrows ? (
+                  <SliderNavigationButton
+                    disabled={isNextArrowDisabled}
+                    variant="next"
+                  />
+                ) : undefined
+              }
+              prevArrow={
+                withArrows ? (
+                  <SliderNavigationButton
+                    disabled={isPrevArrowDisabled}
+                    variant="prev"
+                  />
+                ) : undefined
+              }
+              ref={handleRef}
+              slidesToShow={slidesToShow}
+              speed={speed}
+              sx={styles.slider}
             >
               {ReactChildren.map(children, (child, index) => (
-                <SwiperSlide key={index} style={{ height: 'auto' }}>
-                  {child}
-                </SwiperSlide>
+                <Box key={index}>{child}</Box>
               ))}
-            </Swiper>
-            <SliderBullets
-              activeSlideIndex={activeSlideIndex}
-              onClick={handleBulletClick}
-              slidesCount={ReactChildren.count(children)}
-            />
+            </Box>
           </Box>
-        </Fade>
+        </Box>
       </SliderWrapper>
-      <SliderNavigationButton
-        disabled={isEnd || isLoading}
-        onClick={handleClickNext}
-        variant={SliderNavigationVariant.next}
-      />
     </Box>
   )
 }

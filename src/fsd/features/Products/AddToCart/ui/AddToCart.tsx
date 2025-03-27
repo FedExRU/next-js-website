@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, useMediaQuery } from '@mui/material'
 
 export const AddToCart: React.FC = () => {

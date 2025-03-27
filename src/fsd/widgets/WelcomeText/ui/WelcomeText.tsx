@@ -1,9 +1,10 @@
+'use client'
+
 import { Typography } from '@fsd/shared'
 import { Box, Grid2 as Grid } from '@mui/material'
 import * as React from 'react'
-import { FC } from 'react'
 
-export const WelcomeText: FC = () => (
+export const WelcomeText: React.FC = () => (
   <Grid size={12}>
     <Grid container spacing={{ md: 3, xs: 2 }}>
       <Grid size={{ md: 7, xs: 12 }}>

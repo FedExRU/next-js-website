@@ -1,8 +1,10 @@
+'use client'
+
 import { Advantage, useAdvantages } from '@fsd/entities'
 import { Box, Grid2 as Grid } from '@mui/material'
-import { FC } from 'react'
+import * as React from 'react'
 
-export const FeaturesGrid: FC = () => {
+export const FeaturesGrid: React.FC = () => {
   const { getAdvantageData, getAdvantagesKinds } = useAdvantages()
   return (
     <Box sx={{ mt: 1 }}>

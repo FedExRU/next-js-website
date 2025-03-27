@@ -26,6 +26,7 @@ export const MainSliderItem: FC<MainSliderItemProps> = ({
           ...sx,
           ...styles.mainSliderItemWrapper,
         }}
+        tabIndex={-1}
       >
         <Image alt={title as string} src={image as string} {...rest} />
       </Box>
