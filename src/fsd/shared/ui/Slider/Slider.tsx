@@ -6,11 +6,18 @@ import {
   type PropsWithChildren,
   Children as ReactChildren,
   useRef,
+  useState,
 } from 'react'
-import SlickSlider from 'react-slick'
+import SlickSliderComponent from 'react-slick'
 
-import { SliderLoader, SliderWrapper } from './components'
-import { SliderProps } from './types'
+import {
+  SliderBullets,
+  SliderLoader,
+  SliderNavigationButton,
+  SliderWrapper,
+} from './components'
+import { getStyles } from './styles'
+import { SlickSlider, SliderAutoplayTimers, SliderProps } from './types'
 
 export const Slider: FC<PropsWithChildren<SliderProps>> = ({
   autoplay,
@@ -26,11 +33,28 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
   withDots,
 }) => {
   const sliderRef = useRef<null | SlickSlider>(null)
-  const autoplayEndlessTimer = useRef<
-    Record<'end' | 'start', ReturnType<typeof setTimeout> | undefined>
-  >({ end: undefined, start: undefined })
+  const autoplayEndlessTimer = useRef<SliderAutoplayTimers>({
+    end: undefined,
+    start: undefined,
+  })
+  const [isPrevArrowDisabled, setIsPrevArrowDisabled] = useState(false)
+  const [isNextArrowDisabled, setIsNextArrowDisabled] = useState(false)
 
-  const handleEndlessAutoplay = (currentSlide: number) => {
+  const { styles } = getStyles()
+
+  const processArrowsDisabling = (slider?: null | SlickSlider) => {
+    if (!slider) {
+      return
+    }
+    const currentSlide = slider?.innerSlider?.state?.currentSlide
+
+    setIsPrevArrowDisabled(currentSlide === 0)
+    setIsNextArrowDisabled(currentSlide === ReactChildren.count(children) - 1)
+  }
+
+  const handleAfterChange = (currentSlide: number) => {
+    processArrowsDisabling(sliderRef.current)
+
     if (!endless || !autoplay) {
       return
     }
@@ -60,28 +84,58 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
         >
           <SliderLoader />
         </Fade>
-        <Fade in={!isLoading} timeout={loadingAppearTimeout} unmountOnExit>
+        <Box
+          component={Fade}
+          in={!isLoading}
+          sx={{ height: '100%' }}
+          timeout={loadingAppearTimeout}
+          unmountOnExit
+        >
           <Box>
-            <SlickSlider
-              afterChange={handleEndlessAutoplay}
+            <Box
+              afterChange={handleAfterChange}
+              appendDots={() => (
+                <SliderBullets
+                  activeSlideIndex={
+                    sliderRef?.current?.innerSlider?.state?.currentSlide
+                  }
+                  onClick={index => sliderRef?.current?.slickGoTo(index)}
+                  slidesCount={ReactChildren.count(children)}
+                />
+              )}
               autoplay={autoplay}
               autoplaySpeed={autoplaySpeed}
+              component={SlickSliderComponent}
               dots={withDots}
               infinite={!endless}
               initialSlide={initialSlide}
               lazyLoad={lazyLoad ? 'anticipated' : undefined}
-              ref={slider => {
+              nextArrow={
+                <SliderNavigationButton
+                  disabled={isNextArrowDisabled}
+                  variant="next"
+                />
+              }
+              prevArrow={
+                <SliderNavigationButton
+                  disabled={isPrevArrowDisabled}
+                  variant="prev"
+                />
+              }
+              ref={(slider: SlickSlider) => {
+                processArrowsDisabling(slider)
                 sliderRef.current = slider
               }}
               slidesToShow={slidesToShow}
               speed={speed}
+              sx={styles.slider}
             >
               {ReactChildren.map(children, (child, index) => (
                 <div key={index}>{child}</div>
               ))}
-            </SlickSlider>
+            </Box>
           </Box>
-        </Fade>
+        </Box>
       </SliderWrapper>
     </Box>
   )
