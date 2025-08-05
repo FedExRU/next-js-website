@@ -2,25 +2,15 @@ module.exports = {
   allowBreakingChanges: ['feat', 'fix'],
   allowCustomScopes: true,
   scopes: [
-    'Component: CartFlyOut',
-    'Component: Menu',
-    'Pages: Blog',
-    'Pages: Cart',
-    'Pages: CheckOut',
-    'Pages: Contant',
-    'Pages: HomePage',
-    'Pages: MyAccount',
-    'Pages: OrderComplete',
-    'Pages: ProductPage',
-    'Pages: ShopPage',
-    'Pages: SignIn',
-    'Pages: SignUp',
-    'Pages: Update',
-    'Service: AuthService',
-    'Service: OrderService',
-    'Shared',
+    'auth', // Аутентификация
+    'blog', // Блог
+    'cart', // Корзина и оформление заказа
+    'core', // Ядро приложения (роутинг, конфигурация)
+    'products', // Товары
+    'shared', // Общие, переиспользуемые функции и компоненты
+    'ui', // Общие компоненты пользовательского интерфейса
   ],
-  skipQuestions: ['body'],
+  skipQuestions: ['body', 'breaking', 'footer'],
   subjectLimit: 100,
   types: [
     { name: 'feat:     A new feature', value: 'feat' },
