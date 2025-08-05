@@ -1,7 +1,6 @@
 'use client'
 
 import { IconButton } from '@mui/material'
-import { FC } from 'react'
 
 import {
   ARIA_LABEL_BY_VARIANT,
@@ -11,7 +10,7 @@ import {
 } from './constants'
 import { SliderNavigationButtonProps } from './types'
 
-export const SliderNavigationButton: FC<SliderNavigationButtonProps> = ({
+export const SliderNavigationButton: React.FC<SliderNavigationButtonProps> = ({
   disabled,
   onClick,
   variant = SliderNavigationVariant.next,

@@ -1,7 +1,6 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
-import { FC } from 'react'
 
-export const CheckboxIcon: FC<SvgIconProps> = props => (
+export const CheckboxIcon: React.FC<SvgIconProps> = props => (
   <SvgIcon
     {...props}
     sx={{

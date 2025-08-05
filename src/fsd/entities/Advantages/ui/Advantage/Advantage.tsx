@@ -1,11 +1,14 @@
 import { Typography } from '@fsd/shared'
 import { Box } from '@mui/material'
-import { FC } from 'react'
 
 import { getStyles } from './styles'
 import { AdvantageProps } from './types'
 
-export const Advantage: FC<AdvantageProps> = ({ description, icon, title }) => {
+export const Advantage: React.FC<AdvantageProps> = ({
+  description,
+  icon,
+  title,
+}) => {
   const { styles } = getStyles()
 
   return (

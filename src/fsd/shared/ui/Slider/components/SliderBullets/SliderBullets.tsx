@@ -1,17 +1,14 @@
 'use client'
 
-import { Box, IconButton, useTheme } from '@mui/material'
-import { FC } from 'react'
+import { Box, IconButton } from '@mui/material'
 
 import { SliderBulletsProps } from './types'
 
-export const SliderBullets: FC<SliderBulletsProps> = ({
+export const SliderBullets: React.FC<SliderBulletsProps> = ({
   activeSlideIndex,
   onClick,
   slidesCount,
 }) => {
-  const theme = useTheme()
-
   const makeHandleClick = (slideIndex: number) => () => {
     onClick(slideIndex)
   }
@@ -38,7 +35,7 @@ export const SliderBullets: FC<SliderBulletsProps> = ({
           aria-label={`Slide button number ${i + 1}`}
           key={i}
           onClick={makeHandleClick(i)}
-          sx={{
+          sx={theme => ({
             alignItems: 'center',
             borderBottomLeftRadius: 8,
             borderBottomRightRadius: 8,
@@ -51,7 +48,7 @@ export const SliderBullets: FC<SliderBulletsProps> = ({
               easing: theme.transitions.easing.sharp,
             }),
             width: i === activeSlideIndex ? 30 : 8,
-          }}
+          })}
         />
       ))}
     </Box>

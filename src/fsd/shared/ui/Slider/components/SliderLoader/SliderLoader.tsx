@@ -1,9 +1,9 @@
 'use client'
 
 import { Box, BoxProps, CircularProgress } from '@mui/material'
-import { forwardRef } from 'react'
+import * as React from 'react'
 
-export const SliderLoader = forwardRef<HTMLDivElement, BoxProps>(
+export const SliderLoader = React.forwardRef<HTMLDivElement, BoxProps>(
   (props, ref) => (
     <Box
       ref={ref}

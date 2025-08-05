@@ -3,12 +3,11 @@
 import { LAYOUT, skeletonImage } from '@fsd/shared'
 import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
 import Image from 'next/image'
-import { FC } from 'react'
 
 import { getStyles } from './styles'
 import { CategoryProps } from './types'
 
-export const Category: FC<CategoryProps> = ({
+export const Category: React.FC<CategoryProps> = ({
   image,
   layout = 'primary',
   name,
@@ -25,7 +24,7 @@ export const Category: FC<CategoryProps> = ({
         alignItems={isPrimary ? 'flex-start' : 'end'}
         container
         spacing={{ sm: 3, xs: 2 }}
-        sx={{ width: '100%' }}
+        sx={styles.categoryGrid}
       >
         <Grid size={isPrimary ? 12 : 6}>
           <Box>
@@ -45,10 +44,7 @@ export const Category: FC<CategoryProps> = ({
               height={0}
               sizes="100vw"
               src={skeleton ? skeletonImage : (image as string)}
-              style={{
-                height: '100%',
-                width: '100%',
-              }}
+              style={styles.categoryImage as React.CSSProperties}
               width={0}
             />
           </Box>

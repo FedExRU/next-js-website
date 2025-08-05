@@ -3,12 +3,11 @@
 import { getSliderItemImageProps } from '@fsd/shared'
 import { Box } from '@mui/material'
 import Image from 'next/image'
-import React, { FC } from 'react'
 
 import { getStyles } from './styles'
 import { MainSliderItemProps } from './types'
 
-export const MainSliderItem: FC<MainSliderItemProps> = ({
+export const MainSliderItem: React.FC<MainSliderItemProps> = ({
   id,
   image,
   title,

@@ -13,6 +13,7 @@ export const getStyles = () =>
       mx: 'auto',
       width: '100%',
     },
+    formHelperText: { minHeight: 22 },
     subscribeForm: {
       alignItems: 'center',
       background: theme => ({

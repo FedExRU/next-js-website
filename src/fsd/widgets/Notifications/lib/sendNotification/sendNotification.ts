@@ -1,5 +1,4 @@
 import { eventBus } from '@fsd/shared'
-import { ReactNode } from 'react'
 
 import { EVENT_NAME } from './constants'
 import { SendNotificationsOptions } from './types'
@@ -11,7 +10,7 @@ import { SendNotificationsOptions } from './types'
  * @param {NotificationType} type - The type of the notification.
  */
 export const sendNotification = (
-  message: ReactNode,
+  message: React.ReactNode,
   options: SendNotificationsOptions = { type: 'success' },
 ) => {
   eventBus.broadcast(EVENT_NAME, message, options)
@@ -19,5 +18,5 @@ export const sendNotification = (
 
 export const subscribe = (
   eventName: string,
-  cb: (message: ReactNode, options?: SendNotificationsOptions) => void,
+  cb: (message: React.ReactNode, options?: SendNotificationsOptions) => void,
 ) => eventBus.subscribe(eventName, cb)

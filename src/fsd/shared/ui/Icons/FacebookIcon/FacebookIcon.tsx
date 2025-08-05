@@ -1,7 +1,6 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
-import { FC } from 'react'
 
-export const FacebookIcon: FC<SvgIconProps> = props => (
+export const FacebookIcon: React.FC<SvgIconProps> = props => (
   <SvgIcon
     {...props}
     sx={{

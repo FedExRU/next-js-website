@@ -1,13 +1,7 @@
 'use client'
 
 import { Box, Fade } from '@mui/material'
-import {
-  type FC,
-  type PropsWithChildren,
-  Children as ReactChildren,
-  useRef,
-  useState,
-} from 'react'
+import * as React from 'react'
 import SlickSliderComponent from 'react-slick'
 
 import {
@@ -19,7 +13,7 @@ import {
 import { getStyles } from './styles'
 import { SlickSlider, SliderAutoplayTimers, SliderProps } from './types'
 
-export const Slider: FC<PropsWithChildren<SliderProps>> = ({
+export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
   autoplay,
   autoplaySpeed = 5000,
   children,
@@ -33,13 +27,13 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
   withArrows,
   withDots,
 }) => {
-  const sliderRef = useRef<null | SlickSlider>(null)
-  const autoplayEndlessTimer = useRef<SliderAutoplayTimers>({
+  const sliderRef = React.useRef<null | SlickSlider>(null)
+  const autoplayEndlessTimer = React.useRef<SliderAutoplayTimers>({
     end: undefined,
     start: undefined,
   })
-  const [isPrevArrowDisabled, setIsPrevArrowDisabled] = useState(false)
-  const [isNextArrowDisabled, setIsNextArrowDisabled] = useState(false)
+  const [isPrevArrowDisabled, setIsPrevArrowDisabled] = React.useState(false)
+  const [isNextArrowDisabled, setIsNextArrowDisabled] = React.useState(false)
 
   const { styles } = getStyles()
 
@@ -50,7 +44,7 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
     const currentSlide = slider?.innerSlider?.state?.currentSlide
 
     setIsPrevArrowDisabled(currentSlide === 0)
-    setIsNextArrowDisabled(currentSlide === ReactChildren.count(children) - 1)
+    setIsNextArrowDisabled(currentSlide === React.Children.count(children) - 1)
   }
 
   const handleAfterChange = (currentSlide: number) => {
@@ -67,7 +61,7 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
         sliderRef.current?.slickGoTo(0)
       }, autoplaySpeed)
 
-    if (currentSlide === ReactChildren.count(children) - 1) {
+    if (currentSlide === React.Children.count(children) - 1) {
       autoplayEndlessTimer.current.end = createTimer()
     }
     if (currentSlide === 0) {
@@ -79,7 +73,7 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
     <SliderBullets
       activeSlideIndex={sliderRef?.current?.innerSlider?.state?.currentSlide}
       onClick={index => sliderRef?.current?.slickGoTo(index)}
-      slidesCount={ReactChildren.count(children)}
+      slidesCount={React.Children.count(children)}
     />
   )
 
@@ -138,7 +132,7 @@ export const Slider: FC<PropsWithChildren<SliderProps>> = ({
               speed={speed}
               sx={styles.slider}
             >
-              {ReactChildren.map(children, (child, index) => (
+              {React.Children.map(children, (child, index) => (
                 <Box key={index}>{child}</Box>
               ))}
             </Box>

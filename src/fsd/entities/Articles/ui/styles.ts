@@ -2,6 +2,9 @@ import { createSxStyles } from '@fsd/shared'
 
 export const getStyles = () =>
   createSxStyles({
+    articleImage: {
+      objectFit: 'cover',
+    },
     articleImageSkeleton: {
       height: '100%',
     },

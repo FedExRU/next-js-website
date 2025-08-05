@@ -1,10 +1,13 @@
 import { Skeleton } from '@fsd/shared'
 import { Grid2 as Grid, Typography } from '@mui/material'
-import { FC } from 'react'
 
 import { PriceProps } from './types'
 
-export const Price: FC<PriceProps> = ({ skeleton, value, valueDiscount }) => (
+export const Price: React.FC<PriceProps> = ({
+  skeleton,
+  value,
+  valueDiscount,
+}) => (
   <Grid container spacing={1.5}>
     <Grid>
       {skeleton ? (

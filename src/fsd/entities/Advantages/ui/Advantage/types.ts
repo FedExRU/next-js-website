@@ -1,3 +1,5 @@
-import { IAdvantage } from '../../model'
+import { IAdvantage } from '../../api'
 
-export type AdvantageProps = IAdvantage
+export type AdvantageProps = Pick<IAdvantage, 'description' | 'title'> & {
+  icon?: React.ReactNode
+}

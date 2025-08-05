@@ -1,7 +1,6 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
-import { FC } from 'react'
 
-export const RadioCheckedIcon: FC<SvgIconProps> = props => (
+export const RadioCheckedIcon: React.FC<SvgIconProps> = props => (
   <SvgIcon
     {...props}
     sx={{

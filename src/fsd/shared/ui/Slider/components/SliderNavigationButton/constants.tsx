@@ -1,5 +1,4 @@
 import { IconButtonProps, SvgIconProps } from '@mui/material'
-import { FC } from 'react'
 
 import { ArrowLeftMediumIcon, ArrowRightMediumIcon } from '../../../Icons'
 

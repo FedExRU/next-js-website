@@ -1,11 +1,10 @@
 import { Grid2 as Grid } from '@mui/material'
 import { BadgeDiscount } from 'components/BadgeDiscount'
 import { BadgeNew } from 'components/BadgeNew'
-import { FC } from 'react'
 
 import { BadgesProps } from './types'
 
-export const Badges: FC<BadgesProps> = ({ discountPercent, isNew }) => {
+export const Badges: React.FC<BadgesProps> = ({ discountPercent, isNew }) => {
   const showBadges = !!discountPercent || isNew
 
   if (!showBadges) {

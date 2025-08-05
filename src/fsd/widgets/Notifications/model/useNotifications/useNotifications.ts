@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+import * as React from 'react'
 
 import { EVENT_NAME, subscribe } from '../../lib'
 import { Notification, UseNotificationsReturnProps } from './types'
 
 export const useNotifications = (): UseNotificationsReturnProps => {
-  const [notifications, setNotifications] = useState<Notification[]>([])
+  const [notifications, setNotifications] = React.useState<Notification[]>([])
 
   const erase = (id: string) => {
     setNotifications(prev =>
@@ -12,7 +12,7 @@ export const useNotifications = (): UseNotificationsReturnProps => {
     )
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     const unsubscribe = subscribe(EVENT_NAME, (message, options = {}) => {
       setNotifications(prev => [
         ...prev,

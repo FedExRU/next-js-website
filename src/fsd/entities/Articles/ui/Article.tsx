@@ -3,12 +3,11 @@
 import { Skeleton, skeletonImage, Typography } from '@fsd/shared'
 import { Box, Grid2 as Grid } from '@mui/material'
 import Image from 'next/image'
-import { FC } from 'react'
 
 import { getStyles } from './styles'
 import { ArticleProps } from './types'
 
-export const Article: FC<ArticleProps> = ({
+export const Article: React.FC<ArticleProps> = ({
   imagePreview,
   name,
   renderAction,
@@ -28,9 +27,7 @@ export const Article: FC<ArticleProps> = ({
                 alt={(name as string) || ''}
                 fill
                 src={skeleton ? skeletonImage : (imagePreview as string)}
-                style={{
-                  objectFit: 'cover',
-                }}
+                style={styles.articleImage as React.CSSProperties}
               />
             )}
           </Box>

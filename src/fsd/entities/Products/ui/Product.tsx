@@ -8,13 +8,12 @@ import {
 } from '@fsd/shared'
 import { Box, Grid2 as Grid, Rating } from '@mui/material'
 import Image from 'next/image'
-import { FC } from 'react'
 
 import { Badges, Price } from './components'
 import { getStyles } from './styles'
 import { ProductProps } from './types'
 
-export const Product: FC<ProductProps> = ({
+export const Product: React.FC<ProductProps> = ({
   discountPercent,
   image,
   isFavorite,
@@ -42,11 +41,7 @@ export const Product: FC<ProductProps> = ({
                 height={0}
                 sizes="100vw"
                 src={skeleton ? skeletonImage : (image as string)}
-                style={{
-                  height: '100%',
-                  objectFit: 'cover',
-                  width: '100%',
-                }}
+                style={styles.productImage as React.CSSProperties}
                 width={0}
               />
             )}
