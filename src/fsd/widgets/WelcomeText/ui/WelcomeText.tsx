@@ -2,7 +2,6 @@
 
 import { Typography } from '@fsd/shared'
 import { Box, Grid2 as Grid } from '@mui/material'
-import * as React from 'react'
 
 export const WelcomeText: React.FC = () => (
   <Grid size={12}>

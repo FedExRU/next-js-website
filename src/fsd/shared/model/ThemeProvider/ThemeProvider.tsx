@@ -2,12 +2,11 @@
 
 import { CssBaseline } from '@mui/material'
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles'
-import React, { FC } from 'react'
 
 import { createTheme } from './createTheme'
 import { ThemeProviderProps } from './types'
 
-export const ThemeProvider: FC<ThemeProviderProps> = ({
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
   deviceType,
 }) => (

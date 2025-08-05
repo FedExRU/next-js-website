@@ -1,6 +1,5 @@
 import { DeviceType } from '@fsd/shared'
-import { PropsWithChildren } from 'react'
 
-export type ThemeProviderProps = PropsWithChildren & {
+export type ThemeProviderProps = React.PropsWithChildren & {
   deviceType: DeviceType
 }

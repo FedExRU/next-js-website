@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import * as React from 'react'
 
 import { UseImageLoadedStatus } from './constants'
 import { UseImageLoadedProps, UseImageLoadedStatusType } from './types'
@@ -12,11 +12,10 @@ export const useImageLoaded = ({
   src,
   srcSet,
 }: UseImageLoadedProps): UseImageLoadedStatusType => {
-  const [imageStatus, setImageStatus] = useState<UseImageLoadedStatusType>(
-    UseImageLoadedStatus.pending,
-  )
+  const [imageStatus, setImageStatus] =
+    React.useState<UseImageLoadedStatusType>(UseImageLoadedStatus.pending)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (onError) {
       setImageStatus(UseImageLoadedStatus.skipped)
 

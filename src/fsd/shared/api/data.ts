@@ -14,6 +14,38 @@ import bannerIdImg03 from './assets/postel_komnata_mebel_76186_1920x1080 (1).web
 import productImg05 from './assets/toaster.webp'
 
 export default {
+  advantages: [
+    {
+      description: 'Order above $200',
+      id: 1,
+      kind: 'freeShipping',
+      title: 'Free shipping',
+    },
+    {
+      description: '30 days guarantee',
+      id: 2,
+      kind: 'moneyBack',
+      title: 'Money-back',
+    },
+    {
+      description: 'Secured by Stripe',
+      id: 3,
+      kind: 'securePayments',
+      title: 'Secure payments',
+    },
+    {
+      description: 'Phone and email support',
+      id: 4,
+      kind: 'fullSupport',
+      title: '24/7 support',
+    },
+  ],
+  advantagesKinds: [
+    'freeShipping',
+    'fullSupport',
+    'moneyBack',
+    'securePayments',
+  ],
   articles: [
     {
       createdAt: 'May 5, 2024 at 3:01:06 PM UTC+3',

@@ -4,9 +4,8 @@ import { Category, useGetCategoriesQuery } from '@fsd/entities/Categories'
 import { GoToCategory } from '@fsd/features'
 import { LAYOUT } from '@fsd/shared'
 import { Grid2 as Grid } from '@mui/material'
-import { FC } from 'react'
 
-export const BannerGrid: FC = () => {
+export const BannerGrid: React.FC = () => {
   const {
     data: { items: [firstCategory, secondCategory, thirdCategory] } = {
       items: [],

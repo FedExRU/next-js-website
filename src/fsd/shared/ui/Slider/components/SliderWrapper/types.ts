@@ -1,3 +1,1 @@
-import { PropsWithChildren } from 'react'
-
-export type SliderWrapperProps = PropsWithChildren
+export type SliderWrapperProps = React.PropsWithChildren

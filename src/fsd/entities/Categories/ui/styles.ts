@@ -15,6 +15,11 @@ export const getStyles = (isPrimary: boolean, skeleton?: boolean) =>
       },
     },
     categoryAction: { mt: 1, sm: isPrimary ? 0 : 2 },
+    categoryGrid: { width: '100%' },
+    categoryImage: {
+      height: '100%',
+      width: '100%',
+    },
     categoryImageSkeleton: {
       height: '100%',
       left: 0,

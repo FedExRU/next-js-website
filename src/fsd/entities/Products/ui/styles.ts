@@ -34,6 +34,11 @@ export const getStyles = (isFavorite?: boolean) => {
         opacity: { md: isFavorite ? 1 : 0, xs: 1 },
         visibility: { md: isFavorite ? 'visible' : 'hidden', xs: 'visible' },
       },
+      productImage: {
+        height: '100%',
+        objectFit: 'cover',
+        width: '100%',
+      },
       productImageSkeleton: {
         height: '100%',
         maxHeight: 348.99,

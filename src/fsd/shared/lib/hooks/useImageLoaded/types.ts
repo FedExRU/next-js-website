@@ -1,7 +1,7 @@
-import type { JSX } from 'react'
+import * as React from 'react'
 
 import { UseImageLoadedStatus } from './constants'
 
-export type UseImageLoadedProps = JSX.IntrinsicElements['img']
+export type UseImageLoadedProps = React.JSX.IntrinsicElements['img']
 
 export type UseImageLoadedStatusType = keyof typeof UseImageLoadedStatus

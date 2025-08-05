@@ -8,13 +8,13 @@ import {
   IconButton,
   Typography,
 } from '@mui/material'
-import { FC, useEffect, useRef, useState } from 'react'
+import * as React from 'react'
 
 import { AUTOCLOSE_TIME, FADE_DURATION } from './constants'
 import { getStyles } from './styles'
 import { NotificationItemProps } from './types'
 
-export const NotificationItem: FC<NotificationItemProps> = ({
+export const NotificationItem: React.FC<NotificationItemProps> = ({
   autoCloseTime = AUTOCLOSE_TIME,
   color,
   id,
@@ -23,11 +23,13 @@ export const NotificationItem: FC<NotificationItemProps> = ({
   onOpened,
   title,
 }) => {
-  const autoCloseTimer = useRef<null | ReturnType<typeof setTimeout>>(null)
-  const [isOpen, setIsOpen] = useState(true)
+  const autoCloseTimer = React.useRef<null | ReturnType<typeof setTimeout>>(
+    null,
+  )
+  const [isOpen, setIsOpen] = React.useState(true)
 
-  const [fadeOpen, setFadeOpen] = useState(false)
-  const [collapseOpen, setCollapseOpen] = useState(false)
+  const [fadeOpen, setFadeOpen] = React.useState(false)
+  const [collapseOpen, setCollapseOpen] = React.useState(false)
 
   const { styles } = getStyles(color)
 
@@ -60,7 +62,7 @@ export const NotificationItem: FC<NotificationItemProps> = ({
     }, autoCloseTime)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen) {
       setCollapseOpen(true)
     } else {
@@ -68,7 +70,7 @@ export const NotificationItem: FC<NotificationItemProps> = ({
     }
   }, [isOpen])
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => eraseTimer()
   }, [])
 
