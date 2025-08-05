@@ -1,6 +1,6 @@
 'use client'
 
-import { startTransition, useActionState as useReactActionState } from 'react'
+import * as React from 'react'
 
 export function useActionState<State, Payload>(
   action: (state: Awaited<State>, payload: Payload) => Promise<State> | State,
@@ -12,7 +12,7 @@ export function useActionState<State, Payload>(
   isPending: boolean,
   reset: () => void,
 ] {
-  const [state, submit, isPending] = useReactActionState(
+  const [state, submit, isPending] = React.useActionState(
     async (state: Awaited<State>, payload: null | Payload) => {
       if (!payload) {
         return initialState
@@ -25,7 +25,7 @@ export function useActionState<State, Payload>(
   )
 
   const reset = () => {
-    startTransition(() => {
+    React.startTransition(() => {
       submit(null)
     })
   }

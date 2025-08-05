@@ -75,7 +75,7 @@ export const SubscribeForm: React.FC = () => {
               }}
               variant="standard"
             />
-            <FormHelperText id={formHelperTextHint} sx={{ minHeight: 22 }}>
+            <FormHelperText id={formHelperTextHint} sx={styles.formHelperText}>
               {(!success && message) || error}
             </FormHelperText>
           </FormControl>

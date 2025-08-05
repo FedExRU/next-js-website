@@ -4,12 +4,11 @@ import {
   Button as MuiButton,
   ButtonProps as MuiButtonProps,
 } from '@mui/material'
-import { FC } from 'react'
 
 import { getStyles } from './styles'
 import { ButtonProps } from './types'
 
-export const Button: FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   size: sizeProp,
   sx: sxProp,
   ...rest

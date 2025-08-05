@@ -1,3 +1,1 @@
-import { PropsWithChildren } from 'react'
-
-export type QueryProviderProps = PropsWithChildren
+export type QueryProviderProps = React.PropsWithChildren

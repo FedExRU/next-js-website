@@ -1,12 +1,11 @@
 'use client'
 
 import { ActionLink, Skeleton } from '@fsd/shared'
-import { FC } from 'react'
 
 import { GO_TO_CATEGORY_TEXT } from './constants'
 import { GoToCategoryProps } from './types'
 
-export const GoToCategory: FC<GoToCategoryProps> = ({
+export const GoToCategory: React.FC<GoToCategoryProps> = ({
   skeleton,
   text = GO_TO_CATEGORY_TEXT,
 }) => (

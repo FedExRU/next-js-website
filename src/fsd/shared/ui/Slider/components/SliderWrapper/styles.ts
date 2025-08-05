@@ -10,4 +10,5 @@ export const getStyles = () =>
       top: 0,
       width: '100%',
     },
+    wrapper: { position: 'relative' },
   })

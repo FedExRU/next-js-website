@@ -1,12 +1,10 @@
-import { ReactNode } from 'react'
-
 import { NotificationType } from '../../lib'
 
 export type Notification = {
   color: NotificationType
   id: string
-  message: ReactNode
-  title: ReactNode
+  message: React.ReactNode
+  title: React.ReactNode
 }
 
 export type UseNotificationsReturnProps = {

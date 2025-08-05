@@ -1,7 +1,6 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
-import { FC } from 'react'
 
-export const ArrowLeftLargeIcon: FC<SvgIconProps> = props => (
+export const ArrowLeftLargeIcon: React.FC<SvgIconProps> = props => (
   <SvgIcon
     {...props}
     sx={{

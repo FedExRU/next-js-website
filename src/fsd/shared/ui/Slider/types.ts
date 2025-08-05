@@ -20,10 +20,10 @@ export type SliderAutoplayTimers = Record<
 export type SliderProps = {
   autoplay?: boolean
   autoplaySpeed?: number
-  endless?: boolean
+  infinite?: boolean
   initialSlide?: number
-  isLoading?: boolean
   lazyLoad?: boolean
+  loading?: boolean
   loadingAppearTimeout?: number
   slidesToShow?: number
   speed?: number

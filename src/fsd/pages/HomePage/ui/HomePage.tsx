@@ -10,7 +10,6 @@ import {
   WelcomeText,
 } from '@fsd/widgets'
 import { Box, Container, Grid2 as Grid } from '@mui/material'
-import * as React from 'react'
 
 export const HomePage = () => (
   <>

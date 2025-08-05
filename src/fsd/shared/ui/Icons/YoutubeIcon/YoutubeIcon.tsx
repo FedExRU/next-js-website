@@ -1,7 +1,6 @@
 import { SvgIcon, SvgIconProps } from '@mui/material'
-import { FC } from 'react'
 
-export const YoutubeIcon: FC<SvgIconProps> = props => (
+export const YoutubeIcon: React.FC<SvgIconProps> = props => (
   <SvgIcon
     {...props}
     sx={{

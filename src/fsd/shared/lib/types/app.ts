@@ -1,4 +1,4 @@
-import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT } from '../../constants'
+import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT } from '../constants'
 
 export type BaseActionResponse<T = unknown> = T & {
   message: string

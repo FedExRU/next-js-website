@@ -1,8 +1,8 @@
 'use client'
 
-import { macroTask, useActionState } from '@fsd/shared'
+import { useActionState } from '@fsd/shared'
 import { sendNotification } from '@fsd/widgets/Notifications'
-import { startTransition, useEffect, useRef, useState } from 'react'
+import * as React from 'react'
 
 import {
   subscribe,
@@ -19,17 +19,9 @@ export const useSubscribeForm = (): UseSubscribeFormReturnProps => {
     initialFormState,
   )
 
-  const inputRef = useRef<HTMLInputElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
-  const [error, setError] = useState<null | string>(null)
-
-  useEffect(() => {
-    if (state.status !== SubscribeFormStatus.Error) {
-      return
-    }
-
-    sendNotification('error!!!')
-  }, [state.status])
+  const inputRef = React.useRef<HTMLInputElement>(null)
+  const formRef = React.useRef<HTMLFormElement>(null)
+  const [error, setError] = React.useState<null | string>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -39,14 +31,14 @@ export const useSubscribeForm = (): UseSubscribeFormReturnProps => {
         email: e.currentTarget.email.value,
       })
 
-      startTransition(() => {
+      React.startTransition(() => {
         if (e.target instanceof HTMLFormElement === false) {
           return
         }
 
         action(new FormData(e.target))
         formRef.current?.reset()
-        macroTask(() => inputRef.current?.blur())
+        queueMicrotask(() => inputRef.current?.blur())
         sendNotification(
           'Thank you for subscribing to our newsletter! Soon, you will start receiving interesting events, information about discounts, and much more in your email!',
           {
@@ -64,6 +56,14 @@ export const useSubscribeForm = (): UseSubscribeFormReturnProps => {
   const resetError = () => {
     setError('')
   }
+
+  React.useEffect(() => {
+    if (state.status !== SubscribeFormStatus.Error) {
+      return
+    }
+
+    sendNotification('error!!!')
+  }, [state.status])
 
   return {
     action,
