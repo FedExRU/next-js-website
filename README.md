@@ -14,3 +14,5 @@ A small project for my personal portfolio: online furniture store.
 - [Next JS](https://nextjs.org/);
 - [Material UI](https://mui.com/);
 - [Feature Sliced Design](https://feature-sliced.design/ru/docs/get-started/overview).
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
