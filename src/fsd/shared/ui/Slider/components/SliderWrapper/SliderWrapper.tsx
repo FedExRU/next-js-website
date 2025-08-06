@@ -8,15 +8,16 @@ import wrapperImage from './assets/wrapper.webp'
 import { getStyles } from './styles'
 import { SliderWrapperProps } from './types'
 
-const { styles } = getStyles()
-
-export const SliderWrapper: React.FC<SliderWrapperProps> = ({ children }) => {
+export const SliderWrapper: React.FC<
+  React.PropsWithChildren<SliderWrapperProps>
+> = ({ children, withBackdrop }) => {
   const { sx, ...rest } = getSliderItemImageProps()
+  const { styles } = getStyles({ withBackdrop })
 
   return (
     <Box sx={styles.wrapper}>
       <Box sx={sx}>
-        <Image {...rest} alt="" src={wrapperImage} />
+        <Image {...rest} alt="Slider Backdrop Image" src={wrapperImage} />
       </Box>
       <Box sx={styles.sliderWrapper}>{children}</Box>
     </Box>

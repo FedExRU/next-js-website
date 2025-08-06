@@ -10,7 +10,7 @@ export const MainSlider = () => {
   return (
     <Grid container spacing={4}>
       <Grid size={12}>
-        <Slider autoplay loading={isLoading} withArrows withDots>
+        <Slider autoplay loading={isLoading} withArrows withBackdrop withDots>
           {data?.items?.map(({ id, ...rest }) => (
             <MainSliderItem id={id} key={id} {...rest} />
           ))}
