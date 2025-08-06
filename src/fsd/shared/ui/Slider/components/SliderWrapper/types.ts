@@ -1,1 +1,4 @@
-export type SliderWrapperProps = React.PropsWithChildren
+export type GetStylesProps = Pick<SliderWrapperProps, 'withBackdrop'>
+export type SliderWrapperProps = {
+  withBackdrop?: boolean
+}

@@ -1,9 +1,11 @@
 import { createSxStyles } from '@fsd/shared'
 
-export const getStyles = () =>
+import { GetStylesProps } from './types'
+
+export const getStyles = ({ withBackdrop }: GetStylesProps) =>
   createSxStyles({
     sliderWrapper: {
-      backgroundColor: 'grey.200',
+      backgroundColor: withBackdrop ? 'grey.200' : 'transparent',
       height: '100%',
       left: 0,
       position: 'absolute',

@@ -23,8 +23,10 @@ export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
   lazyLoad,
   loadingAppearTimeout = 500,
   slidesToShow = 1,
+  slidesToShowSpacing = 3,
   speed = 500,
   withArrows,
+  withBackdrop,
   withDots,
 }) => {
   const sliderRef = React.useRef<null | SlickSlider>(null)
@@ -35,7 +37,9 @@ export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
   const [isPrevArrowDisabled, setIsPrevArrowDisabled] = React.useState(false)
   const [isNextArrowDisabled, setIsNextArrowDisabled] = React.useState(false)
 
-  const { styles } = getStyles()
+  const { styles } = getStyles({
+    slidesToShowSpacing: slidesToShow > 1 ? slidesToShowSpacing : 0,
+  })
 
   const processArrowsDisabling = (slider?: null | SlickSlider) => {
     if (!slider) {
@@ -84,7 +88,7 @@ export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
 
   return (
     <Box sx={styles.sliderWrapper}>
-      <SliderWrapper>
+      <SliderWrapper withBackdrop={withBackdrop}>
         <Fade
           appear={false}
           in={isLoading}
@@ -104,6 +108,7 @@ export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
             <Box
               afterChange={handleAfterChange}
               appendDots={handleAppendDots}
+              arrows={withArrows}
               autoplay={autoplay}
               autoplaySpeed={autoplaySpeed}
               component={SlickSliderComponent}
@@ -117,7 +122,9 @@ export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
                     disabled={isNextArrowDisabled}
                     variant="next"
                   />
-                ) : undefined
+                ) : (
+                  <Box />
+                )
               }
               prevArrow={
                 withArrows ? (
@@ -125,7 +132,9 @@ export const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
                     disabled={isPrevArrowDisabled}
                     variant="prev"
                   />
-                ) : undefined
+                ) : (
+                  <Box />
+                )
               }
               ref={handleRef}
               slidesToShow={slidesToShow}
