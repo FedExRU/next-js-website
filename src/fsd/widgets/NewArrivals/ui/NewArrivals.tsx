@@ -3,7 +3,7 @@
 import { Product, useGetNewProductsQuery } from '@fsd/entities'
 import { AddToCart, AddToFavorites } from '@fsd/features'
 import { ActionLink, Slider, Typography } from '@fsd/shared'
-import { Box, Grid2 as Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 
 import { useSlidesCount } from '../lib/hooks'
 import { SliderSkeleton } from './components'

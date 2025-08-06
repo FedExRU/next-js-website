@@ -3,7 +3,7 @@
 import { Category, useGetCategoriesQuery } from '@fsd/entities/Categories'
 import { GoToCategory } from '@fsd/features'
 import { LAYOUT } from '@fsd/shared'
-import { Grid2 as Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 
 export const BannerGrid: React.FC = () => {
   const {

@@ -1,7 +1,7 @@
 'use client'
 
 import { LAYOUT, skeletonImage } from '@fsd/shared'
-import { Box, Grid2 as Grid, Skeleton, Typography } from '@mui/material'
+import { Box, Grid, Skeleton, Typography } from '@mui/material'
 import Image from 'next/image'
 
 import { getStyles } from './styles'

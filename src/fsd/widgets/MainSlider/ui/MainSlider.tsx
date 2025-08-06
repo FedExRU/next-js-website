@@ -2,7 +2,7 @@
 
 import { MainSliderItem, useGetMainSliderItemsQuery } from '@fsd/entities'
 import { Slider } from '@fsd/shared'
-import { Grid2 as Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 
 export const MainSlider = () => {
   const { data, isLoading } = useGetMainSliderItemsQuery()
