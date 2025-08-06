@@ -1,5 +1,5 @@
 import { Skeleton } from '@fsd/shared'
-import { Grid2 as Grid, Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import { PriceProps } from './types'
 

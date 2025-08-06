@@ -2,7 +2,7 @@
 
 import { GoToCategory } from '@fsd/features'
 import { Typography } from '@fsd/shared'
-import { Box, Grid2 as Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import Image from 'next/image'
 
 import infoBannerImage from './assets/info-banner.webp'
