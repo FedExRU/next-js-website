@@ -9,7 +9,7 @@ import {
   SubscribeForm,
   WelcomeText,
 } from '@fsd/widgets'
-import { Box, Container, Grid2 as Grid } from '@mui/material'
+import { Box, Container, Grid } from '@mui/material'
 
 export const HomePage = () => (
   <>

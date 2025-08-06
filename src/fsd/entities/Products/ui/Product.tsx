@@ -6,7 +6,7 @@ import {
   toDecimalString,
   Typography,
 } from '@fsd/shared'
-import { Box, Grid2 as Grid, Rating } from '@mui/material'
+import { Box, Grid, Rating } from '@mui/material'
 import Image from 'next/image'
 
 import { Badges, Price } from './components'

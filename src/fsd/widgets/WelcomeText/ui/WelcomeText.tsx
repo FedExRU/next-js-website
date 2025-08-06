@@ -1,7 +1,7 @@
 'use client'
 
 import { Typography } from '@fsd/shared'
-import { Box, Grid2 as Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 
 export const WelcomeText: React.FC = () => (
   <Grid size={12}>

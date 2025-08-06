@@ -3,7 +3,7 @@
 import { Article, IArticle, useGetNewArticlesQuery } from '@fsd/entities'
 import { GoToArticle } from '@fsd/features'
 import { ActionLink, Typography } from '@fsd/shared'
-import { Box, Grid2 as Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 
 export const BlogSection = () => {
   const { data, isLoading } = useGetNewArticlesQuery()

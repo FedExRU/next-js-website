@@ -1,5 +1,4 @@
 import { createTheme as _createTheme, BreakpointsOptions } from '@mui/material'
-import _shadows from '@mui/material/styles/shadows'
 import {
   ArrowDownSimpleIcon,
   CheckboxCheckedIcon,
@@ -36,7 +35,7 @@ const interFontBold = localFont({
 })
 
 const shadows = (() => {
-  const s = _shadows
+  const s = _createTheme().shadows
 
   s[8] = '0px 64px 64px -48px rgba(15, 15, 15, 0.10);'
 
@@ -730,7 +729,6 @@ export const createTheme = (deviceType: DeviceType) =>
         fontFamily: interFontBold.style.fontFamily,
         fontSize: '18px',
         fontStyle: 'normal',
-        fontWeight: 700,
         lineHeight: '18px',
       },
       hairline1Semi: {
