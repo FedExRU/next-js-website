@@ -1,19 +1,31 @@
 import { createSxStyles } from '@fsd/shared'
 
-export const getStyles = () =>
-  createSxStyles({
+import { GetStylesProps } from './types'
+
+export const getStyles = ({ slidesToShowSpacing = 0 }: GetStylesProps) => {
+  const calculatedSlidesToShowSpacing = slidesToShowSpacing / 2
+
+  console.log('foo', calculatedSlidesToShowSpacing)
+  return createSxStyles({
     fade: { height: '100%' },
     slider: {
       '&, & .slick-list, & .slick-track, & .slick-slide, & .slick-slide > div, & .slick-slide > div > div':
         {
           height: '100%',
         },
-      '& .slick-slide.:not(.slick-cloned)': {
-        mr: 3,
+      '& .slick-list': {
+        // ml: -slidesToShowSpacing,
+        // mr: -slidesToShowSpacing,
       },
-      '.slick-track .slick-active:first-of-type': {
-        background: 'red',
+      '& .slick-list ': {
+        ml: -calculatedSlidesToShowSpacing,
+        mr: -calculatedSlidesToShowSpacing,
+      },
+      '& .slick-slide': {
+        pl: calculatedSlidesToShowSpacing,
+        pr: calculatedSlidesToShowSpacing,
       },
     },
     sliderWrapper: { position: 'relative' },
   })
+}

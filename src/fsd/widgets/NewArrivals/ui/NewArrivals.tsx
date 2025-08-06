@@ -46,7 +46,7 @@ export const NewArrivals = () => {
               ))}
             </SliderSkeleton>
           ) : (
-            <Slider slidesToShow={slidesCount}>
+            <Slider autoplay slidesToShow={slidesCount}>
               {data?.items?.map(({ id, ...rest }) => (
                 <Product
                   id={id}
