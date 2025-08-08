@@ -5,7 +5,6 @@ import { GetStylesProps } from './types'
 export const getStyles = ({ slidesToShowSpacing = 0 }: GetStylesProps) => {
   const calculatedSlidesToShowSpacing = slidesToShowSpacing / 2
 
-  console.log('foo', calculatedSlidesToShowSpacing)
   return createSxStyles({
     fade: { height: '100%' },
     slider: {
@@ -13,10 +12,6 @@ export const getStyles = ({ slidesToShowSpacing = 0 }: GetStylesProps) => {
         {
           height: '100%',
         },
-      '& .slick-list': {
-        // ml: -slidesToShowSpacing,
-        // mr: -slidesToShowSpacing,
-      },
       '& .slick-list ': {
         ml: -calculatedSlidesToShowSpacing,
         mr: -calculatedSlidesToShowSpacing,

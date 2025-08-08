@@ -16,6 +16,7 @@ export type EntityWithLayout = {
 
 export type EntityWithSkeleton = {
   skeleton?: boolean
+  skeletonColor?: 'primary' | 'secondary'
 }
 
 export type Layout = (typeof LAYOUT)[keyof typeof LAYOUT]
