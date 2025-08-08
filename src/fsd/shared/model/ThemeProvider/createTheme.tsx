@@ -100,9 +100,12 @@ export const createTheme = (deviceType: DeviceType) =>
           },
           text: {
             '& .MuiTouchRipple-child': { borderRadius: '0px !important' },
-            '&:hover': {
-              backgroundColor: 'transparent',
+            '@media (hover: hover)': {
+              '&:hover': {
+                backgroundColor: 'transparent',
+              },
             },
+
             borderBottomStyle: 'solid',
             borderBottomWidth: 1,
             borderRadius: '0px !important',
@@ -203,12 +206,15 @@ export const createTheme = (deviceType: DeviceType) =>
         },
         styleOverrides: {
           root: ({ ownerState: { color }, theme }) => ({
-            '&:hover': {
-              color:
-                color === undefined || color === 'default'
-                  ? 'currentColor'
-                  : theme.palette?.[color].main,
+            '@media (hover: hover)': {
+              '&:hover': {
+                color:
+                  color === undefined || color === 'default'
+                    ? 'currentColor'
+                    : theme.palette?.[color].main,
+              },
             },
+
             padding: 0,
             transition: theme.transitions.create('color'),
           }),
@@ -217,12 +223,30 @@ export const createTheme = (deviceType: DeviceType) =>
       MuiContainer: {
         styleOverrides: {
           root: ({ theme }) => ({
+            paddingLeft: theme.spacing(4),
+            paddingRight: theme.spacing(4),
             [theme.breakpoints.down('sm')]: {
-              maxWidth: 'auto',
+              maxWidth: 'none',
+            },
+            [theme.breakpoints.only('sm')]: {
+              paddingLeft: theme.spacing(4),
+              paddingRight: theme.spacing(4),
             },
             [theme.breakpoints.up('md')]: {
               maxWidth: 1168,
+              paddingLeft: theme.spacing(3),
+              paddingRight: theme.spacing(3),
             },
+          }),
+        },
+      },
+      MuiDivider: {
+        defaultProps: {
+          component: 'hr',
+        },
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderColor: theme.palette.grey['400'],
           }),
         },
       },
@@ -234,17 +258,20 @@ export const createTheme = (deviceType: DeviceType) =>
       MuiIconButton: {
         styleOverrides: {
           root: ({ ownerState: { color, disabled }, theme }) => ({
-            '&:hover': {
-              background: theme.palette.common.white,
-              color:
-                color === undefined ||
-                color === 'default' ||
-                color === 'inherit'
-                  ? 'currentColor'
-                  : theme.palette?.[color].main,
-            },
             '& > *': {
               pointerEvents: 'none',
+            },
+
+            '@media (hover: hover)': {
+              '&:hover': {
+                background: theme.palette.common.white,
+                color:
+                  color === undefined ||
+                  color === 'default' ||
+                  color === 'inherit'
+                    ? 'currentColor'
+                    : theme.palette?.[color].main,
+              },
             },
             background: disabled
               ? `${theme.palette.grey.A200} !important`
@@ -334,12 +361,15 @@ export const createTheme = (deviceType: DeviceType) =>
         },
         styleOverrides: {
           root: ({ ownerState: { color }, theme }) => ({
-            '&:hover': {
-              color:
-                color === undefined || color === 'default'
-                  ? 'currentColor'
-                  : theme.palette?.[color].main,
+            '@media (hover: hover)': {
+              '&:hover': {
+                color:
+                  color === undefined || color === 'default'
+                    ? 'currentColor'
+                    : theme.palette?.[color].main,
+              },
             },
+
             padding: 0,
             transition: theme.transitions.create('color'),
           }),
@@ -376,10 +406,13 @@ export const createTheme = (deviceType: DeviceType) =>
                   backgroundColor: theme.palette.grey['200'],
                   color: theme.palette.text.primary,
                 },
-                '&:hover': {
-                  backgroundColor: theme.palette.grey['200'],
-                  color: theme.palette.text.primary,
+                '@media (hover: hover)': {
+                  '&:hover': {
+                    backgroundColor: theme.palette.grey['200'],
+                    color: theme.palette.text.primary,
+                  },
                 },
+
                 borderRadius: 2,
                 color: theme.palette.text.secondary,
                 paddingBottom: theme.spacing(1),
@@ -627,6 +660,7 @@ export const createTheme = (deviceType: DeviceType) =>
         lineHeight: '22px',
       },
       caption2: {
+        fontFamily: interFontRegular.style.fontFamily,
         fontSize: '12px',
         fontStyle: 'normal',
         fontWeight: 400,

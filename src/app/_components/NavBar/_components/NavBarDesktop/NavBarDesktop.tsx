@@ -58,8 +58,10 @@ export const NavBarDesktop: FC<NavBarDesktopProps> = memo(
                   component={Link}
                   href={path}
                   sx={theme => ({
-                    '&:hover': {
-                      color: 'common.black',
+                    '@media (hover: hover)': {
+                      '&:hover': {
+                        color: 'common.black',
+                      },
                     },
                     color:
                       currentPath === path ? 'text.primary' : 'text.secondary',

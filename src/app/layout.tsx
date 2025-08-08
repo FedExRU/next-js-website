@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import { ShopLayout } from '@fsd/app'
 import { type DeviceType, QueryProvider, ThemeProvider } from '@fsd/shared'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { headers } from 'next/headers'
@@ -23,7 +24,9 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider deviceType={deviceType as DeviceType}>
-            <QueryProvider>{children}</QueryProvider>
+            <QueryProvider>
+              <ShopLayout>{children}</ShopLayout>
+            </QueryProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

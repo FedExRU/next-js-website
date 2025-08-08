@@ -9,10 +9,12 @@ export const getStyles = (isFavorite?: boolean) => {
   return createSxStyles(
     {
       product: theme => ({
-        [`&:hover .${classes.action}, &:hover .${classes.actionSecondary}`]: {
-          opacity: 1,
-          transition: theme.transitions.create(['opacity', 'visibility']),
-          visibility: 'visible',
+        '@media (hover: hover)': {
+          [`&:hover .${classes.action}, &:hover .${classes.actionSecondary}`]: {
+            opacity: 1,
+            transition: theme.transitions.create(['opacity', 'visibility']),
+            visibility: 'visible',
+          },
         },
         pb: 6,
       }),
