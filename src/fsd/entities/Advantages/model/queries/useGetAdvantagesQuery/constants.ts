@@ -1,1 +1,1 @@
-export const ADVANTAGES_QUERY_KEY = 'queries/products/ADVANTAGES_QUERY_KEY'
+export const ADVANTAGES_QUERY_KEY = 'queries/advantages/ADVANTAGES_QUERY_KEY'

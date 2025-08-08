@@ -11,7 +11,10 @@ export const SubmitButton = () => {
       disabled={pending}
       sx={{
         '&:focus': { color: 'text.primary' },
-        '&:hover': { color: 'text.primary' },
+        '@media (hover: hover)': {
+          '&:hover': { color: 'text.primary' },
+        },
+
         borderBottom: 'none',
       }}
       type="submit"
