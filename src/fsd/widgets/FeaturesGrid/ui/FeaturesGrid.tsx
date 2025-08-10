@@ -1,15 +1,10 @@
 'use client'
 
-import {
-  Advantage,
-  useAdvantagesUiData,
-  useGetAdvantagesQuery,
-} from '@fsd/entities'
+import { Advantage, useGetAdvantagesQuery } from '@fsd/entities'
 import { Box, Grid } from '@mui/material'
 
 export const FeaturesGrid: React.FC = () => {
   const { data, isLoading } = useGetAdvantagesQuery()
-  const { getIconByAdvantageKind } = useAdvantagesUiData()
 
   return (
     <Box sx={{ mt: 1 }}>
@@ -21,17 +16,13 @@ export const FeaturesGrid: React.FC = () => {
             </Grid>
           ))}
         {!isLoading &&
-          data?.items.map(({ description, id, kind, title }) => (
+          data?.items.map(({ id, ...rest }) => (
             <Grid
               key={id}
               size={{ md: 3, xs: 6 }}
               sx={{ mt: { sm: 0, xs: 2 } }}
             >
-              <Advantage
-                description={description}
-                icon={getIconByAdvantageKind(kind)}
-                title={title}
-              />
+              <Advantage id={id} {...rest} />
             </Grid>
           ))}
       </Grid>

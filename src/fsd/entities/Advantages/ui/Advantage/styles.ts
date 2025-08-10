@@ -37,10 +37,9 @@ export const getStyles = () =>
         xs: 100,
       },
     },
-    icon: {
-      '& svg': {
-        fontSize: 48,
-      },
+
+    iconWrapper: {
+      display: 'flex',
       mb: 3,
     },
   })

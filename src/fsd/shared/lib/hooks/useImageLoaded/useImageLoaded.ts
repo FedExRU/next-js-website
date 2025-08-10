@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React from 'react'
 
 import { UseImageLoadedStatus } from './constants'
 import { UseImageLoadedProps, UseImageLoadedStatusType } from './types'
