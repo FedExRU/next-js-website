@@ -8,7 +8,7 @@ import {
   IconButton,
   Typography,
 } from '@mui/material'
-import * as React from 'react'
+import React from 'react'
 
 import { AUTOCLOSE_TIME, FADE_DURATION } from './constants'
 import { getStyles } from './styles'

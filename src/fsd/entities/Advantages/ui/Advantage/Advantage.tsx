@@ -1,5 +1,7 @@
 import { Skeleton, Typography } from '@fsd/shared'
 import { Box } from '@mui/material'
+import DOMPurify from 'dompurify'
+import React from 'react'
 
 import { getStyles } from './styles'
 import { AdvantageProps } from './types'
@@ -14,9 +16,16 @@ export const Advantage: React.FC<AdvantageProps> = ({
 
   return (
     <Box sx={styles.advantage}>
-      <Box sx={styles.icon}>
-        {skeleton ? <Skeleton height={48} width={48} /> : icon}
-      </Box>
+      {skeleton ? (
+        <Skeleton height={48} sx={styles.iconWrapper} width={48} />
+      ) : (
+        <Box
+          dangerouslySetInnerHTML={{
+            __html: icon ? DOMPurify.sanitize(icon) : '',
+          }}
+          sx={styles.iconWrapper}
+        />
+      )}
       <Box sx={{ mb: 1 }}></Box>
       {skeleton ? (
         <Skeleton height={24} width={139} />

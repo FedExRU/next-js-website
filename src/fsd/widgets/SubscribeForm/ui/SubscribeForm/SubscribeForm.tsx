@@ -2,7 +2,7 @@
 
 import { EnvelopeIcon, Typography } from '@fsd/shared'
 import { Box, FormControl, FormHelperText, TextField } from '@mui/material'
-import * as React from 'react'
+import React from 'react'
 
 import { useSubscribeForm } from '../../model'
 import { SubmitButton } from './components'

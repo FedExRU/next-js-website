@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React from 'react'
 
 export function useActionState<State, Payload>(
   action: (state: Awaited<State>, payload: Payload) => Promise<State> | State,
