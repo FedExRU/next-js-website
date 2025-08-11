@@ -2,7 +2,7 @@
 
 import { useActionState } from '@fsd/shared'
 import { sendNotification } from '@fsd/widgets/Notifications'
-import * as React from 'react'
+import React from 'react'
 
 import {
   subscribe,

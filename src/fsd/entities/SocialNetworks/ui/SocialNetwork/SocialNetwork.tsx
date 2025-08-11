@@ -30,6 +30,7 @@ export const SocialNetwork: React.FC<SocialNetworkProps> = ({
       dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(JSON.parse(icon)) }}
       href={url}
       sx={styles.link}
+      target="_blank"
       {...rest}
     />
   )
