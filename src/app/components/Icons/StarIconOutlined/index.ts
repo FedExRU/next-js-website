@@ -1,0 +1,1 @@
+export { StarIconOutlined } from './StarIconOutlined'
