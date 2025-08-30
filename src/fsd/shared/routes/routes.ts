@@ -12,3 +12,8 @@ export const COPYRIGHT_ROUTES: RoutesMap = {
   PRIVACY: { id: 1, label: 'Privacy Policy', path: '/privacy' },
   TERMS: { id: 2, label: 'Terms of Use', path: '/terms' },
 }
+
+export const AUTH_ROUTES: RoutesMap = {
+  LOGIN: { id: 1, label: 'Login', path: '/login' },
+  REGISTER: { id: 2, label: 'Register', path: '/register' },
+}

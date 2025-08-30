@@ -21,3 +21,8 @@ export const LAYOUT = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
 } as const
+
+/**
+ * Default header height.
+ */
+export const DEFAULT_HEADER_HEIGHT = '60px'
