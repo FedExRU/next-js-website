@@ -1,6 +1,7 @@
 export * from './useActionState'
 export * from './useAdaptive'
 export * from './useImageLoaded'
+export * from './useIsDesktop'
 export * from './useIsLaptop'
 export * from './useIsMobile'
 export * from './useIsTablet'

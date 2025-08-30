@@ -1,3 +1,5 @@
+import React from 'react'
+
 import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT } from '../constants'
 
 export type BaseActionResponse<T = unknown> = T & {
@@ -17,6 +19,10 @@ export type EntityWithLayout = {
 export type EntityWithSkeleton = {
   skeleton?: boolean
   skeletonColor?: 'primary' | 'secondary'
+}
+
+export type EntityWithSlots<T extends Record<string, React.ReactNode>> = {
+  slots?: T
 }
 
 export type Layout = (typeof LAYOUT)[keyof typeof LAYOUT]
