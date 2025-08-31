@@ -15,12 +15,17 @@ const compat = new FlatCompat({
 })
 
 const config = [
+  {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+    ],
+  },
   perfectionist.configs['recommended-natural'],
-  ...compat.extends(
-    'next/core-web-vitals',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ),
+  ...compat.extends('plugin:@typescript-eslint/recommended', 'prettier'),
   {
     plugins: {
       '@typescript-eslint': typescriptEslint,

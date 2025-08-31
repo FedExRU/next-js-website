@@ -1,6 +1,0 @@
-export * from './Advantages'
-export * from './Articles'
-export * from './Categories'
-export * from './MainSliderItem'
-export * from './Products'
-export * from './SocialNetworks'
