@@ -1,4 +1,4 @@
-import { RequestBase } from '@fsd/shared'
+import type { RequestBase } from '@fsd/shared/lib'
 
 import { IProduct } from '../../../api'
 

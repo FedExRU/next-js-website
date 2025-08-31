@@ -1,4 +1,4 @@
-import { createSxStyles } from '@fsd/shared'
+import { createSxStyles } from '@fsd/shared/lib'
 
 export const getStyles = (isFavorite?: boolean) => {
   const classes = {

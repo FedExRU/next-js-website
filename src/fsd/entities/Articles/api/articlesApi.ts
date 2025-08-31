@@ -1,4 +1,4 @@
-import { query } from '@fsd/shared'
+import { query } from '@fsd/shared/api'
 
 import { IArticle } from './types'
 

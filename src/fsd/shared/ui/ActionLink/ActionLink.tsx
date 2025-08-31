@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { Button } from '../Button'
-import { ArrowRightMediumIcon } from '../Icons'
+import { Button } from '../button'
+import { ArrowRightMediumIcon } from '../icons'
 import { ActionLinkProps } from './types'
 
 export const ActionLink: React.FC<ActionLinkProps> = ({ text, to = '#' }) => (

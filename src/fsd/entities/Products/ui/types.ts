@@ -1,4 +1,4 @@
-import { EntityWithLayout, EntityWithSkeleton } from '@fsd/shared'
+import type { EntityWithLayout, EntityWithSkeleton } from '@fsd/shared/lib'
 
 import { IProduct } from '../api'
 

@@ -1,11 +1,8 @@
 'use client'
 
-import {
-  Skeleton,
-  skeletonImage,
-  toDecimalString,
-  Typography,
-} from '@fsd/shared'
+import { skeletonImage } from '@fsd/shared/assets'
+import { toDecimalString } from '@fsd/shared/lib'
+import { Skeleton, Typography } from '@fsd/shared/ui'
 import { Box, Grid, Rating } from '@mui/material'
 import Image from 'next/image'
 

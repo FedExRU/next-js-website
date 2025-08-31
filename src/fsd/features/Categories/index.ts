@@ -1,1 +1,1 @@
-export * from './GoToCategory'
+export * from './ui'

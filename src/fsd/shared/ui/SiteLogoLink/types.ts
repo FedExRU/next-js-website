@@ -1,3 +1,3 @@
-import { SiteLogoProps } from '../Logos'
+import { SiteLogoProps } from '../logos'
 
 export type SiteLogoLinkProps = SiteLogoProps

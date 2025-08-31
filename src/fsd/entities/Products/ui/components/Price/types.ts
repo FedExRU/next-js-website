@@ -1,4 +1,4 @@
-import { EntityWithSkeleton } from '@fsd/shared'
+import type { EntityWithSkeleton } from '@fsd/shared/lib'
 
 export type PriceProps = EntityWithSkeleton & {
   value?: string

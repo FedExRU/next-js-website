@@ -1,4 +1,4 @@
-import { createSxStyles } from '@fsd/shared'
+import { createSxStyles } from '@fsd/shared/lib'
 
 import { GetStylesProps } from './types'
 

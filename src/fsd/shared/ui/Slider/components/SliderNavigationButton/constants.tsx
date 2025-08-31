@@ -1,6 +1,6 @@
 import { IconButtonProps, SvgIconProps } from '@mui/material'
 
-import { ArrowLeftMediumIcon, ArrowRightMediumIcon } from '../../../Icons'
+import { ArrowLeftMediumIcon, ArrowRightMediumIcon } from '../../../icons'
 
 export const SliderNavigationVariant = {
   next: 'next',
@@ -9,7 +9,7 @@ export const SliderNavigationVariant = {
 
 export const VARIANT_ICON_MAP: Record<
   keyof typeof SliderNavigationVariant,
-  FC<SvgIconProps>
+  React.FC<SvgIconProps>
 > = {
   [SliderNavigationVariant.next]: ArrowRightMediumIcon,
   [SliderNavigationVariant.prev]: ArrowLeftMediumIcon,

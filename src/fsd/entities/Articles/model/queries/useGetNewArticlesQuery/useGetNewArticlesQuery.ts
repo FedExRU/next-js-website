@@ -1,6 +1,7 @@
 'use client'
 
-import { type RequestError, type RequestResult } from '@fsd/shared'
+import type { RequestError, RequestResult } from '@fsd/shared/lib'
+
 import {
   QueryKey,
   useQuery,

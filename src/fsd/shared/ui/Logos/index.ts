@@ -1,1 +1,1 @@
-export * from './SiteLogo'
+export * from './siteLogo'

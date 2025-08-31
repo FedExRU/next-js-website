@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Turn off strict mode
-  reactStrictMode: false,
   // Automatically bundle external packages in the Pages Router
   bundlePagesRouterDependencies: true,
-  experimental: {    
+  experimental: {
     // Add the react compiler for better performance
-    reactCompiler: true,  
+    reactCompiler: true,
   },
+  // Turn off strict mode
+  reactStrictMode: false,
 }
 
 // eslint-disable-next-line

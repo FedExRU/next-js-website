@@ -1,4 +1,4 @@
-import { Skeleton } from '@fsd/shared'
+import { Skeleton } from '@fsd/shared/ui'
 import { Grid, Typography } from '@mui/material'
 
 import { PriceProps } from './types'

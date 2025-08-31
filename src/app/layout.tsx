@@ -1,7 +1,7 @@
+import type { DeviceType } from '@fsd/shared/lib'
 import type { Metadata } from 'next'
 
-import { ShopLayout } from '@fsd/app'
-import { type DeviceType, QueryProvider, ThemeProvider } from '@fsd/shared'
+import { QueryProvider, ShopLayout, ThemeProvider } from '@fsd/app'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { headers } from 'next/headers'
 import { UAParser as parser } from 'ua-parser-js'
