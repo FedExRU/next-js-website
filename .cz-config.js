@@ -1,15 +1,7 @@
 module.exports = {
   allowBreakingChanges: ['feat', 'fix'],
   allowCustomScopes: true,
-  scopes: [
-    'auth', // Аутентификация
-    'blog', // Блог
-    'cart', // Корзина и оформление заказа
-    'core', // Ядро приложения (роутинг, конфигурация)
-    'products', // Товары
-    'shared', // Общие, переиспользуемые функции и компоненты
-    'ui', // Общие компоненты пользовательского интерфейса
-  ],
+  scopes: ['home', 'ui'],
   skipQuestions: ['body', 'breaking', 'footer'],
   subjectLimit: 100,
   types: [
