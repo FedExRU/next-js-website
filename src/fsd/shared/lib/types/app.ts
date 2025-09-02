@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT } from '../constants'
+import { DEVICE_TYPE, DIRECTION_ORDER, LAYOUT, VIEW } from '../constants'
 
 export type BaseActionResponse<T = unknown> = T & {
   message: string
@@ -25,6 +25,10 @@ export type EntityWithSlots<T extends Record<string, React.ReactNode>> = {
   slots?: T
 }
 
+export type EntityWithView = {
+  view?: View
+}
+
 export type Layout = (typeof LAYOUT)[keyof typeof LAYOUT]
 
 export type RequestBase<T> = {
@@ -41,3 +45,5 @@ export type RequestResult<T> = {
   count: number
   items: T[]
 }
+
+export type View = (typeof VIEW)[keyof typeof VIEW]

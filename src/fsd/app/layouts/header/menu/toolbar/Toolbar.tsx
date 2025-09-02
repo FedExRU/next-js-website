@@ -1,17 +1,29 @@
-import { AUTH_ROUTES } from '@fsd/shared/routes'
-import { Grid } from '@mui/material'
-import Link from 'next/link'
+import { Box, Grid } from '@mui/material'
 
-import { SiteSearch } from './siteSearch'
-export const Toolbar: React.FC = () => {
+import { getStyles } from './styles'
+import { ToolbarProps } from './types'
+
+const { styles } = getStyles()
+
+export const Toolbar: React.FC<ToolbarProps> = ({ slots = {} }) => {
+  const { auth, cart, siteSearch } = slots
   return (
     <Grid container spacing={1}>
-      <Grid size="auto">
-        <SiteSearch />
-      </Grid>
-      <Grid size="auto">
-        <Link href={AUTH_ROUTES.LOGIN.path}></Link>
-      </Grid>
+      {siteSearch && (
+        <Grid size="auto">
+          <Box sx={styles.toolbarItem}>{siteSearch}</Box>
+        </Grid>
+      )}
+      {auth && (
+        <Grid size="auto">
+          <Box sx={styles.toolbarItem}>{auth}</Box>
+        </Grid>
+      )}
+      {cart && (
+        <Grid size="auto">
+          <Box sx={styles.toolbarItem}>{cart}</Box>
+        </Grid>
+      )}
     </Grid>
   )
 }

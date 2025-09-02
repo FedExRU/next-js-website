@@ -23,6 +23,14 @@ export const LAYOUT = {
 } as const
 
 /**
+ * Views.
+ */
+export const VIEW = {
+  DESKTOP: 'desktop',
+  MOBILE: 'mobile',
+} as const
+
+/**
  * Default header height.
  */
 export const DEFAULT_HEADER_HEIGHT = '60px'

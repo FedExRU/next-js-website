@@ -1,5 +1,6 @@
-import { IconButtonProps, SvgIconProps } from '@mui/material'
+import { SvgIconProps } from '@mui/material'
 
+import { IconButtonProps } from '../../iconButton'
 import { ArrowLeftMediumIcon, ArrowRightMediumIcon } from '../../icons'
 
 export const SliderNavigationVariant = {

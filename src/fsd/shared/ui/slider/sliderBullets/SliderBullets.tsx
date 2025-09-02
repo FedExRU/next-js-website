@@ -1,7 +1,8 @@
 'use client'
 
-import { Box, IconButton } from '@mui/material'
+import { Box } from '@mui/material'
 
+import { SliderBullet } from './sliderBullet'
 import { SliderBulletsProps } from './types'
 
 export const SliderBullets: React.FC<SliderBulletsProps> = ({
@@ -31,24 +32,11 @@ export const SliderBullets: React.FC<SliderBulletsProps> = ({
       }}
     >
       {Array.from({ length: slidesCount }).map((_, i) => (
-        <IconButton
-          aria-label={`Slide button number ${i + 1}`}
+        <SliderBullet
+          aria-label={`Go to slide ${i + 1}`}
+          isActive={activeSlideIndex === i}
           key={i}
           onClick={makeHandleClick(i)}
-          sx={theme => ({
-            alignItems: 'center',
-            borderBottomLeftRadius: 8,
-            borderBottomRightRadius: 8,
-            borderTopLeftRadius: 8,
-            borderTopRightRadius: 8,
-            height: 8,
-            padding: 0,
-            transition: theme.transitions.create('width', {
-              duration: theme.transitions.duration.leavingScreen,
-              easing: theme.transitions.easing.sharp,
-            }),
-            width: i === activeSlideIndex ? 30 : 8,
-          })}
         />
       ))}
     </Box>

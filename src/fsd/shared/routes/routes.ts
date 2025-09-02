@@ -17,3 +17,8 @@ export const AUTH_ROUTES: RoutesMap = {
   LOGIN: { id: 1, label: 'Login', path: '/login' },
   REGISTER: { id: 2, label: 'Register', path: '/register' },
 }
+
+export const COMMON_ROUTES: RoutesMap = {
+  CART: { id: 1, label: 'Cart', path: '/cart' },
+  WISHLIST: { id: 2, label: 'Wishlist', path: '/wishlist' },
+}

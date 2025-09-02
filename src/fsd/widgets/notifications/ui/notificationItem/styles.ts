@@ -7,7 +7,6 @@ export const getStyles = (color?: NotificationType) =>
     iconButton: {
       bgcolor: 'transparent !important',
       borderBottom: 'none',
-      boxShadow: 'none',
     },
     iconButtonText: { left: -999999, position: 'absolute' },
     notification: { position: 'relative' },

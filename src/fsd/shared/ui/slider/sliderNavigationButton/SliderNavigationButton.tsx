@@ -1,7 +1,6 @@
 'use client'
 
-import { IconButton } from '@mui/material'
-
+import { IconButton } from '../../iconButton'
 import {
   ARIA_LABEL_BY_VARIANT,
   SliderNavigationVariant,

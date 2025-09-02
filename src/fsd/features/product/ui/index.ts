@@ -1,2 +1,2 @@
 export * from './addToCart'
-export * from './addToFavorites'
+export * from './addToWishlist'

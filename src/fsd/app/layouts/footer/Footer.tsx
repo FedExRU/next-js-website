@@ -1,12 +1,12 @@
 'use client'
 
-import { useAdaptive } from '@fsd/shared/lib'
+import { LAYOUT, useAdaptive, VIEW } from '@fsd/shared/lib'
 import { SiteLogoLink, Slogan } from '@fsd/shared/ui'
+import { SocialNetworksList } from '@fsd/widgets/socialNetworks'
 import { Box, Container, Divider, Grid } from '@mui/material'
 
 import { Copyright } from './copyright'
 import { Menu } from './menu'
-import { SocialNetworks } from './socialNetworks'
 import { getStyles } from './styles'
 
 const { styles } = getStyles()
@@ -60,7 +60,10 @@ export const Footer: React.FC = () => {
               </Grid>
               <Grid order={{ md: 2, xs: 1 }} size={{ md: 'auto', xs: 12 }}>
                 <Box sx={styles.footerSocialNetworks}>
-                  <SocialNetworks />
+                  <SocialNetworksList
+                    layout={LAYOUT.SECONDARY}
+                    view={VIEW.DESKTOP}
+                  />
                 </Box>
               </Grid>
             </Grid>

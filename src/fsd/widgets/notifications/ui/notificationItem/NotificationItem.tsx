@@ -1,11 +1,10 @@
-import { CloseIcon } from '@fsd/shared/ui'
+import { CloseIcon, IconButton } from '@fsd/shared/ui'
 import {
   Alert,
   AlertTitle,
   Box,
   Collapse,
   Fade,
-  IconButton,
   Typography,
 } from '@mui/material'
 import React from 'react'
@@ -92,6 +91,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
             action={
               <IconButton
                 color="primary"
+                noElevation
                 onClick={handleClose}
                 size="small"
                 sx={styles.iconButton}

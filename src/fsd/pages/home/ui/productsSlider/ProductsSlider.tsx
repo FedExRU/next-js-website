@@ -1,7 +1,7 @@
 'use client'
 
 import { Product, useGetNewProductsQuery } from '@fsd/entities/products'
-import { AddToCart, AddToFavorites } from '@fsd/features/product'
+import { AddToCart, AddToWishlist } from '@fsd/features/product'
 import { ActionLink, Slider, Typography } from '@fsd/shared/ui'
 import { Box, Grid } from '@mui/material'
 
@@ -18,7 +18,7 @@ export const ProductsSlider = () => {
   const handleRenderAction = () => <AddToCart />
 
   const handleRenderActionSecondary = (isFavorite?: boolean) => (
-    <AddToFavorites isAdded={isFavorite} />
+    <AddToWishlist isAdded={isFavorite} />
   )
 
   return (
