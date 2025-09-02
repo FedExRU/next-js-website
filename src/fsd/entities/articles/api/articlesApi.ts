@@ -3,7 +3,7 @@ import { query } from '@fsd/shared/api'
 import { IArticle } from './types'
 
 export class ArticlesApi {
-  static getNew = async () => {
+  static readonly getNew = async () => {
     const data = await query<IArticle>('articles')
 
     return {

@@ -3,6 +3,7 @@ import js from '@eslint/js'
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import perfectionist from 'eslint-plugin-perfectionist'
 import prettier from 'eslint-plugin-prettier'
+import sonarjs from 'eslint-plugin-sonarjs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -26,6 +27,7 @@ const config = [
   },
   perfectionist.configs['recommended-natural'],
   ...compat.extends('plugin:@typescript-eslint/recommended', 'prettier'),
+  sonarjs.configs.recommended,
   {
     plugins: {
       '@typescript-eslint': typescriptEslint,
