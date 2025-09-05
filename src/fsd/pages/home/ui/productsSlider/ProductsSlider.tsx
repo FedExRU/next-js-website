@@ -1,8 +1,8 @@
 'use client'
 
 import { Product, useGetNewProductsQuery } from '@fsd/entities/products'
-import { AddToCart, AddToWishlist } from '@fsd/features/product'
-import { ActionLink, Slider, Typography } from '@fsd/shared/ui'
+import { AddToCart, AddToWishlist } from '@fsd/features/products'
+import { ActionButtonLink, Slider, Typography } from '@fsd/shared/ui'
 import { Box, Grid } from '@mui/material'
 
 import { useSlidesCount } from '../../lib'
@@ -34,7 +34,7 @@ export const ProductsSlider = () => {
       </Grid>
       <Grid order={{ sm: 2, xs: 3 }} size={{ sm: 'auto', xs: 12 }}>
         <Box sx={styles.actionLinkWrapper}>
-          <ActionLink text="More Products" />
+          <ActionButtonLink text="More Products" />
         </Box>
       </Grid>
       <Grid order={{ sm: 3, xs: 2 }} size={12}>

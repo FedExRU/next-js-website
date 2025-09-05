@@ -1,8 +1,8 @@
 'use client'
 
 import { IArticle, useGetNewArticlesQuery } from '@fsd/entities/articles'
-import { GoToArticle } from '@fsd/features/article'
-import { ActionLink, Typography } from '@fsd/shared/ui'
+import { GoToArticle } from '@fsd/features/articles'
+import { ActionButtonLink, Typography } from '@fsd/shared/ui'
 import { Box, Grid } from '@mui/material'
 
 import { BlogArticle } from './blogArticle'
@@ -20,7 +20,7 @@ export const BlogSection = () => {
         </Typography>
       </Grid>
       <Grid sx={{ alignItems: 'end', display: 'flex' }}>
-        <ActionLink text="More Articles" />
+        <ActionButtonLink text="More Articles" />
       </Grid>
       <Grid size={12}>
         <Box sx={{ mt: 5 }}>

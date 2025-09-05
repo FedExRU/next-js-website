@@ -1,6 +1,6 @@
 'use client'
 
-import { ActionLink, Skeleton } from '@fsd/shared/ui'
+import { ActionButtonLink, Skeleton } from '@fsd/shared/ui'
 
 import { GO_TO_CATEGORY_TEXT } from './constants'
 import { GoToCategoryProps } from './types'
@@ -22,7 +22,7 @@ export const GoToCategory: React.FC<GoToCategoryProps> = ({
         }}
       />
     ) : (
-      <ActionLink text={text} />
+      <ActionButtonLink text={text} />
     )}
   </>
 )

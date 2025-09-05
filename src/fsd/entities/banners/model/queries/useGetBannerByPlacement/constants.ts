@@ -1,0 +1,2 @@
+export const GET_BANNER_BY_PLACEMENT_QUERY_KEY =
+  'queries/banners/GET_BANNER_BY_PLACEMENT_QUERY_KEY'

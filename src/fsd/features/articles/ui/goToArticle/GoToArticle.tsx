@@ -1,6 +1,6 @@
 'use client'
 
-import { ActionLink, Skeleton } from '@fsd/shared/ui'
+import { ActionButtonLink, Skeleton } from '@fsd/shared/ui'
 
 import { GO_TO_ARTICLE_TEXT } from './constants'
 import { GoToArticleProps } from './types'
@@ -19,7 +19,7 @@ export const GoToArticle: React.FC<GoToArticleProps> = ({
         }}
       />
     ) : (
-      <ActionLink text={text} />
+      <ActionButtonLink text={text} />
     )}
   </>
 )

@@ -1,23 +1,15 @@
+import { Link as MuiLink } from '@mui/material'
 import Link from 'next/link'
 
-import { Button } from '../button'
 import { ArrowRightMediumIcon } from '../icons'
+import { getStyles } from './styles'
 import { ActionLinkProps } from './types'
 
+const { styles } = getStyles()
+
 export const ActionLink: React.FC<ActionLinkProps> = ({ text, to = '#' }) => (
-  <Button
-    component={Link}
-    href={to}
-    size={{
-      sm: 'small',
-      xs: 'xSmall',
-    }}
-    sx={{
-      px: '0 !important',
-    }}
-    variant="text"
-  >
+  <MuiLink color="secondary" component={Link} href={to} sx={styles.actionLink}>
     {text}
-    <ArrowRightMediumIcon sx={{ '& path': { strokeWidth: 1.25 }, pl: 0.5 }} />
-  </Button>
+    <ArrowRightMediumIcon sx={styles.icon} />
+  </MuiLink>
 )
