@@ -38,3 +38,7 @@ next-env.d.ts
 # VS Code directories
 .history
 .vscode
+
+# Database
+pgadmin
+postgresql
