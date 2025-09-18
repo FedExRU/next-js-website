@@ -1,1 +1,0 @@
-export { GridMediumIcon } from './GridMediumIcon'

@@ -1,1 +1,0 @@
-export { CheckboxIcon } from './CheckboxIcon'

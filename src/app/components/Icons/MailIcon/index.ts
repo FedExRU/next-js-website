@@ -1,1 +1,0 @@
-export { MailIcon } from './MailIcon'

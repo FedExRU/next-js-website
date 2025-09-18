@@ -1,1 +1,0 @@
-export { CallIcon } from './CallIcon'

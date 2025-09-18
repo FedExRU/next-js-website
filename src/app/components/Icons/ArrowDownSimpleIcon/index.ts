@@ -1,1 +1,0 @@
-export { ArrowDownSimpleIcon } from './ArrowDownSimpleIcon'

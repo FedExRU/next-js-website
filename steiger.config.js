@@ -4,7 +4,7 @@ import { defineConfig } from 'steiger'
 export default defineConfig([
   ...fsd.configs.recommended,
   {
-    files: ['./src/fsd/**'],
+    files: ['./src/frontend/**', './src/backend/**'],
     rules: {
       'fsd/insignificant-slice': 'warn',
     },

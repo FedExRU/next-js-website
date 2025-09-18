@@ -6,6 +6,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -14,20 +15,18 @@
     "jsx": "preserve",
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@fsd/*": ["./src/fsd/*"],
-      "components/*": ["./src/components/*"],
-      "server-actions/*": ["./src/server-actions/*"],
-      "providers/*": ["./src/providers/*"],
-      "hooks/*": ["./src/hooks/*"],
-      "types": ["./src/types/"]
+      "@backend/*": ["src/backend/*"],
+      "@common/*": ["src/common/*"],
+      "@frontend/*": ["src/frontend/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/backend/shared/db/knexfile.ts"],
   "exclude": ["node_modules"]
 }

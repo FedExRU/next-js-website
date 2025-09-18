@@ -1,1 +1,0 @@
-export { GridLargeIcon } from './GridLargeIcon'
