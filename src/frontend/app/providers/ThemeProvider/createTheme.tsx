@@ -1,4 +1,8 @@
-import { createTheme as _createTheme, BreakpointsOptions } from '@mui/material'
+import {
+  createTheme as _createTheme,
+  BreakpointsOptions,
+  Typography,
+} from '@mui/material'
 import mediaQuery from 'css-mediaquery'
 import localFont from 'next/font/local'
 
@@ -66,6 +70,30 @@ export const createTheme = (deviceType: DeviceType) =>
           colorDefault: ({ theme }) => ({
             backgroundColor: theme.palette.common.white,
           }),
+        },
+      },
+      MuiAutocomplete: {
+        defaultProps: {
+          noOptionsText: (
+            <Typography variant="body2Semi">No Options Found...</Typography>
+          ),
+          renderOption: ({ key, ...rest }, { value }) => (
+            <Typography key={key} {...rest} variant="body2Semi">
+              {value}
+            </Typography>
+          ),
+          slotProps: {
+            clearIndicator: {
+              sx: {
+                boxShadow: 'none',
+              },
+            },
+            popupIndicator: {
+              sx: {
+                boxShadow: 'none',
+              },
+            },
+          },
         },
       },
       MuiBreadcrumbs: {
@@ -198,6 +226,39 @@ export const createTheme = (deviceType: DeviceType) =>
           },
         ],
       },
+      MuiButtonGroup: {
+        defaultProps: {
+          variant: 'outlined',
+        },
+        styleOverrides: {
+          root: ({ theme }) => ({
+            '& .MuiButton-contained': {
+              backgroundColor: theme.palette.grey['300'],
+              border: '1px solid transparent',
+              color: theme.palette.grey['700'],
+              pointerEvents: 'none',
+            },
+            '& .MuiButton-outlined': {
+              '@media (hover: hover)': {
+                '&:hover': {
+                  color: theme.palette.grey['700'],
+                },
+              },
+              color: theme.palette.grey['400'],
+            },
+            '& .MuiButton-root': {
+              borderColor: theme.palette.grey['300'],
+              borderRadius: 0,
+              paddingBottom: theme.spacing(1),
+
+              paddingLeft: theme.spacing(1.375),
+              paddingRight: theme.spacing(1.375),
+              paddingTop: theme.spacing(1),
+              transition: theme.transitions.create('color'),
+            },
+          }),
+        },
+      },
       MuiCheckbox: {
         defaultProps: {
           checkedIcon: <CheckboxCheckedIcon />,
@@ -206,6 +267,12 @@ export const createTheme = (deviceType: DeviceType) =>
         },
         styleOverrides: {
           root: ({ ownerState: { color }, theme }) => ({
+            '&:has(input[type="checkbox"]:focus-visible)': {
+              color:
+                color === undefined || color === 'default'
+                  ? 'currentColor'
+                  : theme.palette?.[color].main,
+            },
             '@media (hover: hover)': {
               '&:hover': {
                 color:
@@ -214,7 +281,6 @@ export const createTheme = (deviceType: DeviceType) =>
                     : theme.palette?.[color].main,
               },
             },
-
             padding: 0,
             transition: theme.transitions.create('color'),
           }),
@@ -247,6 +313,28 @@ export const createTheme = (deviceType: DeviceType) =>
         styleOverrides: {
           root: ({ theme }) => ({
             borderColor: theme.palette.grey['400'],
+          }),
+        },
+      },
+      MuiDrawer: {
+        defaultProps: {
+          anchor: 'right',
+        },
+        styleOverrides: {
+          paper: ({ theme }) => ({
+            [`@media (max-width: ${theme.breakpoints.values.md}px)`]: {
+              paddingBottom: theme.spacing(3),
+              paddingTop: theme.spacing(3),
+              width: '95vw',
+            },
+            [`@media (min-width: ${theme.breakpoints.values.md}px)`]: {
+              paddingBottom: theme.spacing(5),
+              paddingTop: theme.spacing(5),
+              width: '25vw',
+            },
+            minWidth: 425,
+            paddingLeft: theme.spacing(3),
+            paddingRight: theme.spacing(3),
           }),
         },
       },
@@ -429,7 +517,6 @@ export const createTheme = (deviceType: DeviceType) =>
               },
             }),
           },
-          notched: true,
           size: 'small',
         },
         styleOverrides: {

@@ -2,7 +2,10 @@
 
 import React from 'react'
 
-export function useActionState<State, Payload>(
+export function useActionState<
+  State = Record<string, unknown>,
+  Payload = unknown,
+>(
   action: (state: Awaited<State>, payload: Payload) => Promise<State> | State,
   initialState: Awaited<State>,
   permalink?: string,

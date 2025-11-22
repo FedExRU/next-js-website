@@ -38,7 +38,7 @@ export const getStyles = (isFavorite?: boolean) => {
       },
       productImage: {
         height: '100%',
-        objectFit: 'cover',
+        objectFit: 'fill',
         width: '100%',
       },
       productImageSkeleton: {
@@ -48,7 +48,7 @@ export const getStyles = (isFavorite?: boolean) => {
         width: '100%',
       },
       productImageWrapper: {
-        height: { md: 357.5, xs: 308 },
+        height: 308,
         position: 'relative',
       },
       productInfo: {
@@ -58,7 +58,7 @@ export const getStyles = (isFavorite?: boolean) => {
         top: 0,
         width: '100%',
       },
-      productPrice: { alignItems: 'end', display: 'flex', height: 32 },
+      productPrice: { alignItems: 'start', display: 'flex', height: 32 },
       productRating: { height: 32 },
     },
     classes,

@@ -288,6 +288,7 @@ export const up = async (knex: Knex) => {
         product_base_id: 2,
         quantity: 50,
         sku: '1191',
+        slug: 'kitchen-table-regency-black',
         updated_by: 1,
       },
     ])

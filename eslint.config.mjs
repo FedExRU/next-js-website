@@ -35,6 +35,7 @@ const config = [
     },
 
     rules: {
+      '@typescript-eslint/no-empty-object-type': 'off',
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unused-vars': 'error',
       'no-duplicate-imports': 'error',

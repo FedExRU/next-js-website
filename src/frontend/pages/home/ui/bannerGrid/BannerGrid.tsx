@@ -2,7 +2,7 @@
 
 import { Grid } from '@mui/material'
 
-import { useGetCategoriesQuery } from '../../../../entities/categories'
+import { useGetGategoriesQuery as useGetCategoriesQuery } from '../../../../entities/categories'
 import { GoToCategory } from '../../../../features/categories'
 import { LAYOUT } from '../../../../shared/lib'
 import { BannerCategory } from './bannerCategory'

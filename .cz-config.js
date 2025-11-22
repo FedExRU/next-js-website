@@ -1,7 +1,7 @@
 module.exports = {
   allowBreakingChanges: ['feat', 'fix'],
   allowCustomScopes: true,
-  scopes: ['home', 'ui'],
+  scopes: ['home', 'ui', 'shop'],
   skipQuestions: ['body', 'breaking', 'footer'],
   subjectLimit: 100,
   types: [

@@ -3,6 +3,8 @@
 import { Box, Fade } from '@mui/material'
 import React from 'react'
 import SlickSliderComponent from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 import { SliderBullets } from './sliderBullets'
 import { SliderLoader } from './sliderLoader'

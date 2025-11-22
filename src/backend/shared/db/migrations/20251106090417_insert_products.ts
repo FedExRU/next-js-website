@@ -219,6 +219,7 @@ export const up = async (knex: Knex) => {
         product_base_id: 1,
         quantity: 15,
         sku: '1119',
+        slug: 'tray-table-kensington-white',
         updated_by: 1,
       },
     ])

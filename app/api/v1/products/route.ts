@@ -1,8 +1,22 @@
-import { getNewArrivals } from '@backend/app'
+import { getProducts } from '@backend/app'
+import { IRequestProductsContract } from '@common/interfaces'
+import { NextRequest } from 'next/server'
 
-export async function GET() {
-  return new Response(JSON.stringify(getNewArrivals()), {
-    headers: { 'Content-Type': 'application/json' },
-    status: 200,
-  })
+import { STATUS_CODES } from '../constants'
+import { buildResponse } from '../utils'
+
+export async function GET(request: NextRequest) {
+  const filters: IRequestProductsContract = Object.fromEntries(
+    request.nextUrl.searchParams,
+  )
+
+  try {
+    const data = await getProducts(filters)
+    return buildResponse({ data })
+  } catch (error) {
+    return buildResponse({
+      code: (error as NodeJS.ErrnoException).code,
+      status: STATUS_CODES.INTERNAL_SERVER_ERROR,
+    })
+  }
 }

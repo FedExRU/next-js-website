@@ -25,6 +25,6 @@ export const BadgeDiscount: FC<BadgeDiscountProps> = ({
       sx={styles[size]}
       textTransform="uppercase"
     >
-      -${value}%
+      -{value}%
     </Box>
   ) : null

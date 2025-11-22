@@ -2,12 +2,10 @@
 const nextConfig = {
   // Automatically bundle external packages in the Pages Router
   bundlePagesRouterDependencies: true,
-  experimental: {
-    // Add the react compiler for better performance
-    reactCompiler: true,
-  },
+  reactCompiler: true,
   // Turn off strict mode
   reactStrictMode: false,
+  serverExternalPackages: ['knex'],
 }
 
 // eslint-disable-next-line
