@@ -219,6 +219,7 @@ export const up = async (knex: Knex) => {
         product_base_id: 3,
         quantity: 50,
         sku: '1058',
+        slug: 'closet-apex-brown',
         updated_by: 1,
       },
     ])

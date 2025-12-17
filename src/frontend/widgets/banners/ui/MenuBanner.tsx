@@ -38,7 +38,11 @@ const MenuBannerComponent: React.FC = () => {
       : false
 
   return (
-    <Collapse in={!isLoading && isOpen}>
+    <Collapse
+      // TODO: revert
+      //in={!isLoading && isOpen}
+      in={false}
+    >
       <Alert
         action={
           <IconButton

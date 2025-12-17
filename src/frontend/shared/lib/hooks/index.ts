@@ -1,5 +1,6 @@
 export * from './useActionState'
 export * from './useAdaptive'
+export * from './useDebounce'
 export * from './useImageLoaded'
 export * from './useIsDesktop'
 export * from './useIsLaptop'

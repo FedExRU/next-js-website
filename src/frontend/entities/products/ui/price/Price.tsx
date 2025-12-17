@@ -13,7 +13,11 @@ export const Price: React.FC<PriceProps> = ({
       {skeleton ? (
         <Skeleton height={17} width={50.2} />
       ) : (
-        <Typography variant="caption1Semi">
+        <Typography
+          component={valueDiscount ? 'ins' : 'p'}
+          sx={{ display: 'block', textDecoration: 'none' }}
+          variant="caption1Semi"
+        >
           ${valueDiscount || value}
         </Typography>
       )}
@@ -22,7 +26,8 @@ export const Price: React.FC<PriceProps> = ({
       <Grid>
         <Typography
           color="text.secondary"
-          sx={{ textDecoration: 'line-through' }}
+          component="del"
+          sx={{ display: 'block', textDecoration: 'line-through' }}
           variant="caption1"
         >
           ${value}

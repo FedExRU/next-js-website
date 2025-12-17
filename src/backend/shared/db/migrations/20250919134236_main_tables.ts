@@ -396,10 +396,10 @@ export const up = async (knex: Knex) => {
     table.increments('id').primary()
     table.string('sku').notNullable()
     table.string('name').notNullable()
+    table.string('slug').notNullable()
     table.integer('quantity').notNullable()
     table.float('price').notNullable()
     table.boolean('new').nullable().defaultTo(false)
-
     table
       .integer('product_base_id')
       .notNullable()

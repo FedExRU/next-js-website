@@ -6,13 +6,7 @@ export const DEVICE_TYPE = {
   MOBILE: 'mobile',
 } as const
 
-/**
- * Direction order for sorting.
- */
-export const DIRECTION_ORDER = {
-  ASC: 'asc',
-  DESC: 'desc',
-} as const
+
 
 /**
  * Layouts.

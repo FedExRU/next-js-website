@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Grid, Rating } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import Image from 'next/image'
 
 import { skeletonImage } from '../../../shared/assets'
@@ -12,14 +12,13 @@ import { getStyles } from './styles'
 import { ProductProps } from './types'
 
 export const Product: React.FC<ProductProps> = ({
-  discountPercent,
+  discountPercentage,
+  discountPrice,
   image,
   isFavorite,
   isNew,
   name,
   price,
-  priceDiscount,
-  rating,
   renderAction,
   renderActionSecondary,
   skeleton = false,
@@ -34,20 +33,26 @@ export const Product: React.FC<ProductProps> = ({
             {skeleton ? (
               <Skeleton sx={styles.productImageSkeleton} />
             ) : (
-              <Image
-                alt={(name as string) || ''}
-                height={0}
-                sizes="100vw"
-                src={skeleton ? skeletonImage : (image as string)}
-                style={styles.productImage as React.CSSProperties}
-                width={0}
-              />
+              (image && (
+                <Image
+                  alt={(name as string) || ''}
+                  height={0}
+                  sizes="100vw"
+                  src={skeleton ? skeletonImage : (image as string)}
+                  style={styles.productImage as React.CSSProperties}
+                  width={0}
+                />
+              )) ||
+              null
             )}
             {!skeleton && (
               <Box sx={styles.productInfo}>
                 <Grid container>
                   <Grid size="grow">
-                    <Badges discountPercent={discountPercent} isNew={isNew} />
+                    <Badges
+                      discountPercent={discountPercentage}
+                      isNew={isNew}
+                    />
                   </Grid>
                   {renderActionSecondary && (
                     <Grid size="grow">
@@ -77,15 +82,6 @@ export const Product: React.FC<ProductProps> = ({
         <Grid size={12}>
           <Grid container spacing={0.5}>
             <Grid size={12}>
-              <Box sx={styles.productRating}>
-                {skeleton ? (
-                  <Skeleton height={16} width={85} />
-                ) : (
-                  <Rating defaultValue={rating} precision={0.01} readOnly />
-                )}
-              </Box>
-            </Grid>
-            <Grid size={12}>
               {skeleton ? (
                 <Skeleton height={20} width={126} />
               ) : (
@@ -97,7 +93,9 @@ export const Product: React.FC<ProductProps> = ({
                 <Price
                   skeleton={skeleton}
                   value={toDecimalString(price)}
-                  valueDiscount={toDecimalString(priceDiscount)}
+                  valueDiscount={
+                    discountPrice ? toDecimalString(discountPrice) : undefined
+                  }
                 />
               </Box>
             </Grid>

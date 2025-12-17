@@ -11,7 +11,9 @@ export type GetSxArgs = {
 }
 
 export type TypographyProps = Omit<MuiTypographyProps, 'variant'> &
-  (TypographyVariantAdaptive | TypographyVariantStatic)
+  (TypographyVariantAdaptive | TypographyVariantStatic) & {
+    icon?: React.ReactNode
+  }
 
 export type TypographyVariantAdaptive = {
   variant?: Partial<Record<Breakpoint, keyof Theme['typography']>>

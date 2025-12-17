@@ -1,1 +1,1 @@
-export * from './getNewArrivals'
+export * from './getProducts'

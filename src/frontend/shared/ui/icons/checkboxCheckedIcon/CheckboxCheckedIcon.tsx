@@ -22,7 +22,7 @@ export const CheckboxCheckedIcon: React.FC<SvgIconProps> = props => (
       height="22.5"
       rx="3.25"
       stroke="currentColor"
-      stroke-width="1.5"
+      strokeWidth="1.5"
       width="22.5"
       x="0.75"
       y="0.923615"

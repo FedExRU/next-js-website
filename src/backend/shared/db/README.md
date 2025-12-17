@@ -85,3 +85,53 @@ left join gallery_images on gallery_images.image_id = images.id and images.delet
 left join products on products.gallery_id = gallery_images.gallery_id and gallery_images.deleted_at is null and gallery_images.disabled_at is null
 where products.id = 1 and products.disabled_at is null and products.deleted_at is null
 ```
+
+### Select All Products
+
+```sql
+select 
+  products.id as id,
+  products.name as name,
+  products.price as price,
+  products_discounts.price as discount_price,
+  discounts.percentage  as discount_percentage,
+  products.new as new,
+  images.image as image,
+  images.image_small as image_small,
+  images.image_medium as image_medium,
+  images.image_large as image_large
+from products
+left join products_discounts on products_discounts.product_id = products.id and products_discounts.deleted_at is null and products_discounts.disabled_at  is null 
+left join discounts on products_discounts.discount_id  = discounts.id and discounts.deleted_at is null and discounts.disabled_at  is null 
+left join gallery_images on gallery_images.gallery_id = products.gallery_id and gallery_images.deleted_at is null and gallery_images.disabled_at is null and gallery_images.primary_image is true
+left join images on gallery_images.image_id = images.id and images.deleted_at is null and images.disabled_at  is null 
+where products.disabled_at is null and products.deleted_at is null
+order by products.id desc
+```
+
+### Select All Attributes
+
+```sql
+select distinct
+  attributes.id,
+  attributes.name,
+  attribute_types.code as attribute_type
+from attributes
+left join attribute_types on attribute_types.id = attributes.attribute_type_id and attribute_types.deleted_at is null and attribute_types.disabled_at is null
+left join category_attributes on category_attributes.attribute_id = attributes.id and category_attributes.deleted_at is null and category_attributes.disabled_at is null
+right join product_base_attributes on product_base_attributes.category_attribute_id  = category_attributes.id and product_base_attributes.deleted_at is null and product_base_attributes.disabled_at is null
+where attributes.deleted_at is null and attributes.disabled_at is null
+order by attributes.id desc
+```
+
+### Select All Category Dictionary Values
+
+```sql
+select 
+  attribute_dictionary_values.id,
+  attribute_dictionary_values.attribute_id,
+  attribute_dictionary_values.value
+from attribute_dictionary_values
+left join attributes on attributes.id = attribute_dictionary_values.attribute_id and attributes.deleted_at is null and attributes.disabled_at is null
+where attribute_dictionary_values.deleted_at is null and attribute_dictionary_values.disabled_at is null
+```

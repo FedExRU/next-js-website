@@ -1,11 +1,18 @@
-import type { EntityWithLayout, EntityWithSkeleton } from '../../../shared/lib'
+import { IProductContract } from '@common/interfaces'
 
-import { IProduct } from '../api'
+import type { EntityWithLayout, EntityWithSkeleton } from '../../../shared/lib'
 
 export type ProductProps = EntityWithLayout &
   EntityWithSkeleton &
-  Partial<IProduct> & {
+  Partial<
+    Pick<
+      IProductContract,
+      'discountPercentage' | 'discountPrice' | 'name' | 'price'
+    >
+  > & {
+    image?: string
     isFavorite?: boolean
+    isNew?: boolean
     renderAction?: <TProps = unknown>() => React.ReactElement<TProps>
     renderActionSecondary?: <TProps = unknown>(
       isFavorite?: boolean,

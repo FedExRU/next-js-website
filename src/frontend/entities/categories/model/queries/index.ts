@@ -1,1 +1,2 @@
-export * from './useGetGategories'
+export * from './useGetCategoriesInfiniteQuery'
+export * from './useGetGategoriesQuery'

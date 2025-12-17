@@ -6,6 +6,8 @@ export const up = async (knex: Knex) => {
     table.string('code').notNullable()
     table.string('name').notNullable()
     table.timestamps(true, true)
+    table.timestamp('deleted_at').nullable()
+    table.timestamp('disabled_at').nullable()
   })
   await knex.schema.createTable('users', table => {
     table.increments('id').primary()
